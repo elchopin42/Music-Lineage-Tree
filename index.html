@@ -73,10 +73,10 @@ function processData(data) {
     });
 
     // Ordenar i omplir el cercador
-    data.sort((a, b) => a.COGNOMS.localeCompare(b.COGNOMS)).forEach(row => {
+    data.sort((a, b) => a.SURNAME.localeCompare(b.SURNAME)).forEach(row => {
         const opt = document.createElement('option');
         opt.value = row.ID_CODE;
-        opt.textContent = `${row.COGNOMS}, ${row.NOM}`;
+        opt.textContent = `${row.SURNAME}, ${row.NAME}`;
         select.appendChild(opt);
     });
 
@@ -107,7 +107,7 @@ function drawTree(rootId) {
         if (!nodes.has(currentId)) {
             nodes.set(currentId, {
                 id: currentId,
-                label: `${comp.NOM} ${comp.COGNOMS}\n(${comp.BIRTH_YEAR}-${comp.DEATH_YEAR})`,
+                label: `${comp.NAME} ${comp.SURNAME}\n(${comp.BIRTH_YEAR}-${comp.DEATH_YEAR})`,
                 level: level,
                 shape: 'box',
                 color: { background: color, border: border },
