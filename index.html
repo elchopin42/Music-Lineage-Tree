@@ -5,39 +5,40 @@
     <title>Musical Lineage Tree</title>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"/>
     <style>
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
-        header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
-        #controls { padding: 20px; display: flex; justify-content: center; background: #ecf0f1; border-bottom: 1px solid #ccc; }
-        select { padding: 10px; font-size: 16px; width: 400px; }
-        #mynetwork { width: 100%; height: calc(100vh - 180px); background: white; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f8f9fa; }
+        header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
+        #controls { padding: 15px; display: flex; justify-content: center; background: #ffffff; border-bottom: 1px solid #dee2e6; }
+        select { padding: 10px; font-size: 16px; width: 400px; border-radius: 5px; border: 1px solid #ccc; }
+        #mynetwork { width: 100%; height: calc(100vh - 160px); background: white; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Musical Lineage Tree</h1>
-</header>
-
+<header><h1>Musical Lineage Tree</h1></header>
 <div id="controls">
-    <select id="search"><option value="">Carregant compositors...</option></select>
+    <select id="search"><option value="">Carregant dades...</option></select>
 </div>
-
 <div id="mynetwork"></div>
 
 <script>
 let network = null;
 let fullData = {};
 
-// 1. Càrrega del fitxer CSV
+// Funció per convertir codis ISO en Emojis de banderes
+function getFlag(code) {
+    if (!code) return "";
+    const c = code.toLowerCase().trim();
+    if (c === 'cat') return "🟨🟥"; // Senyera aproximada
+    if (c === 'mar' || c === 'sea') return "⚓";
+    // Conversió de codi ISO a Emoji (es -> 🇪🇸)
+    const codePoints = c.toUpperCase().split('').map(char => 127397 + char.charCodeAt());
+    return String.fromCodePoint(...codePoints);
+}
+
 Papa.parse("dades.csv", {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function(results) {
-        processData(results.data);
-    }
+    download: true, header: true, skipEmptyLines: true,
+    complete: function(results) { processData(results.data); }
 });
 
 function processData(data) {
@@ -47,7 +48,7 @@ function processData(data) {
     data.forEach(row => {
         fullData[row.ID_CODE] = {
             ...row,
-            teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()) : []
+            teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()).filter(s => s !== "") : []
         };
     });
 
@@ -67,89 +68,71 @@ function drawTree(rootId) {
 
     const nodes = new Map();
     const edges = [];
-    const processedIds = new Set();
+    const processed = new Set();
 
-    function buildGraph(currentId, level, direction) {
-        const key = currentId; // Clau única per compositor
-        if (processedIds.has(key + direction)) return; 
-        processedIds.add(key + direction);
-
-        const comp = fullData[currentId];
+    function build(id, level, direction) {
+        if (processed.has(id + level)) return;
+        processed.add(id + level);
+        const comp = fullData[id];
         if (!comp) return;
 
-        // Configuració visual segons nivell
-        let color = '#f6ffed'; let border = '#52c41a'; // Alumnes (Verd)
-        if (level === 0) { color = '#e6f7ff'; border = '#1890ff'; } // Focus (Blau)
-        if (level < 0) { color = '#fff7e6'; border = '#fa8c16'; } // Mestres (Taronja)
+        // Colors segons la jerarquia
+        let color = '#f6ffed'; let border = '#52c41a'; // Alumnes
+        if (level === 0) { color = '#e6f7ff'; border = '#1890ff'; } // Focus
+        if (level < 0) { color = '#fff7e6'; border = '#fa8c16'; } // Mestres
 
-        // Creem l'etiqueta amb Banderes, Anys i Ciutats
-        const bFlag = comp.BIRTH_FLAG ? `[${comp.BIRTH_FLAG.toUpperCase()}] ` : "";
-        const dFlag = comp.DEATH_FLAG ? `[${comp.DEATH_FLAG.toUpperCase()}] ` : "";
-        
-        const label = `<b>${comp.NAME} ${comp.SURNAME}</b>\n` +
-                      `birth: ${bFlag}${comp.BIRTH_PLACE || '?'} (${comp.BIRTH_YEAR || '?'})\n` +
-                      `death: ${dFlag}${comp.DEATH_PLACE || '?'} (${comp.DEATH_YEAR || '?'})`;
+        if (!nodes.has(id)) {
+            const bF = getFlag(comp.BIRTH_FLAG);
+            const dF = getFlag(comp.DEATH_FLAG);
+            
+            // Creem l'etiqueta neta (sense "birth:" o "death:" si no vols que es vegi brut)
+            const label = `<b>${comp.NAME} ${comp.SURNAME}</b>\n` +
+                          `${bF} ${comp.BIRTH_PLACE || ''} (${comp.BIRTH_YEAR || '?'})\n` +
+                          `${dF} ${comp.DEATH_PLACE || ''} (${comp.DEATH_YEAR || '?'})`;
 
-        if (!nodes.has(currentId)) {
-            nodes.set(currentId, {
-                id: currentId,
-                label: label,
-                level: level,
-                shape: 'box',
+            nodes.set(id, {
+                id: id, label: label, level: level, shape: 'box',
                 color: { background: color, border: border },
-                font: { multi: 'html', size: 14 },
+                font: { multi: 'html', size: 14, align: 'center' },
                 margin: 10
             });
         }
 
-        // MESTRES (Cap amunt) - Fins a 2 nivells
+        // MESTRES: Cap amunt (Limit 2)
         if (direction <= 0 && level > -2) {
             comp.teachers.forEach(tId => {
                 if (fullData[tId]) {
-                    edges.push({ from: tId, to: currentId, arrows: 'to' });
-                    buildGraph(tId, level - 1, -1);
+                    edges.push({ from: tId, to: id, arrows: 'to' });
+                    build(tId, level - 1, -1);
                 }
             });
         }
 
-        // ALUMNES (Cap avall) - Fins a 2 nivells
+        // ALUMNES: Cap avall (Limit 2)
         if (direction >= 0 && level < 2) {
-            Object.keys(fullData).forEach(potStudentId => {
-                const potStudent = fullData[potStudentId];
-                if (potStudent.teachers.includes(currentId)) {
-                    edges.push({ from: currentId, to: potStudentId, arrows: 'to' });
-                    buildGraph(potStudentId, level + 1, 1);
+            Object.keys(fullData).forEach(sId => {
+                // Comprovació estricta: l'ID del focus ha d'estar a la llista de mestres de l'alumne
+                if (fullData[sId].teachers.includes(id)) {
+                    edges.push({ from: id, to: sId, arrows: 'to' });
+                    build(sId, level + 1, 1);
                 }
             });
         }
     }
 
-    buildGraph(rootId, 0, 0);
+    build(rootId, 0, 0);
 
-    const container = document.getElementById('mynetwork');
-    const graphData = { nodes: Array.from(nodes.values()), edges: edges };
     const options = {
-        layout: { 
-            hierarchical: { 
-                direction: 'UD', 
-                sortMethod: 'directed', 
-                levelSeparation: 200, 
-                nodeSpacing: 300,
-                parentCentralization: true 
-            } 
-        },
+        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 250 } },
         physics: false,
         interaction: { dragNodes: false }
     };
 
     if (network) network.destroy();
-    network = new vis.Network(container, graphData, options);
-
-    network.on("click", (params) => {
-        if (params.nodes.length > 0) {
-            document.getElementById('search').value = params.nodes[0];
-            drawTree(params.nodes[0]);
-        }
+    network = new vis.Network(document.getElementById('mynetwork'), { nodes: Array.from(nodes.values()), edges: edges }, options);
+    
+    network.on("click", (p) => { 
+        if (p.nodes.length > 0) { document.getElementById('search').value = p.nodes[0]; drawTree(p.nodes[0]); }
     });
 }
 </script>
