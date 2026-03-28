@@ -1,0 +1,30 @@
+ID_CODE,NAME,SURNAME,BIRTH_FLAG,BIRTH_PLACE,BIRTH_YEAR,DEATH_FLAG,DEATH_PLACE,DEATH_YEAR,STUDENT_OF
+f_pedrell,Felip,Pedrell i Sabaté,es,Tortosa,1841,es,Barcelona,1922,"j_broca, j_nin"
+j_nin,Joan Antoni,Nin i Serra,es,Vilanova i la Geltrú,1804,es,Tortosa,1867,r_aleix
+a_coscollano,Andreu,Coscollano i Llorach,es,Benicarló,1813,es,Tortosa,1879,j_nin
+r_aleix,Ramon,Aleix i Batlle,es,Barcelona,1784,es,Barcelona,1850,f_andrevi
+f_andrevi,Francesc,Andreví i Castellar,es,Sanaüja,1786,es,Barcelona,1853,"c_baguer, j_quintana, f_queralt"
+c_baguer,Carles,Baguer i Mariner,es,Barcelona,1768,es,Barcelona,1808,f_mariner
+f_mariner,Francesc,Mariner,es,Barcelona,1720,es,Barcelona,1789,
+j_quintana,Joan,Quintana,es,Manresa,1786,es,Barcelona,1853,j_pons
+f_queralt,Francesc,Queralt,es,Les Borges Blanques,1740,es,Barcelona,1825,
+j_pons,Josep,Pons i Pons,es,Girona,1770,es,València,1818,
+r_carnicer,Ramon,Carnicer i Battle,es,Tàrrega,1789,es,Madrid,1855,"c_baguer, f_queralt"
+b_saldoni,Baltasar,Saldoni i Remendo,es,Barcelona,1807,es,Madrid,1889,"f_andrevi, r_carnicer"
+f_barbieri,Francisco de Asís,Asenjo Barbieri,es,Madrid,1823,es,Madrid,1894,"b_saldoni, r_carnicer"
+j_broca,Josep,Brocà i Codina,es,Reus,1805,es,Barcelona,1882,d_aguado
+d_aguado,Dionisio Tomás Ventura,Aguado y García,es,Madrid,1784,es,Madrid,1849,m_garcia
+m_garcia,Manuel del Pópulo Vicente,García,es,Sevilla,1775,fr,Paris,1832,g_ansani
+g_ansani,Giovanni,Ansani,it,Roma,1744,it,Firenze,1826,n_porpora
+n_porpora,Nicola,Porpora,it,Napoli,1686,it,Napoli,1768,g_greco
+g_greco,Gaetano,Greco,it,Napoli,1657,it,Napoli,1728,"g_ursino, g_salvatore"
+j_haydn,Franz Joseph,Haydn,at,Rohrau,1732,at,Wien,1809,n_porpora
+f_durante,Francesco,Durante,it,Frattamaggiore,1684,it,Napoli,1755,g_greco
+g_abos,Girolamo,Abos,mt,La Valetta,1715,it,Napoli,1760,"f_durante, g_greco"
+g_ursino,Gennaro,Ursino,it,Roio del Sangro,1650,it,Napoli,1715,g_salvatore
+g_salvatore,Giovanni,Salvatore,it,Castelvenere,1611,it,Napoli,1688,
+m_falla,Manuel,Falla (de) y Matheu,es,Cádiz,1876,ar,Alta Gracia,1946,f_pedrell
+r_ascot,Rosa,García Ascot,es,Madrid,1902,es,Torrelaguna,2002,"f_pedrell, m_falla, e_granados"
+e_granados,Enric,Granados i Campiña,es,Lleida,1867,,Mar de la Mànega,1922,"f_pedrell, r_vines"
+r_vines,Ricard,Viñes i Roda,es,Lleida,1875,es,Barcelona,1943,f_pedrell
+f_poulenc,Francis,Poulenc,fr,Paris,1899,fr,Paris,1979,r_vines

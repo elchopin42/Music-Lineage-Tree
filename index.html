@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Arbre de Transmissió Musical</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"/>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
+        header { background: #2c3e50; color: white; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        #controls { padding: 20px; display: flex; justify-content: center; gap: 10px; align-items: center; background: #ecf0f1; }
+        select { padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #bdc3c7; width: 350px; cursor: pointer; }
+        #mynetwork { width: 100%; height: calc(100vh - 180px); background: white; }
+        .legend { position: absolute; bottom: 20px; left: 20px; background: white; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 12px; z-index: 10; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Navegador de l'Arbre Musicològic</h1>
+</header>
+
+<div id="controls">
+    <label for="search">Selecciona un compositor (ordre per cognom):</label>
+    <select id="search"><option value="">Carregant dades...</option></select>
+</div>
+
+<div id="mynetwork"></div>
+
+<div class="legend">
+    <b>Guia visual:</b><br>
+    <span style="color:#1890ff">●</span> Focus central<br>
+    <span style="color:#fa8c16">●</span> Mestres (Amunt)<br>
+    <span style="color:#52c41a">●</span> Alumnes (Avall)
+</div>
+
+<script>
+let network = null;
+let fullData = {};
+
+// Funció per obtenir la bandera (HTML)
+function getFlagEmoji(code) {
+    if (!code) return "";
+    if (code === 'cat') return "🚩 "; // Senyera (Emoji per simplificar, es pot posar imatge)
+    if (code === 'mar' || code === 'sea') return "🌊 "; 
+    return `<span class="fi fi-${code}"></span> `;
+}
+
+// 1. Càrrega del fitxer CSV extern
+Papa.parse("dades.csv", {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: function(results) {
+        processData(results.data);
+    },
+    error: function(err) {
+        alert("Error en carregar dades.csv. Assegura't que el fitxer està a la mateixa carpeta.");
+    }
+});
+
+function processData(data) {
+    const select = document.getElementById('search');
+    select.innerHTML = '<option value="">-- Tria un compositor --</option>';
+
+    // Guardar dades en un mapa per accés ràpid
+    data.forEach(row => {
+        fullData[row.ID_CODE] = {
+            ...row,
+            teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()) : []
+        };
+    });
+
+    // Ordenar i omplir el cercador
+    data.sort((a, b) => a.COGNOMS.localeCompare(b.COGNOMS)).forEach(row => {
+        const opt = document.createElement('option');
+        opt.value = row.ID_CODE;
+        opt.textContent = `${row.COGNOMS}, ${row.NOM}`;
+        select.appendChild(opt);
+    });
+
+    select.addEventListener('change', (e) => drawTree(e.target.value));
+}
+
+function drawTree(rootId) {
+    if (!rootId || !fullData[rootId]) return;
+
+    const nodes = new Map();
+    const edges = [];
+    const processedIds = new Set();
+
+    // Funció recursiva per buscar 2 nivells
+    function buildGraph(currentId, level, direction) {
+        if (processedIds.has(currentId + level)) return;
+        processedIds.add(currentId + level);
+
+        const comp = fullData[currentId];
+        if (!comp) return;
+
+        // Determinar color segons nivell
+        let color = '#f6ffed'; // Alumnes
+        let border = '#52c41a';
+        if (level === 0) { color = '#e6f7ff'; border = '#1890ff'; } // Focus
+        if (level < 0) { color = '#fff7e6'; border = '#fa8c16'; } // Mestres
+
+        if (!nodes.has(currentId)) {
+            nodes.set(currentId, {
+                id: currentId,
+                label: `${comp.NOM} ${comp.COGNOMS}\n(${comp.BIRTH_YEAR}-${comp.DEATH_YEAR})`,
+                level: level,
+                shape: 'box',
+                color: { background: color, border: border },
+                margin: 10,
+                font: { multi: true, size: 14 }
+            });
+        }
+
+        // Si no hem arribat al límit de 2 nivells cap amunt
+        if (direction <= 0 && level > -2) {
+            comp.teachers.forEach(tId => {
+                if (fullData[tId]) {
+                    edges.push({ from: tId, to: currentId, arrows: 'to' });
+                    buildGraph(tId, level - 1, -1);
+                }
+            });
+        }
+
+        // Si no hem arribat al límit de 2 nivells cap avall
+        if (direction >= 0 && level < 2) {
+            Object.values(fullData).forEach(potentialStudent => {
+                if (potentialStudent.teachers.includes(currentId)) {
+                    edges.push({ from: currentId, to: potentialStudent.id, arrows: 'to' });
+                    buildGraph(potentialStudent.id, level + 1, 1);
+                }
+            });
+        }
+    }
+
+    buildGraph(rootId, 0, 0);
+
+    const container = document.getElementById('mynetwork');
+    const graphData = { nodes: Array.from(nodes.values()), edges: edges };
+    const options = {
+        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 200 } },
+        physics: false,
+        interaction: { hover: true, dragNodes: false }
+    };
+
+    if (network) network.destroy();
+    network = new vis.Network(container, graphData, options);
+
+    network.on("click", (params) => {
+        if (params.nodes.length > 0) {
+            document.getElementById('search').value = params.nodes[0];
+            drawTree(params.nodes[0]);
+        }
+    });
+}
+</script>
+</body>
+</html>
