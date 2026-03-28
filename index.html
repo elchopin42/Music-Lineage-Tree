@@ -10,7 +10,7 @@
         header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
         #controls { padding: 15px; display: flex; justify-content: center; background: white; border-bottom: 1px solid #ddd; }
         select { padding: 10px; font-size: 16px; width: 400px; }
-        #mynetwork { width: 100%; height: calc(100vh - 160px); background: white; }
+        #mynetwork { width: 100%; height: calc(100vh - 150px); }
     </style>
 </head>
 <body>
@@ -24,16 +24,6 @@
 let network = null;
 let fullData = {};
 
-// Funció d'ajuda per a les banderes
-function getFlagEmoji(code) {
-    if (!code) return "";
-    const c = code.toLowerCase().trim();
-    if (c === 'cat') return "🚩";
-    if (c === 'mar' || c === 'sea') return "🌊";
-    // Convertir ISO a Emoji (si Windows no el llegeix, mostrarà les lletres, que queda bé)
-    return c.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397)) + " ";
-}
-
 Papa.parse("dades.csv", {
     download: true, header: true, skipEmptyLines: true,
     complete: function(results) {
@@ -43,81 +33,75 @@ Papa.parse("dades.csv", {
                 teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()).filter(s => s) : []
             };
         });
-        fillSelect(results.data);
+        const select = document.getElementById('search');
+        select.innerHTML = '<option value="">-- Tria un compositor --</option>';
+        results.data.sort((a,b) => (a.SURNAME||"").localeCompare(b.SURNAME||"")).forEach(r => {
+            const opt = document.createElement('option');
+            opt.value = r.ID_CODE;
+            opt.textContent = `${r.SURNAME}, ${r.NAME}`;
+            select.appendChild(opt);
+        });
+        select.onchange = (e) => draw(e.target.value);
+        if(fullData['f_pedrell']) draw('f_pedrell');
     }
 });
-
-function fillSelect(data) {
-    const select = document.getElementById('search');
-    select.innerHTML = '<option value="">-- Tria un compositor --</option>';
-    data.sort((a,b) => (a.SURNAME||"").localeCompare(b.SURNAME||"")).forEach(r => {
-        const opt = document.createElement('option');
-        opt.value = r.ID_CODE;
-        opt.textContent = `${r.SURNAME}, ${r.NAME}`;
-        select.appendChild(opt);
-    });
-    select.onchange = (e) => draw(e.target.value);
-    if(fullData['f_pedrell']) draw('f_pedrell');
-}
 
 function draw(rootId) {
     if (!fullData[rootId]) return;
     const nodes = [];
     const edges = [];
-    const processedNodes = new Set();
+    const focus = fullData[rootId];
 
-    function addNode(id, level) {
-        if (processedNodes.has(id)) return;
-        const c = fullData[id];
-        if (!c) return;
-        
-        const color = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
-        const border = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
+    // 1. AFEGIR EL COMPOSITOR CENTRAL
+    nodes.push(makeNode(rootId, 0));
 
-        nodes.push({
-            id: id,
-            label: `<b>${c.NAME} ${c.SURNAME}</b>\n${getFlagEmoji(c.BIRTH_FLAG)}${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n${getFlagEmoji(c.DEATH_FLAG)}${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
-            shape: 'box',
-            level: level,
-            color: { background: color, border: border },
-            font: { multi: 'html', size: 14 },
-            margin: 10
-        });
-        processedNodes.add(id);
-    }
-
-    // 1. CENTRE
-    addNode(rootId, 0);
-
-    // 2. MESTRES DIRECTES (I ELS SEUS MESTRES)
-    fullData[rootId].teachers.forEach(tId => {
+    // 2. MESTRES (Només relació directa amb el centre)
+    focus.teachers.forEach(tId => {
         if (fullData[tId]) {
-            addNode(tId, -1);
-            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
-
+            nodes.push(makeNode(tId, -1));
+            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16', width: 2 });
+            
+            // Avis (Només relació directa amb el mestre)
             fullData[tId].teachers.forEach(ttId => {
                 if (fullData[ttId]) {
-                    addNode(ttId, -2);
+                    if (!nodes.find(n => n.id === ttId)) nodes.push(makeNode(ttId, -2));
                     edges.push({ from: ttId, to: tId, arrows: 'to', color: '#fa8c16', dashes: true });
                 }
             });
         }
     });
 
-    // 3. ALUMNES DIRECTES (I ELS SEUS ALUMNES)
+    // 3. ALUMNES (Només relació directa amb el centre)
     Object.keys(fullData).forEach(sId => {
         if (fullData[sId].teachers.includes(rootId)) {
-            addNode(sId, 1);
-            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
+            nodes.push(makeNode(sId, 1));
+            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a', width: 2 });
 
+            // Nets (Només relació directa amb l'alumne)
             Object.keys(fullData).forEach(ssId => {
                 if (fullData[ssId].teachers.includes(sId)) {
-                    addNode(ssId, 2);
+                    if (!nodes.find(n => n.id === ssId)) nodes.push(makeNode(ssId, 2));
                     edges.push({ from: sId, to: ssId, arrows: 'to', color: '#52c41a', dashes: true });
                 }
             });
         }
     });
+
+    function makeNode(id, level) {
+        const c = fullData[id];
+        const color = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
+        const bFlag = c.BIRTH_FLAG ? `(${c.BIRTH_FLAG.toUpperCase()}) ` : "";
+        const dFlag = c.DEATH_FLAG ? `(${c.DEATH_FLAG.toUpperCase()}) ` : "";
+        
+        return {
+            id: id,
+            label: `<b>${c.NAME} ${c.SURNAME}</b>\n${bFlag}${c.BIRTH_PLACE} ${c.BIRTH_YEAR}\n${dFlag}${c.DEATH_PLACE} ${c.DEATH_YEAR}`,
+            shape: 'box',
+            level: level,
+            color: { background: color, border: '#999' },
+            font: { multi: 'html', size: 14 }
+        };
+    }
 
     if (network) network.destroy();
     network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, {
