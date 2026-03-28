@@ -6,11 +6,11 @@
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; }
         header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
         #controls { padding: 15px; display: flex; justify-content: center; background: white; border-bottom: 1px solid #ddd; }
-        select { padding: 10px; font-size: 16px; width: 400px; }
-        #mynetwork { width: 100%; height: calc(100vh - 150px); }
+        select { padding: 10px; font-size: 16px; width: 400px; border-radius: 4px; border: 1px solid #ccc; }
+        #mynetwork { width: 100%; height: calc(100vh - 160px); background: white; }
     </style>
 </head>
 <body>
@@ -24,6 +24,16 @@
 let network = null;
 let fullData = {};
 
+// Funció per a les banderes (Imatges reals)
+function getFlag(code) {
+    if (!code) return "";
+    const c = code.toLowerCase().trim();
+    if (c === 'cat') return "https://flagcdn.com/w20/es-ct.png";
+    if (c === 'mar' || c === 'sea') return "https://cdn-icons-png.flaticon.com/24/411/411712.png";
+    const map = { 'ita': 'it', 'fra': 'fr', 'spa': 'es', 'ger': 'de', 'aus': 'at' };
+    return `https://flagcdn.com/w20/${map[c] || c}.png`;
+}
+
 Papa.parse("dades.csv", {
     download: true, header: true, skipEmptyLines: true,
     complete: function(results) {
@@ -33,82 +43,103 @@ Papa.parse("dades.csv", {
                 teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()).filter(s => s) : []
             };
         });
-        const select = document.getElementById('search');
-        select.innerHTML = '<option value="">-- Tria un compositor --</option>';
-        results.data.sort((a,b) => (a.SURNAME||"").localeCompare(b.SURNAME||"")).forEach(r => {
-            const opt = document.createElement('option');
-            opt.value = r.ID_CODE;
-            opt.textContent = `${r.SURNAME}, ${r.NAME}`;
-            select.appendChild(opt);
-        });
-        select.onchange = (e) => draw(e.target.value);
-        if(fullData['f_pedrell']) draw('f_pedrell');
+        fillSelect(results.data);
     }
 });
+
+function fillSelect(data) {
+    const select = document.getElementById('search');
+    select.innerHTML = '<option value="">-- Tria un compositor --</option>';
+    data.sort((a,b) => (a.SURNAME||"").localeCompare(b.SURNAME||"")).forEach(r => {
+        const opt = document.createElement('option');
+        opt.value = r.ID_CODE;
+        opt.textContent = `${r.SURNAME}, ${r.NAME}`;
+        select.appendChild(opt);
+    });
+    select.onchange = (e) => draw(e.target.value);
+    if(fullData['f_pedrell']) draw('f_pedrell');
+}
 
 function draw(rootId) {
     if (!fullData[rootId]) return;
     const nodes = [];
     const edges = [];
-    const focus = fullData[rootId];
+    const processedNodes = new Set();
 
-    // 1. AFEGIR EL COMPOSITOR CENTRAL
-    nodes.push(makeNode(rootId, 0));
+    function addNode(id, level) {
+        if (processedNodes.has(id)) return;
+        const c = fullData[id];
+        if (!c) return;
 
-    // 2. MESTRES (Només relació directa amb el centre)
-    focus.teachers.forEach(tId => {
+        const color = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
+        const border = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
+
+        // Banderes com a text per evitar errors de càrrega, o imatge si vols provar:
+        const bImg = getFlag(c.BIRTH_FLAG);
+        const dImg = getFlag(c.DEATH_FLAG);
+
+        nodes.push({
+            id: id,
+            label: `<b>${c.NAME} ${c.SURNAME}</b>\n` +
+                   `<img src="${bImg}" width="16"/> ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                   `<img src="${dImg}" width="16"/> ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
+            shape: 'box',
+            level: level,
+            color: { background: color, border: border },
+            font: { multi: 'html', size: 14, face: 'Segoe UI' },
+            margin: 12
+        });
+        processedNodes.add(id);
+    }
+
+    // 1. EL CENTRE (Sempre s'afegeix primer)
+    addNode(rootId, 0);
+
+    // 2. MESTRES DIRECTES
+    fullData[rootId].teachers.forEach(tId => {
         if (fullData[tId]) {
-            nodes.push(makeNode(tId, -1));
-            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16', width: 2 });
+            addNode(tId, -1);
+            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
             
-            // Avis (Només relació directa amb el mestre)
+            // Avis
             fullData[tId].teachers.forEach(ttId => {
                 if (fullData[ttId]) {
-                    if (!nodes.find(n => n.id === ttId)) nodes.push(makeNode(ttId, -2));
+                    addNode(ttId, -2);
                     edges.push({ from: ttId, to: tId, arrows: 'to', color: '#fa8c16', dashes: true });
                 }
             });
         }
     });
 
-    // 3. ALUMNES (Només relació directa amb el centre)
+    // 3. ALUMNES DIRECTES
     Object.keys(fullData).forEach(sId => {
         if (fullData[sId].teachers.includes(rootId)) {
-            nodes.push(makeNode(sId, 1));
-            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a', width: 2 });
+            addNode(sId, 1);
+            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
 
-            // Nets (Només relació directa amb l'alumne)
+            // Nets
             Object.keys(fullData).forEach(ssId => {
                 if (fullData[ssId].teachers.includes(sId)) {
-                    if (!nodes.find(n => n.id === ssId)) nodes.push(makeNode(ssId, 2));
+                    addNode(ssId, 2);
                     edges.push({ from: sId, to: ssId, arrows: 'to', color: '#52c41a', dashes: true });
                 }
             });
         }
     });
 
-    function makeNode(id, level) {
-        const c = fullData[id];
-        const color = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
-        const bFlag = c.BIRTH_FLAG ? `(${c.BIRTH_FLAG.toUpperCase()}) ` : "";
-        const dFlag = c.DEATH_FLAG ? `(${c.DEATH_FLAG.toUpperCase()}) ` : "";
-        
-        return {
-            id: id,
-            label: `<b>${c.NAME} ${c.SURNAME}</b>\n${bFlag}${c.BIRTH_PLACE} ${c.BIRTH_YEAR}\n${dFlag}${c.DEATH_PLACE} ${c.DEATH_YEAR}`,
-            shape: 'box',
-            level: level,
-            color: { background: color, border: '#999' },
-            font: { multi: 'html', size: 14 }
-        };
-    }
-
     if (network) network.destroy();
     network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, {
         layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 350 } },
-        physics: false
+        physics: false,
+        interaction: { hover: true }
     });
-    network.on("click", (p) => { if(p.nodes[0]) { document.getElementById('search').value = p.nodes[0]; draw(p.nodes[0]); } });
+    
+    network.on("click", (p) => { 
+        if(p.nodes[0]) { 
+            document.getElementById('search').value = p.nodes[0]; 
+            draw(p.nodes[0]); 
+        } 
+    });
 }
 </script>
 </body>
