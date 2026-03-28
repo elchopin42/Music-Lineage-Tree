@@ -42,17 +42,15 @@ Papa.parse("dades.csv", {
 
 function processData(data) {
     const select = document.getElementById('search');
-    select.innerHTML = '<option value="">-- Selecciona un compositor (ordre cognom) --</option>';
+    select.innerHTML = '<option value="">-- Selecciona un compositor --</option>';
 
     data.forEach(row => {
-        // IMPORTANT: Fem servir NAME i SURNAME tal com estan al teu CSV
         fullData[row.ID_CODE] = {
             ...row,
             teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()) : []
         };
     });
 
-    // Ordenar per SURNAME
     data.sort((a, b) => (a.SURNAME || "").localeCompare(b.SURNAME || "")).forEach(row => {
         const opt = document.createElement('option');
         opt.value = row.ID_CODE;
@@ -61,12 +59,7 @@ function processData(data) {
     });
 
     select.addEventListener('change', (e) => drawTree(e.target.value));
-    
-    // Opcional: començar amb Pedrell per defecte si existeix
-    if (fullData['f_pedrell']) {
-        select.value = 'f_pedrell';
-        drawTree('f_pedrell');
-    }
+    if (fullData['f_pedrell']) { select.value = 'f_pedrell'; drawTree('f_pedrell'); }
 }
 
 function drawTree(rootId) {
@@ -77,29 +70,39 @@ function drawTree(rootId) {
     const processedIds = new Set();
 
     function buildGraph(currentId, level, direction) {
-        const key = currentId + level;
-        if (processedIds.has(key)) return;
-        processedIds.add(key);
+        const key = currentId; // Clau única per compositor
+        if (processedIds.has(key + direction)) return; 
+        processedIds.add(key + direction);
 
         const comp = fullData[currentId];
         if (!comp) return;
 
-        let color = '#f6ffed'; let border = '#52c41a'; // Alumnes
-        if (level === 0) { color = '#e6f7ff'; border = '#1890ff'; } // Focus
-        if (level < 0) { color = '#fff7e6'; border = '#fa8c16'; } // Mestres
+        // Configuració visual segons nivell
+        let color = '#f6ffed'; let border = '#52c41a'; // Alumnes (Verd)
+        if (level === 0) { color = '#e6f7ff'; border = '#1890ff'; } // Focus (Blau)
+        if (level < 0) { color = '#fff7e6'; border = '#fa8c16'; } // Mestres (Taronja)
+
+        // Creem l'etiqueta amb Banderes, Anys i Ciutats
+        const bFlag = comp.BIRTH_FLAG ? `[${comp.BIRTH_FLAG.toUpperCase()}] ` : "";
+        const dFlag = comp.DEATH_FLAG ? `[${comp.DEATH_FLAG.toUpperCase()}] ` : "";
+        
+        const label = `<b>${comp.NAME} ${comp.SURNAME}</b>\n` +
+                      `birth: ${bFlag}${comp.BIRTH_PLACE || '?'} (${comp.BIRTH_YEAR || '?'})\n` +
+                      `death: ${dFlag}${comp.DEATH_PLACE || '?'} (${comp.DEATH_YEAR || '?'})`;
 
         if (!nodes.has(currentId)) {
             nodes.set(currentId, {
                 id: currentId,
-                label: `${comp.NAME} ${comp.SURNAME}\n(${comp.BIRTH_YEAR || '?'}-${comp.DEATH_YEAR || '?'})`,
+                label: label,
                 level: level,
                 shape: 'box',
                 color: { background: color, border: border },
+                font: { multi: 'html', size: 14 },
                 margin: 10
             });
         }
 
-        // Mestres (Fins a 2 nivells amunt)
+        // MESTRES (Cap amunt) - Fins a 2 nivells
         if (direction <= 0 && level > -2) {
             comp.teachers.forEach(tId => {
                 if (fullData[tId]) {
@@ -109,12 +112,13 @@ function drawTree(rootId) {
             });
         }
 
-        // Alumnes (Fins a 2 nivells avall)
+        // ALUMNES (Cap avall) - Fins a 2 nivells
         if (direction >= 0 && level < 2) {
-            Object.values(fullData).forEach(potStudent => {
+            Object.keys(fullData).forEach(potStudentId => {
+                const potStudent = fullData[potStudentId];
                 if (potStudent.teachers.includes(currentId)) {
-                    edges.push({ from: currentId, to: potStudent.id, arrows: 'to' });
-                    buildGraph(potStudent.id, level + 1, 1);
+                    edges.push({ from: currentId, to: potStudentId, arrows: 'to' });
+                    buildGraph(potStudentId, level + 1, 1);
                 }
             });
         }
@@ -122,15 +126,24 @@ function drawTree(rootId) {
 
     buildGraph(rootId, 0, 0);
 
-    const data = { nodes: Array.from(nodes.values()), edges: edges };
+    const container = document.getElementById('mynetwork');
+    const graphData = { nodes: Array.from(nodes.values()), edges: edges };
     const options = {
-        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 250 } },
+        layout: { 
+            hierarchical: { 
+                direction: 'UD', 
+                sortMethod: 'directed', 
+                levelSeparation: 200, 
+                nodeSpacing: 300,
+                parentCentralization: true 
+            } 
+        },
         physics: false,
         interaction: { dragNodes: false }
     };
 
     if (network) network.destroy();
-    network = new vis.Network(document.getElementById('mynetwork'), data, options);
+    network = new vis.Network(container, graphData, options);
 
     network.on("click", (params) => {
         if (params.nodes.length > 0) {
