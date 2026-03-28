@@ -6,10 +6,10 @@
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f7f6; }
         header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
         #controls { padding: 15px; display: flex; justify-content: center; background: white; border-bottom: 1px solid #ddd; }
-        select { padding: 10px; font-size: 16px; width: 400px; border-radius: 4px; }
+        select { padding: 10px; font-size: 16px; width: 400px; }
         #mynetwork { width: 100%; height: calc(100vh - 160px); background: white; }
     </style>
 </head>
@@ -23,6 +23,16 @@
 <script>
 let network = null;
 let fullData = {};
+
+// Funció d'ajuda per a les banderes
+function getFlagEmoji(code) {
+    if (!code) return "";
+    const c = code.toLowerCase().trim();
+    if (c === 'cat') return "🚩";
+    if (c === 'mar' || c === 'sea') return "🌊";
+    // Convertir ISO a Emoji (si Windows no el llegeix, mostrarà les lletres, que queda bé)
+    return c.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397)) + " ";
+}
 
 Papa.parse("dades.csv", {
     download: true, header: true, skipEmptyLines: true,
@@ -56,45 +66,35 @@ function draw(rootId) {
     const edges = [];
     const processedNodes = new Set();
 
-    // Funció per crear l'etiqueta visual (sense emojis, compatible 100% amb Windows)
-    function formatLabel(c) {
-        const bFlag = c.BIRTH_FLAG ? c.BIRTH_FLAG.toUpperCase() : "??";
-        const dFlag = c.DEATH_FLAG ? c.DEATH_FLAG.toUpperCase() : "??";
-        return `<b>${c.NAME} ${c.SURNAME}</b>\n` +
-               `Birth: [${bFlag}] ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-               `Death: [${dFlag}] ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`;
-    }
-
     function addNode(id, level) {
         if (processedNodes.has(id)) return;
         const c = fullData[id];
         if (!c) return;
         
-        let color = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
-        let border = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
+        const color = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
+        const border = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
 
         nodes.push({
             id: id,
-            label: formatLabel(c),
+            label: `<b>${c.NAME} ${c.SURNAME}</b>\n${getFlagEmoji(c.BIRTH_FLAG)}${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n${getFlagEmoji(c.DEATH_FLAG)}${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
             shape: 'box',
             level: level,
             color: { background: color, border: border },
-            font: { multi: 'html', size: 14, face: 'Tahoma' },
+            font: { multi: 'html', size: 14 },
             margin: 10
         });
         processedNodes.add(id);
     }
 
-    // 1. EL CENTRE
+    // 1. CENTRE
     addNode(rootId, 0);
 
-    // 2. MESTRES (Amunt)
+    // 2. MESTRES DIRECTES (I ELS SEUS MESTRES)
     fullData[rootId].teachers.forEach(tId => {
         if (fullData[tId]) {
             addNode(tId, -1);
-            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16', width: 2 });
+            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
 
-            // Avis (Mestres dels mestres)
             fullData[tId].teachers.forEach(ttId => {
                 if (fullData[ttId]) {
                     addNode(ttId, -2);
@@ -104,13 +104,12 @@ function draw(rootId) {
         }
     });
 
-    // 3. ALUMNES (Avall)
+    // 3. ALUMNES DIRECTES (I ELS SEUS ALUMNES)
     Object.keys(fullData).forEach(sId => {
         if (fullData[sId].teachers.includes(rootId)) {
             addNode(sId, 1);
-            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a', width: 2 });
+            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
 
-            // Nets (Alumnes dels alumnes)
             Object.keys(fullData).forEach(ssId => {
                 if (fullData[ssId].teachers.includes(sId)) {
                     addNode(ssId, 2);
@@ -120,22 +119,11 @@ function draw(rootId) {
         }
     });
 
-    const options = {
-        layout: { 
-            hierarchical: { 
-                direction: 'UD', 
-                sortMethod: 'directed', 
-                levelSeparation: 150, 
-                nodeSpacing: 400,
-                blockShifting: true,
-                edgeMinimization: true
-            } 
-        },
-        physics: false
-    };
-
     if (network) network.destroy();
-    network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, options);
+    network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, {
+        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 350 } },
+        physics: false
+    });
     network.on("click", (p) => { if(p.nodes[0]) { document.getElementById('search').value = p.nodes[0]; draw(p.nodes[0]); } });
 }
 </script>
