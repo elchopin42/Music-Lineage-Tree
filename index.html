@@ -87,7 +87,7 @@ function draw(rootId) {
         });
     }
 
-    // 1. Centre
+    // 1. Crear el node central
     addNode(rootId, 0);
 
     // 2. Mestres (Dalt)
@@ -95,7 +95,6 @@ function draw(rootId) {
         if (fullData[tId]) {
             addNode(tId, -1);
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
-            // Fletxa de "hi ha més"
             if (fullData[tId].teachers.length > 0) {
                 const upId = "up_" + tId;
                 nodes.push({ id: upId, label: '', shape: 'text', level: -2 });
@@ -109,7 +108,6 @@ function draw(rootId) {
         if (fullData[sId].teachers.includes(rootId)) {
             addNode(sId, 1);
             edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
-            // Fletxa de "hi ha més"
             const hasMore = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
             if (hasMore) {
                 const downId = "down_" + sId;
@@ -119,19 +117,37 @@ function draw(rootId) {
         }
     });
 
+    // Inicialitzar la xarxa
     if (network) network.destroy();
-    network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, {
+    
+    const container = document.getElementById('mynetwork');
+    const data = { nodes: nodes, edges: edges };
+    const options = {
         layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
         physics: false,
-        interaction: { dragNodes: false }
-    });
+        interaction: { dragNodes: false, selectable: true }
+    };
 
-    // CLIC FINAL: Sense errors
-    network.on("click", function(p) {
-        if (p.nodes[0] && !p.nodes[0].toString().includes('_')) {
-            const newId = p.nodes[0];
-            document.getElementById('search').value = newId;
-            draw(newId);
+    network = new vis.Network(container, data, options);
+
+    // --- EL CLIC REFORÇAT VA AQUÍ (DINS DE DRAW, PERÒ AL FINAL) ---
+    network.on("selectNode", function (params) {
+        if (params.nodes.length > 0) {
+            const clickedId = params.nodes[0];
+            
+            // Si el clic és en una fletxa de continuïtat (té "_"), l'ignorem
+            if (clickedId.toString().includes('_')) {
+                network.unselectAll(); // Netegem la selecció perquè no quedi marcat
+                return;
+            }
+
+            console.log("Has clicat a:", clickedId);
+            
+            // Actualitzem el menú desplegable perquè coincideixi
+            document.getElementById('search').value = clickedId;
+            
+            // Redibuixem l'arbre amb el nou compositor
+            draw(clickedId);
         }
     });
 }
