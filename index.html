@@ -78,36 +78,25 @@ function drawTree(rootId) {
 
     function createNode(id, level) {
         const c = fullData[id];
-        
-        // Colors segons nivell
         const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
         const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
         
         const displayTitle = c.DISPLAY_NAME ? c.DISPLAY_NAME : `${c.NAME} ${c.SURNAME}`;
         const realNameSub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
-                            ? `<div style="font-size: 10px; font-style: italic; color: #666; margin-bottom: 4px;">(${c.NAME} ${c.SURNAME})</div>` : "";
+                            ? `\n(${c.NAME} ${c.SURNAME})` : "";
 
-        // Construcció de l'etiqueta HTML real
-        const labelHTML = `
-            <div style="font-family: Arial; padding: 8px; text-align: center; width: 180px;">
-                <div style="font-weight: bold; font-size: 14px; margin-bottom: 2px;">${displayTitle}</div>
-                ${realNameSub}
-                <div style="font-size: 11px; margin-top: 5px; display: flex; align-items: center; justify-content: center; gap: 4px;">
-                    ${c.BIRTH_FLAG ? `<img src="flags/${c.BIRTH_FLAG.toLowerCase()}.png" width="16" height="11" style="vertical-align: middle;">` : ''}
-                    <span>${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})</span>
-                </div>
-                <div style="font-size: 11px; margin-top: 3px; display: flex; align-items: center; justify-content: center; gap: 4px;">
-                    ${c.DEATH_FLAG ? `<img src="flags/${c.DEATH_FLAG.toLowerCase()}.png" width="16" height="11" style="vertical-align: middle;">` : ''}
-                    <span>${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})</span>
-                </div>
-            </div>`;
+        // Tornem al sistema de banderes de text/emoji per seguretat total
+        const bFlag = c.BIRTH_FLAG ? `${c.BIRTH_FLAG.toUpperCase()} ` : "";
+        const dFlag = c.DEATH_FLAG ? `${c.DEATH_FLAG.toUpperCase()} ` : "";
 
         return {
             id: id,
-            label: labelHTML,
-            shape: 'htmlMain', // Aquest és el secret per a que l'HTML funcioni
+            label: `<b>${displayTitle}</b>${realNameSub}\n` +
+                   `${bFlag}${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                   `${dFlag}${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
+            shape: 'box',
             level: level,
-            font: { multi: 'html' },
+            font: { multi: 'html', size: 14, face: 'Segoe UI' },
             color: {
                 background: bgColor,
                 border: borderColor,
@@ -120,33 +109,33 @@ function drawTree(rootId) {
     // 1. NODE CENTRAL
     nodes.push(createNode(rootId, 0));
 
-    // 2. MESTRES DIRECTES
+    // 2. MESTRES DIRECTES (Nivell -1)
     focus.teachers.forEach(tId => {
         if (fullData[tId]) {
             nodes.push(createNode(tId, -1));
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16', width: 2 });
             
-            // Fletxa de continuïtat cap amunt (mestre té mestre)
+            // Fletxa de continuïtat cap amunt
             if (fullData[tId].teachers.length > 0) {
                 const upId = "up_" + tId;
-                nodes.push({ id: upId, label: '', shape: 'dot', size: 0, level: -2 });
-                edges.push({ from: upId, to: tId, arrows: 'to', color: '#fa8c16', dashes: [2, 2] });
+                nodes.push({ id: upId, label: '', shape: 'text', level: -2 });
+                edges.push({ from: upId, to: tId, arrows: 'to', color: '#fa8c16', dashes: [2, 2], width: 1 });
             }
         }
     });
 
-    // 3. ALUMNES DIRECTES
+    // 3. ALUMNES DIRECTES (Nivell 1)
     Object.keys(fullData).forEach(sId => {
         if (fullData[sId].teachers.includes(rootId)) {
             nodes.push(createNode(sId, 1));
             edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a', width: 2 });
 
-            // Fletxa de continuïtat cap avall (alumne té alumne)
+            // Fletxa de continuïtat cap avall
             const hasMoreDown = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
             if (hasMoreDown) {
                 const downId = "down_" + sId;
-                nodes.push({ id: downId, label: '', shape: 'dot', size: 0, level: 2 });
-                edges.push({ from: sId, to: downId, arrows: 'to', color: '#52c41a', dashes: [2, 2] });
+                nodes.push({ id: downId, label: '', shape: 'text', level: 2 });
+                edges.push({ from: sId, to: downId, arrows: 'to', color: '#52c41a', dashes: [2, 2], width: 1 });
             }
         }
     });
@@ -157,25 +146,25 @@ function drawTree(rootId) {
                 direction: 'UD', 
                 sortMethod: 'directed', 
                 levelSeparation: 150, 
-                nodeSpacing: 250 
+                nodeSpacing: 350 
             } 
         },
         physics: false,
-        interaction: { dragNodes: false, hover: true }
+        interaction: { hover: true, dragNodes: false }
     };
 
     if (network) network.destroy();
     network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, options);
 
-    // RESTABLIM EL CLIC FUNCIONAL
-    network.on("click", function (params) {
+    // EL CLIC QUE FUNCIONA SEMPRE
+    network.on("click", function(params) {
         if (params.nodes.length > 0) {
             const clickedId = params.nodes[0];
-            // Ignorem els clics en les fletxes de continuïtat (que comencen per up_ o down_)
-            if (typeof clickedId === 'string' && !clickedId.includes('_')) {
-                document.getElementById('search').value = clickedId;
-                drawTree(clickedId);
-            }
+            // Si el node és un dels de continuïtat (up_ o down_), no fem res
+            if (typeof clickedId === 'string' && clickedId.includes('_')) return;
+            
+            document.getElementById('search').value = clickedId;
+            drawTree(clickedId);
         }
     });
 }
