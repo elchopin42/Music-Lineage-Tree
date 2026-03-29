@@ -6,17 +6,18 @@
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f8f9fa; }
         header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
-        #controls { padding: 15px; display: flex; justify-content: center; background: white; border-bottom: 1px solid #ddd; }
-        select { padding: 10px; font-size: 16px; width: 400px; border-radius: 4px; }
-        #mynetwork { width: 100%; height: calc(100vh - 150px); background: white; }
+        #controls { padding: 15px; display: flex; justify-content: center; background: #ffffff; border-bottom: 1px solid #dee2e6; }
+        select { padding: 10px; font-size: 16px; width: 400px; border-radius: 5px; border: 1px solid #ccc; cursor: pointer; }
+        #mynetwork { width: 100%; height: calc(100vh - 160px); background: white; }
     </style>
 </head>
 <body>
+
 <header><h1>Musical Lineage Tree</h1></header>
 <div id="controls">
-    <select id="search"><option>Carregant dades...</option></select>
+    <select id="search"><option value="">Carregant base de dades...</option></select>
 </div>
 <div id="mynetwork"></div>
 
@@ -24,107 +25,136 @@
 let network = null;
 let fullData = {};
 
-// Funció per a les banderes (Emoji / Text)
-function getFlagEmoji(code) {
-    if (!code) return "";
-    const c = code.toLowerCase().trim();
-    if (c === 'cat') return "🚩 ";
-    if (c === 'mar' || c === 'sea') return "🌊 ";
-    // Converteix ISO a Emoji (es -> 🇪🇸). A Windows es veuran les lletres, que és correcte.
-    return c.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397)) + " ";
-}
-
+// Càrrega del CSV
 Papa.parse("dades.csv", {
-    download: true, header: true, skipEmptyLines: true,
+    download: true,
+    header: true,
+    skipEmptyLines: true,
     complete: function(results) {
-        results.data.forEach(row => {
-            fullData[row.ID_CODE] = {
-                ...row,
-                teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()).filter(s => s) : []
-            };
-        });
-        fillSelect(results.data);
+        processData(results.data);
     }
 });
 
-function fillSelect(data) {
+function processData(data) {
     const select = document.getElementById('search');
-    select.innerHTML = '<option value="">-- Tria un compositor --</option>';
-    data.sort((a,b) => (a.SURNAME||"").localeCompare(b.SURNAME||"")).forEach(r => {
+    select.innerHTML = '<option value="">-- Selecciona un compositor --</option>';
+
+    // Guardem les dades en un objecte per accés ràpid
+    data.forEach(row => {
+        fullData[row.ID_CODE] = {
+            ...row,
+            teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()).filter(s => s !== "") : []
+        };
+    });
+
+    // Ordenem la llista del cercador segons la columna SORT_NAME (o cognom)
+    data.sort((a, b) => {
+        const nameA = (a.SORT_NAME || a.SURNAME || "").toLowerCase().replace(/^(de la |de |von |van |d'|da )/, "");
+        const nameB = (b.SORT_NAME || b.SURNAME || "").toLowerCase().replace(/^(de la |de |von |van |d'|da )/, "");
+        return nameA.localeCompare(nameB);
+    }).forEach(row => {
         const opt = document.createElement('option');
-        opt.value = r.ID_CODE;
-        opt.textContent = `${r.SURNAME}, ${r.NAME}`;
+        opt.value = row.ID_CODE;
+        // Mostrem el nom ordenat al menú (Ex: Falla, Manuel)
+        opt.textContent = row.SORT_NAME ? row.SORT_NAME : `${row.SURNAME}, ${row.NAME}`;
         select.appendChild(opt);
     });
-    select.onchange = (e) => draw(e.target.value);
-    if(fullData['f_pedrell']) draw('f_pedrell');
+
+    select.addEventListener('change', (e) => drawTree(e.target.value));
+    
+    // Per defecte obrim Pedrell si existeix
+    if (fullData['f_pedrell']) {
+        select.value = 'f_pedrell';
+        drawTree('f_pedrell');
+    }
 }
 
-function draw(rootId) {
-    if (!fullData[rootId]) return;
+function drawTree(rootId) {
+    if (!rootId || !fullData[rootId]) return;
+
     const nodes = [];
     const edges = [];
-    const processedNodes = new Set();
+    const focus = fullData[rootId];
 
-    function addNode(id, level) {
-        if (processedNodes.has(id)) return;
+    // 1. NODE CENTRAL
+    nodes.push(makeNode(rootId, 0, false, false));
+
+    // 2. MESTRES DIRECTES (A dalt)
+    focus.teachers.forEach(tId => {
+        if (fullData[tId]) {
+            // Té el mestre, al seu torn, més mestres?
+            const hasMoreUp = fullData[tId].teachers.length > 0;
+            nodes.push(makeNode(tId, -1, hasMoreUp, false));
+            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16', width: 2 });
+        }
+    });
+
+    // 3. ALUMNES DIRECTES (A baix)
+    Object.keys(fullData).forEach(sId => {
+        const student = fullData[sId];
+        if (student.teachers.includes(rootId)) {
+            // Té l'alumne, al seu torn, més alumnes?
+            const hasMoreDown = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
+            nodes.push(makeNode(sId, 1, false, hasMoreDown));
+            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a', width: 2 });
+        }
+    });
+
+    function makeNode(id, level, hasMoreUp, hasMoreDown) {
         const c = fullData[id];
-        if (!c) return;
-
         const color = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
-        const border = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
+        const borderColor = level === 0 ? '#1890ff' : '#999';
+        
+        // Determinem títol (Nom artístic o Nom Real)
+        const displayTitle = c.DISPLAY_NAME ? c.DISPLAY_NAME : `${c.NAME} ${c.SURNAME}`;
+        // Si el nom real és diferent al que mostrem, el posem en petit a sota
+        const realNameSub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
+                            ? `\n<i>(${c.NAME} ${c.SURNAME})</i>` : "";
 
-        nodes.push({
+        // Imatges de les banderes des de la teva carpeta /banderes/
+        const bFlagImg = c.BIRTH_FLAG ? `<img src="banderes/${c.BIRTH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
+        const dFlagImg = c.DEATH_FLAG ? `<img src="banderes/${c.DEATH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
+
+        return {
             id: id,
-            label: `<b>${c.NAME} ${c.SURNAME}</b>\n` +
-                   `${getFlagEmoji(c.BIRTH_FLAG)}${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-                   `${getFlagEmoji(c.DEATH_FLAG)}${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
+            label: `<b>${displayTitle}</b>${realNameSub}\n` +
+                   `${bFlagImg}${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                   `${dFlagImg}${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
             shape: 'box',
             level: level,
-            color: { background: color, border: border },
-            font: { multi: 'html', size: 14 },
-            margin: 10
-        });
-        processedNodes.add(id);
+            color: { background: color, border: borderColor },
+            shapeProperties: { borderDashes: (hasMoreUp || hasMoreDown) ? [5, 5] : false },
+            font: { multi: 'html', size: 14, face: 'Segoe UI' },
+            margin: 12
+        };
     }
 
-    addNode(rootId, 0);
-
-    // Mestres
-    fullData[rootId].teachers.forEach(tId => {
-        if (fullData[tId]) {
-            addNode(tId, -1);
-            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
-            fullData[tId].teachers.forEach(ttId => {
-                if (fullData[ttId]) {
-                    addNode(ttId, -2);
-                    edges.push({ from: ttId, to: tId, arrows: 'to', color: '#fa8c16', dashes: true });
-                }
-            });
-        }
-    });
-
-    // Alumnes
-    Object.keys(fullData).forEach(sId => {
-        if (fullData[sId].teachers.includes(rootId)) {
-            addNode(sId, 1);
-            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
-            Object.keys(fullData).forEach(ssId => {
-                if (fullData[ssId].teachers.includes(sId)) {
-                    addNode(ssId, 2);
-                    edges.push({ from: sId, to: ssId, arrows: 'to', color: '#52c41a', dashes: true });
-                }
-            });
-        }
-    });
+    const options = {
+        layout: { 
+            hierarchical: { 
+                direction: 'UD', 
+                sortMethod: 'directed', 
+                levelSeparation: 150, 
+                nodeSpacing: 400 
+            } 
+        },
+        physics: false,
+        interaction: { hover: true, dragNodes: false }
+    };
 
     if (network) network.destroy();
-    network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, {
-        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 350 } },
-        physics: false
+    network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, options);
+
+    // En fer clic a un node, redibuixem l'arbre amb ell com a centre
+    network.on("click", (params) => {
+        if (params.nodes.length > 0) {
+            const clickedId = params.nodes[0];
+            document.getElementById('search').value = clickedId;
+            drawTree(clickedId);
+        }
     });
-    network.on("click", (p) => { if(p.nodes[0]) { document.getElementById('search').value = p.nodes[0]; draw(p.nodes[0]); } });
 }
 </script>
+
 </body>
 </html>
