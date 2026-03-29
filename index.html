@@ -76,59 +76,102 @@ function drawTree(rootId) {
     const edges = [];
     const focus = fullData[rootId];
 
-    // 1. NODE CENTRAL
-    nodes.push(makeNode(rootId, 0, false, false));
+    // --- FUNCIÓ INTERNA MILLORADA PER CREAR NODES AMB IMATGE ---
+    function createCustomNode(id, level, hasMoreUp, hasMoreDown) {
+        const c = fullData[id];
+        
+        // Criteris de color (mantenim els mateixos)
+        const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
+        const borderColor = level === 0 ? '#1890ff' : '#999';
+        
+        // Estil de la vora (puntejada si hi ha "més enllà")
+        const borderDashes = (hasMoreUp || hasMoreDown) ? [5, 5] : false;
 
-    // 2. MESTRES DIRECTES (A dalt)
+        // --- CONSTRUCCIÓ DE L'ETIQUETA (LABEL) SENSE EL CODI <img> ---
+        // Decidim el títol principal (Nom artístic o Real)
+        const displayTitle = c.DISPLAY_NAME ? c.DISPLAY_NAME : `${c.NAME} ${c.SURNAME}`;
+        
+        // Si el nom real és diferent, el posem en petit a sota
+        const realNameSub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
+                            ? `\n(${c.NAME} ${c.SURNAME})` : "";
+
+        // Construïm la etiqueta neta
+        const cleanLabel = `${displayTitle}${realNameSub}\n` +
+                           `${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                           `${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`;
+
+        // --- GESTIÓ DE LA IMATGE DE LA BANDERA ---
+        // Usem la bandera de naixement com a imatge del node (o la de mort si no n'hi ha)
+        // Recorda que el codi ja assumeix que la carpeta és "flags" (en minúscules)
+        // I que els fitxers de l'Excel (Ex: "ES") s'han de dir "es.png" a la carpeta.
+        let nodeImage = null;
+        if (c.BIRTH_FLAG) {
+            nodeImage = `flags/${c.BIRTH_FLAG.toLowerCase()}.png`;
+        } else if (c.DEATH_FLAG) {
+            nodeImage = `flags/${c.DEATH_FLAG.toLowerCase()}.png`;
+        }
+        
+        // Si no hi ha cap bandera, podem posar una imatge per defecte (opcional)
+        // nodeImage = nodeImage || 'flags/default.png';
+
+        // --- RETORNEM L'OBJECTE NODE AMB L'ESTIL "IMATGE" ---
+        return {
+            id: id,
+            label: cleanLabel,
+            level: level,
+            
+            // --- CANVI CLAU AQUÍ ---
+            shape: nodeImage ? 'image' : 'box', // Si hi ha imatge, usem tipus 'image'
+            image: nodeImage,                     // Ruta a la imatge
+            
+            // Configuració visual
+            size: 30, // Mida de la imatge de la bandera
+            color: { 
+                background: bgColor, 
+                border: borderColor,
+                highlight: { background: '#d0e9ff', border: '#1890ff' }
+            },
+            shapeProperties: { 
+                borderDashes: borderDashes,
+                useBorderWithImage: true // Dibuixa la caixa de color al voltant de la imatge
+            },
+            font: { 
+                size: 14, 
+                face: 'Segoe UI', 
+                align: 'center',
+                vadjust: 5 // Ajusta la posició del text sota la imatge
+            },
+            margin: 10
+        };
+    }
+    // --- FI DE LA FUNCIÓ INTERNA MILLORADA ---
+
+
+    // 1. NODE CENTRAL
+    nodes.push(createCustomNode(rootId, 0, false, false));
+
+    // 2. MESTRES DIRECTES (A dalt, nivell -1)
     focus.teachers.forEach(tId => {
         if (fullData[tId]) {
-            // Té el mestre, al seu torn, més mestres?
+            // Té el mestre, al seu torn, més mestres? (per a la vora puntejada)
             const hasMoreUp = fullData[tId].teachers.length > 0;
-            nodes.push(makeNode(tId, -1, hasMoreUp, false));
+            nodes.push(createCustomNode(tId, -1, hasMoreUp, false));
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16', width: 2 });
         }
     });
 
-    // 3. ALUMNES DIRECTES (A baix)
+    // 3. ALUMNES DIRECTES (A baix, nivell 1)
     Object.keys(fullData).forEach(sId => {
         const student = fullData[sId];
         if (student.teachers.includes(rootId)) {
-            // Té l'alumne, al seu torn, més alumnes?
+            // Té l'alumne, al seu torn, més alumnes? (per a la vora puntejada)
             const hasMoreDown = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
-            nodes.push(makeNode(sId, 1, false, hasMoreDown));
+            nodes.push(createCustomNode(sId, 1, false, hasMoreDown));
             edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a', width: 2 });
         }
     });
 
-    function makeNode(id, level, hasMoreUp, hasMoreDown) {
-        const c = fullData[id];
-        const color = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
-        const borderColor = level === 0 ? '#1890ff' : '#999';
-        
-        // Determinem títol (Nom artístic o Nom Real)
-        const displayTitle = c.DISPLAY_NAME ? c.DISPLAY_NAME : `${c.NAME} ${c.SURNAME}`;
-        // Si el nom real és diferent al que mostrem, el posem en petit a sota
-        const realNameSub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
-                            ? `\n<i>(${c.NAME} ${c.SURNAME})</i>` : "";
-
-        // Imatges de les banderes des de la teva carpeta /flags/
-        const bFlagImg = c.BIRTH_FLAG ? `<img src="flags/${c.BIRTH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
-        const dFlagImg = c.DEATH_FLAG ? `<img src="flags/${c.DEATH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
-
-        return {
-            id: id,
-            label: `<b>${displayTitle}</b>${realNameSub}\n` +
-                   `${bFlagImg}${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-                   `${dFlagImg}${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
-            shape: 'box',
-            level: level,
-            color: { background: color, border: borderColor },
-            shapeProperties: { borderDashes: (hasMoreUp || hasMoreDown) ? [5, 5] : false },
-            font: { multi: 'html', size: 14, face: 'Segoe UI' },
-            margin: 12
-        };
-    }
-
+    // --- CONFIGURACIÓ DE LA XARXA (vis.network) ---
     const options = {
         layout: { 
             hierarchical: { 
@@ -149,6 +192,7 @@ function drawTree(rootId) {
     network.on("click", (params) => {
         if (params.nodes.length > 0) {
             const clickedId = params.nodes[0];
+            // Actualitzem el cercador i redibuixem
             document.getElementById('search').value = clickedId;
             drawTree(clickedId);
         }
