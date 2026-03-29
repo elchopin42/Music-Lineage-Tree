@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Musical Lineage Tree</title>
-    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; }
-        header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
-        #controls { padding: 10px; display: flex; justify-content: center; background: white; border-bottom: 1px solid #ddd; }
-        select { padding: 8px; font-size: 16px; width: 350px; }
-        #mynetwork { width: 100%; height: calc(100vh - 150px); background: white; }
+        body { font-family: sans-serif; margin: 0; background: #f4f7f6; }
+        header { background: #2c3e50; color: white; padding: 10px; text-align: center; }
+        #controls { padding: 10px; text-align: center; background: white; border-bottom: 1px solid #ccc; }
+        select { padding: 8px; width: 300px; font-size: 16px; }
+        #mynetwork { width: 100%; height: calc(100vh - 120px); background: white; border: 1px solid lightgray; }
     </style>
 </head>
 <body>
+
 <header><h1>Musical Lineage Tree</h1></header>
 <div id="controls">
     <select id="search"><option>Carregant dades...</option></select>
@@ -24,13 +25,14 @@
 let network = null;
 let fullData = {};
 
-// Funció màgica per convertir "ES" en emoji 🇪🇸
+// Funció per a les banderes (Emojis)
 function codeToEmoji(code) {
     if (!code || code.length !== 2) return code || "";
-    if (code.toLowerCase() === 'ca' || code.toLowerCase() === 'ct') return "🚩"; // Senyera
+    if (code.toLowerCase() === 'ca' || code.toLowerCase() === 'ct') return "🚩";
     return code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
 }
 
+// Carregar CSV
 Papa.parse("dades.csv", {
     download: true, header: true, skipEmptyLines: true,
     complete: function(results) {
@@ -40,45 +42,46 @@ Papa.parse("dades.csv", {
                 teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()).filter(s => s) : []
             };
         });
-        fillSelect(results.data);
+        
+        // Emplenar el SELECT
+        const select = document.getElementById('search');
+        select.innerHTML = '<option value="">-- Tria un compositor --</option>';
+        results.data.sort((a,b) => {
+            const nameA = (a.SORT_NAME || a.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
+            const nameB = (b.SORT_NAME || b.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
+            return nameA.localeCompare(nameB);
+        }).forEach(r => {
+            const opt = document.createElement('option');
+            opt.value = r.ID_CODE;
+            opt.textContent = r.SORT_NAME || `${r.SURNAME}, ${r.NAME}`;
+            select.appendChild(opt);
+        });
+
+        select.onchange = function() { draw(this.value); };
+        
+        // Inici amb Pedrell
+        if (fullData['f_pedrell']) draw('f_pedrell');
     }
 });
 
-function fillSelect(data) {
-    const select = document.getElementById('search');
-    select.innerHTML = '<option value="">-- Tria un compositor --</option>';
-    data.sort((a,b) => {
-        const nameA = (a.SORT_NAME || a.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
-        const nameB = (b.SORT_NAME || b.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
-        return nameA.localeCompare(nameB);
-    }).forEach(r => {
-        const opt = document.createElement('option');
-        opt.value = r.ID_CODE;
-        opt.textContent = r.SORT_NAME || `${r.SURNAME}, ${r.NAME}`;
-        select.appendChild(opt);
-    });
-    select.onchange = (e) => draw(e.target.value);
-    if(fullData['f_pedrell']) draw('f_pedrell');
-}
-
 function draw(rootId) {
     if (!fullData[rootId]) return;
+    
     const nodes = [];
     const edges = [];
 
-    function addNode(id, level) {
+    function crearNode(id, level) {
         const c = fullData[id];
         const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
         const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
         
-        const title = c.DISPLAY_NAME || `${c.NAME} ${c.SURNAME}`;
-        const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
+        const label = `<b>${c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME)}</b>\n` +
+                      `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                      `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`;
 
         nodes.push({
             id: id,
-            label: `<b>${title}</b>${sub}\n` +
-                   `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-                   `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
+            label: label,
             shape: 'box',
             level: level,
             font: { multi: 'html', size: 14 },
@@ -87,13 +90,13 @@ function draw(rootId) {
         });
     }
 
-    // 1. Crear el node central
-    addNode(rootId, 0);
+    // Central
+    crearNode(rootId, 0);
 
-    // 2. Mestres (Dalt)
+    // Mestres
     fullData[rootId].teachers.forEach(tId => {
         if (fullData[tId]) {
-            addNode(tId, -1);
+            crearNode(tId, -1);
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
             if (fullData[tId].teachers.length > 0) {
                 const upId = "up_" + tId;
@@ -103,23 +106,21 @@ function draw(rootId) {
         }
     });
 
-    // 3. Alumnes (Baix)
+    // Alumnes
     Object.keys(fullData).forEach(sId => {
         if (fullData[sId].teachers.includes(rootId)) {
-            addNode(sId, 1);
+            crearNode(sId, 1);
             edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
-            const hasMore = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
-            if (hasMore) {
-                const downId = "down_" + sId;
-                nodes.push({ id: downId, label: '', shape: 'text', level: 2 });
-                edges.push({ from: sId, to: downId, arrows: 'to', color: '#52c41a', dashes: true });
+            const teMes = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
+            if (teMes) {
+                const dwId = "dw_" + sId;
+                nodes.push({ id: dwId, label: '', shape: 'text', level: 2 });
+                edges.push({ from: sId, to: dwId, arrows: 'to', color: '#52c41a', dashes: true });
             }
         }
     });
 
-    // Inicialitzar la xarxa
-    if (network) network.destroy();
-    
+    // CONFIGURACIÓ DE LA XARXA
     const container = document.getElementById('mynetwork');
     const data = { nodes: nodes, edges: edges };
     const options = {
@@ -128,26 +129,18 @@ function draw(rootId) {
         interaction: { dragNodes: false, selectable: true }
     };
 
+    if (network) network.destroy();
     network = new vis.Network(container, data, options);
 
-    // --- EL CLIC REFORÇAT VA AQUÍ (DINS DE DRAW, PERÒ AL FINAL) ---
-    network.on("selectNode", function (params) {
-        if (params.nodes.length > 0) {
-            const clickedId = params.nodes[0];
+    // CLIC SENSE FILTRES (Molt directe)
+    network.on("click", function (p) {
+        if (p.nodes.length > 0) {
+            const id = p.nodes[0].toString();
+            if (id.includes('_')) return; // Ignorar fletxes de continuïtat
             
-            // Si el clic és en una fletxa de continuïtat (té "_"), l'ignorem
-            if (clickedId.toString().includes('_')) {
-                network.unselectAll(); // Netegem la selecció perquè no quedi marcat
-                return;
-            }
-
-            console.log("Has clicat a:", clickedId);
-            
-            // Actualitzem el menú desplegable perquè coincideixi
-            document.getElementById('search').value = clickedId;
-            
-            // Redibuixem l'arbre amb el nou compositor
-            draw(clickedId);
+            console.log("Clicat:", id);
+            document.getElementById('search').value = id;
+            draw(id);
         }
     });
 }
