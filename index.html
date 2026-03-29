@@ -6,11 +6,11 @@
     <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { font-family: sans-serif; margin: 0; background: #f4f7f6; }
-        header { background: #2c3e50; color: white; padding: 10px; text-align: center; }
-        #controls { padding: 10px; text-align: center; background: white; border-bottom: 1px solid #ccc; }
+        body { font-family: sans-serif; margin: 0; background: #f4f7f6; overflow: hidden; }
+        header { background: #2c3e50; color: white; padding: 10px; text-align: center; height: 50px; }
+        #controls { padding: 10px; text-align: center; background: white; border-bottom: 1px solid #ccc; height: 50px; }
         select { padding: 8px; width: 300px; font-size: 16px; }
-        #mynetwork { width: 100%; height: calc(100vh - 120px); background: white; border: 1px solid lightgray; }
+        #mynetwork { width: 100vw; height: calc(100vh - 120px); background: white; }
     </style>
 </head>
 <body>
@@ -25,14 +25,12 @@
 let network = null;
 let fullData = {};
 
-// Funció per a les banderes (Emojis)
 function codeToEmoji(code) {
     if (!code || code.length !== 2) return code || "";
     if (code.toLowerCase() === 'ca' || code.toLowerCase() === 'ct') return "🚩";
     return code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
 }
 
-// Carregar CSV
 Papa.parse("dades.csv", {
     download: true, header: true, skipEmptyLines: true,
     complete: function(results) {
@@ -43,7 +41,6 @@ Papa.parse("dades.csv", {
             };
         });
         
-        // Emplenar el SELECT
         const select = document.getElementById('search');
         select.innerHTML = '<option value="">-- Tria un compositor --</option>';
         results.data.sort((a,b) => {
@@ -57,9 +54,7 @@ Papa.parse("dades.csv", {
             select.appendChild(opt);
         });
 
-        select.onchange = function() { draw(this.value); };
-        
-        // Inici amb Pedrell
+        select.onchange = function() { if(this.value) draw(this.value); };
         if (fullData['f_pedrell']) draw('f_pedrell');
     }
 });
@@ -67,6 +62,12 @@ Papa.parse("dades.csv", {
 function draw(rootId) {
     if (!fullData[rootId]) return;
     
+    // 1. Destrucció total de la xarxa prèvia abans de fer res
+    if (network !== null) {
+        network.destroy();
+        network = null;
+    }
+
     const nodes = [];
     const edges = [];
 
@@ -74,14 +75,14 @@ function draw(rootId) {
         const c = fullData[id];
         const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
         const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
-        
-        const label = `<b>${c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME)}</b>\n` +
-                      `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-                      `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`;
+        const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
+        const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
 
         nodes.push({
             id: id,
-            label: label,
+            label: `<b>${title}</b>${sub}\n` +
+                   `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                   `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
             shape: 'box',
             level: level,
             font: { multi: 'html', size: 14 },
@@ -90,7 +91,6 @@ function draw(rootId) {
         });
     }
 
-    // Central
     crearNode(rootId, 0);
 
     // Mestres
@@ -120,41 +120,30 @@ function draw(rootId) {
         }
     });
 
-    // CONFIGURACIÓ DE LA XARXA
-    const container = document.getElementById('mynetwork');
-    const data = { nodes: nodes, edges: edges };
-    const options = {
-        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
-        physics: false,
-        interaction: { dragNodes: false, selectable: true }
-    };
+    // 2. Esperem un instant per dibuixar (neteja de memòria)
+    setTimeout(() => {
+        const container = document.getElementById('mynetwork');
+        const data = { nodes: nodes, edges: edges };
+        const options = {
+            layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
+            physics: false,
+            interaction: { dragNodes: false, selectable: true }
+        };
 
-    if (network) network.destroy();
-    network = new vis.Network(container, data, options);
+        network = new vis.Network(container, data, options);
 
-// CLIC REFORÇAT AMB EXCEPCIONS
-    network.on("click", function (params) {
-        if (params.nodes && params.nodes.length > 0) {
-            const idTriat = params.nodes[0].toString();
-            
-            // Ignorem les fletxes de continuïtat
-            if (idTriat.includes('_')) return;
-
-            console.log("Intentant dibuixar l'ID:", idTriat);
-
-            // Verifiquem si l'ID existeix a les nostres dades
-            if (fullData[idTriat]) {
-                // Actualitzem el menú desplegable
-                const menu = document.getElementById('search');
-                menu.value = idTriat;
+        // 3. El clic que "mana"
+        network.on("click", function (p) {
+            if (p.nodes && p.nodes.length > 0) {
+                const selectedId = p.nodes[0].toString();
+                if (selectedId.includes('_')) return; // Ignorar fletxes
                 
-                // CRIDEM AL DIBUIX DIRECTAMENT
-                draw(idTriat);
-            } else {
-                console.error("L'ID clicat no s'ha trobat a fullData:", idTriat);
+                // Actualitzar el Select i redibuixar
+                document.getElementById('search').value = selectedId;
+                draw(selectedId);
             }
-        }
-    });
+        });
+    }, 10);
 }
 </script>
 </body>
