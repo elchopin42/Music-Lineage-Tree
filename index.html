@@ -132,15 +132,27 @@ function draw(rootId) {
     if (network) network.destroy();
     network = new vis.Network(container, data, options);
 
-    // CLIC SENSE FILTRES (Molt directe)
-    network.on("click", function (p) {
-        if (p.nodes.length > 0) {
-            const id = p.nodes[0].toString();
-            if (id.includes('_')) return; // Ignorar fletxes de continuïtat
+// CLIC REFORÇAT AMB EXCEPCIONS
+    network.on("click", function (params) {
+        if (params.nodes && params.nodes.length > 0) {
+            const idTriat = params.nodes[0].toString();
             
-            console.log("Clicat:", id);
-            document.getElementById('search').value = id;
-            draw(id);
+            // Ignorem les fletxes de continuïtat
+            if (idTriat.includes('_')) return;
+
+            console.log("Intentant dibuixar l'ID:", idTriat);
+
+            // Verifiquem si l'ID existeix a les nostres dades
+            if (fullData[idTriat]) {
+                // Actualitzem el menú desplegable
+                const menu = document.getElementById('search');
+                menu.value = idTriat;
+                
+                // CRIDEM AL DIBUIX DIRECTAMENT
+                draw(idTriat);
+            } else {
+                console.error("L'ID clicat no s'ha trobat a fullData:", idTriat);
+            }
         }
     });
 }
