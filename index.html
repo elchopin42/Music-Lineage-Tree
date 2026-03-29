@@ -112,8 +112,8 @@ function drawTree(rootId) {
                             ? `\n<i>(${c.NAME} ${c.SURNAME})</i>` : "";
 
         // Imatges de les banderes des de la teva carpeta /banderes/
-        const bFlagImg = c.BIRTH_FLAG ? `<img src="banderes/${c.BIRTH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
-        const dFlagImg = c.DEATH_FLAG ? `<img src="banderes/${c.DEATH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
+        const bFlagImg = c.BIRTH_FLAG ? `<img src="flags/${c.BIRTH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
+        const dFlagImg = c.DEATH_FLAG ? `<img src="flags/${c.DEATH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
 
         return {
             id: id,
