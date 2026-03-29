@@ -104,12 +104,33 @@ function draw(rootId) {
         }
     });
 
-    // 3. Dibuixem els alumnes (Baix)
-    Object.keys(fullData).forEach(sId => {
-        if (fullData[sId].teachers.includes(rootId)) {
-            crearNode(sId, 1);
-            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
+  // 3. Dibuixem els alumnes (Baix) - CRONOLÒGIC + ALFABÈTIC
+Object.keys(fullData)
+    .filter(sId => fullData[sId].teachers.includes(rootId))
+    .sort((a, b) => {
+        // Funció interna per treure només el número de "ca.1700" o cel·les amb text
+        const parseYear = (id) => {
+            const yearStr = fullData[id].BIRTH_YEAR;
+            if (!yearStr || yearStr.trim() === "") return 9999; // Si està buit, al final
+            const match = yearStr.match(/\d+/); // Busca el primer grup de números
+            return match ? parseInt(match[0]) : 9999; // Si no hi ha números, al final
+        };
+
+        const yearA = parseYear(a);
+        const yearB = parseYear(b);
+        
+        // Si l'any és el mateix (o tots dos són 9999), desempatem pel cognom
+        if (yearA === yearB) {
+            const nameA = (fullData[a].SURNAME || "").toLowerCase();
+            const nameB = (fullData[b].SURNAME || "").toLowerCase();
+            return nameA.localeCompare(nameB);
         }
+        
+        return yearA - yearB;
+    })
+    .forEach(sId => {
+        crearNode(sId, 1);
+        edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
     });
 
     // Renderitzar la xarxa
