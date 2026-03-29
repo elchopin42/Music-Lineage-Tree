@@ -6,11 +6,11 @@
     <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { font-family: sans-serif; margin: 0; background: #f4f7f6; overflow: hidden; }
-        header { background: #2c3e50; color: white; padding: 10px; text-align: center; height: 50px; }
-        #controls { padding: 10px; text-align: center; background: white; border-bottom: 1px solid #ccc; height: 50px; }
+        body { font-family: sans-serif; margin: 0; background: #f4f7f6; }
+        header { background: #2c3e50; color: white; padding: 10px; text-align: center; }
+        #controls { padding: 10px; text-align: center; background: white; border-bottom: 1px solid #ccc; }
         select { padding: 8px; width: 300px; font-size: 16px; }
-        #mynetwork { width: 100vw; height: calc(100vh - 120px); background: white; }
+        #mynetwork { width: 100%; height: calc(100vh - 120px); background: white; }
     </style>
 </head>
 <body>
@@ -25,12 +25,14 @@
 let network = null;
 let fullData = {};
 
+// Converteix "ES" a emoji 🇪🇸
 function codeToEmoji(code) {
     if (!code || code.length !== 2) return code || "";
     if (code.toLowerCase() === 'ca' || code.toLowerCase() === 'ct') return "🚩";
     return code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
 }
 
+// Carrega el CSV
 Papa.parse("dades.csv", {
     download: true, header: true, skipEmptyLines: true,
     complete: function(results) {
@@ -43,6 +45,8 @@ Papa.parse("dades.csv", {
         
         const select = document.getElementById('search');
         select.innerHTML = '<option value="">-- Tria un compositor --</option>';
+        
+        // Ordenació alfabètica per SORT_NAME
         results.data.sort((a,b) => {
             const nameA = (a.SORT_NAME || a.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
             const nameB = (b.SORT_NAME || b.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
@@ -54,27 +58,25 @@ Papa.parse("dades.csv", {
             select.appendChild(opt);
         });
 
-        select.onchange = function() { if(this.value) draw(this.value); };
+        select.onchange = function() { draw(this.value); };
         if (fullData['f_pedrell']) draw('f_pedrell');
     }
 });
 
 function draw(rootId) {
     if (!fullData[rootId]) return;
-    
-    // 1. Destrucció total de la xarxa prèvia abans de fer res
-    if (network !== null) {
-        network.destroy();
-        network = null;
-    }
 
     const nodes = [];
     const edges = [];
 
+    // Funció simple per crear nodes REALS
     function crearNode(id, level) {
         const c = fullData[id];
+        if (!c) return; // Seguretat: si no existeix, no facis res
+
         const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
         const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
+        
         const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
         const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
 
@@ -91,59 +93,43 @@ function draw(rootId) {
         });
     }
 
+    // 1. Dibuixem el centre
     crearNode(rootId, 0);
 
-    // Mestres
+    // 2. Dibuixem els mestres (Dalt)
     fullData[rootId].teachers.forEach(tId => {
         if (fullData[tId]) {
             crearNode(tId, -1);
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
-            if (fullData[tId].teachers.length > 0) {
-                const upId = "up_" + tId;
-                nodes.push({ id: upId, label: '', shape: 'text', level: -2 });
-                edges.push({ from: upId, to: tId, arrows: 'to', color: '#fa8c16', dashes: true });
-            }
         }
     });
 
-    // Alumnes
+    // 3. Dibuixem els alumnes (Baix)
     Object.keys(fullData).forEach(sId => {
         if (fullData[sId].teachers.includes(rootId)) {
             crearNode(sId, 1);
             edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
-            const teMes = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
-            if (teMes) {
-                const dwId = "dw_" + sId;
-                nodes.push({ id: dwId, label: '', shape: 'text', level: 2 });
-                edges.push({ from: sId, to: dwId, arrows: 'to', color: '#52c41a', dashes: true });
-            }
         }
     });
 
-    // 2. Esperem un instant per dibuixar (neteja de memòria)
-    setTimeout(() => {
-        const container = document.getElementById('mynetwork');
-        const data = { nodes: nodes, edges: edges };
-        const options = {
-            layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
-            physics: false,
-            interaction: { dragNodes: false, selectable: true }
-        };
+    // Renderitzar la xarxa
+    const container = document.getElementById('mynetwork');
+    if (network) network.destroy();
 
-        network = new vis.Network(container, data, options);
+    network = new vis.Network(container, { nodes, edges }, {
+        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
+        physics: false,
+        interaction: { dragNodes: false, selectable: true }
+    });
 
-        // 3. El clic que "mana"
-        network.on("click", function (p) {
-            if (p.nodes && p.nodes.length > 0) {
-                const selectedId = p.nodes[0].toString();
-                if (selectedId.includes('_')) return; // Ignorar fletxes
-                
-                // Actualitzar el Select i redibuixar
-                document.getElementById('search').value = selectedId;
-                draw(selectedId);
-            }
-        });
-    }, 10);
+    // CLIC DIRECTE: Torna a la vida
+    network.on("click", function(params) {
+        if (params.nodes.length > 0) {
+            const selectedId = params.nodes[0];
+            document.getElementById('search').value = selectedId;
+            draw(selectedId);
+        }
+    });
 }
 </script>
 </body>
