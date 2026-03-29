@@ -6,18 +6,17 @@
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; }
         header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
-        #controls { padding: 15px; display: flex; justify-content: center; background: #ffffff; border-bottom: 1px solid #dee2e6; }
-        select { padding: 10px; font-size: 16px; width: 400px; border-radius: 5px; border: 1px solid #ccc; cursor: pointer; }
-        #mynetwork { width: 100%; height: calc(100vh - 160px); background: white; }
+        #controls { padding: 10px; display: flex; justify-content: center; background: white; border-bottom: 1px solid #ddd; }
+        select { padding: 8px; font-size: 16px; width: 350px; }
+        #mynetwork { width: 100%; height: calc(100vh - 150px); background: white; }
     </style>
 </head>
 <body>
-
 <header><h1>Musical Lineage Tree</h1></header>
 <div id="controls">
-    <select id="search"><option value="">Carregant base de dades...</option></select>
+    <select id="search"><option>Carregant dades...</option></select>
 </div>
 <div id="mynetwork"></div>
 
@@ -25,150 +24,117 @@
 let network = null;
 let fullData = {};
 
-// Càrrega del CSV
+// Funció màgica per convertir "ES" en emoji 🇪🇸
+function codeToEmoji(code) {
+    if (!code || code.length !== 2) return code || "";
+    if (code.toLowerCase() === 'ca' || code.toLowerCase() === 'ct') return "🚩"; // Senyera
+    return code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
+}
+
 Papa.parse("dades.csv", {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
+    download: true, header: true, skipEmptyLines: true,
     complete: function(results) {
-        processData(results.data);
+        results.data.forEach(row => {
+            fullData[row.ID_CODE] = {
+                ...row,
+                teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()).filter(s => s) : []
+            };
+        });
+        fillSelect(results.data);
     }
 });
 
-function processData(data) {
+function fillSelect(data) {
     const select = document.getElementById('search');
-    select.innerHTML = '<option value="">-- Selecciona un compositor --</option>';
-
-    // Guardem les dades en un objecte per accés ràpid
-    data.forEach(row => {
-        fullData[row.ID_CODE] = {
-            ...row,
-            teachers: row.STUDENT_OF ? row.STUDENT_OF.split(',').map(s => s.trim()).filter(s => s !== "") : []
-        };
-    });
-
-    // Ordenem la llista del cercador segons la columna SORT_NAME (o cognom)
-    data.sort((a, b) => {
-        const nameA = (a.SORT_NAME || a.SURNAME || "").toLowerCase().replace(/^(de la |de |von |van |d'|da )/, "");
-        const nameB = (b.SORT_NAME || b.SURNAME || "").toLowerCase().replace(/^(de la |de |von |van |d'|da )/, "");
+    select.innerHTML = '<option value="">-- Tria un compositor --</option>';
+    data.sort((a,b) => {
+        const nameA = (a.SORT_NAME || a.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
+        const nameB = (b.SORT_NAME || b.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
         return nameA.localeCompare(nameB);
-    }).forEach(row => {
+    }).forEach(r => {
         const opt = document.createElement('option');
-        opt.value = row.ID_CODE;
-        // Mostrem el nom ordenat al menú (Ex: Falla, Manuel)
-        opt.textContent = row.SORT_NAME ? row.SORT_NAME : `${row.SURNAME}, ${row.NAME}`;
+        opt.value = r.ID_CODE;
+        opt.textContent = r.SORT_NAME || `${r.SURNAME}, ${r.NAME}`;
         select.appendChild(opt);
     });
-
-    select.addEventListener('change', (e) => drawTree(e.target.value));
-    
-    // Per defecte obrim Pedrell si existeix
-    if (fullData['f_pedrell']) {
-        select.value = 'f_pedrell';
-        drawTree('f_pedrell');
-    }
+    select.onchange = (e) => draw(e.target.value);
+    if(fullData['f_pedrell']) draw('f_pedrell');
 }
 
-function drawTree(rootId) {
-    if (!rootId || !fullData[rootId]) return;
-
+function draw(rootId) {
+    if (!fullData[rootId]) return;
     const nodes = [];
     const edges = [];
-    const focus = fullData[rootId];
 
-    function createNode(id, level) {
+    function addNode(id, level) {
         const c = fullData[id];
         const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
         const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
         
-        const displayTitle = c.DISPLAY_NAME ? c.DISPLAY_NAME : `${c.NAME} ${c.SURNAME}`;
-        const realNameSub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
-                            ? `\n(${c.NAME} ${c.SURNAME})` : "";
+        const title = c.DISPLAY_NAME || `${c.NAME} ${c.SURNAME}`;
+        const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
 
-        // Tornem al sistema de banderes de text/emoji per seguretat total
-        const bFlag = c.BIRTH_FLAG ? `${c.BIRTH_FLAG.toUpperCase()} ` : "";
-        const dFlag = c.DEATH_FLAG ? `${c.DEATH_FLAG.toUpperCase()} ` : "";
-
-        return {
+        nodes.push({
             id: id,
-            label: `<b>${displayTitle}</b>${realNameSub}\n` +
-                   `${bFlag}${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-                   `${dFlag}${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
+            label: `<b>${title}</b>${sub}\n` +
+                   `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                   `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
             shape: 'box',
             level: level,
-            font: { multi: 'html', size: 14, face: 'Segoe UI' },
-            color: {
-                background: bgColor,
-                border: borderColor,
-                highlight: { background: '#d0e9ff', border: '#1890ff' }
-            },
+            font: { multi: 'html', size: 14 },
+            color: { background: bgColor, border: borderColor },
             margin: 10
-        };
+        });
     }
 
-    // 1. NODE CENTRAL
-    nodes.push(createNode(rootId, 0));
+    // 1. Centre
+    addNode(rootId, 0);
 
-    // 2. MESTRES DIRECTES (Nivell -1)
-    focus.teachers.forEach(tId => {
+    // 2. Mestres (Dalt)
+    fullData[rootId].teachers.forEach(tId => {
         if (fullData[tId]) {
-            nodes.push(createNode(tId, -1));
-            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16', width: 2 });
-            
-            // Fletxa de continuïtat cap amunt
+            addNode(tId, -1);
+            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
+            // Fletxa de "hi ha més"
             if (fullData[tId].teachers.length > 0) {
                 const upId = "up_" + tId;
                 nodes.push({ id: upId, label: '', shape: 'text', level: -2 });
-                edges.push({ from: upId, to: tId, arrows: 'to', color: '#fa8c16', dashes: [2, 2], width: 1 });
+                edges.push({ from: upId, to: tId, arrows: 'to', color: '#fa8c16', dashes: true });
             }
         }
     });
 
-    // 3. ALUMNES DIRECTES (Nivell 1)
+    // 3. Alumnes (Baix)
     Object.keys(fullData).forEach(sId => {
         if (fullData[sId].teachers.includes(rootId)) {
-            nodes.push(createNode(sId, 1));
-            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a', width: 2 });
-
-            // Fletxa de continuïtat cap avall
-            const hasMoreDown = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
-            if (hasMoreDown) {
+            addNode(sId, 1);
+            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
+            // Fletxa de "hi ha més"
+            const hasMore = Object.values(fullData).some(anyS => anyS.teachers.includes(sId));
+            if (hasMore) {
                 const downId = "down_" + sId;
                 nodes.push({ id: downId, label: '', shape: 'text', level: 2 });
-                edges.push({ from: sId, to: downId, arrows: 'to', color: '#52c41a', dashes: [2, 2], width: 1 });
+                edges.push({ from: sId, to: downId, arrows: 'to', color: '#52c41a', dashes: true });
             }
         }
     });
 
-    const options = {
-        layout: { 
-            hierarchical: { 
-                direction: 'UD', 
-                sortMethod: 'directed', 
-                levelSeparation: 150, 
-                nodeSpacing: 350 
-            } 
-        },
-        physics: false,
-        interaction: { hover: true, dragNodes: false }
-    };
-
     if (network) network.destroy();
-    network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, options);
+    network = new vis.Network(document.getElementById('mynetwork'), { nodes, edges }, {
+        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
+        physics: false,
+        interaction: { dragNodes: false }
+    });
 
-    // EL CLIC QUE FUNCIONA SEMPRE
-    network.on("click", function(params) {
-        if (params.nodes.length > 0) {
-            const clickedId = params.nodes[0];
-            // Si el node és un dels de continuïtat (up_ o down_), no fem res
-            if (typeof clickedId === 'string' && clickedId.includes('_')) return;
-            
-            document.getElementById('search').value = clickedId;
-            drawTree(clickedId);
+    // CLIC FINAL: Sense errors
+    network.on("click", function(p) {
+        if (p.nodes[0] && !p.nodes[0].toString().includes('_')) {
+            const newId = p.nodes[0];
+            document.getElementById('search').value = newId;
+            draw(newId);
         }
     });
 }
 </script>
-
 </body>
 </html>
