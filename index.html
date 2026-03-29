@@ -111,7 +111,7 @@ function drawTree(rootId) {
         const realNameSub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
                             ? `\n<i>(${c.NAME} ${c.SURNAME})</i>` : "";
 
-        // Imatges de les banderes des de la teva carpeta /banderes/
+        // Imatges de les banderes des de la teva carpeta /flags/
         const bFlagImg = c.BIRTH_FLAG ? `<img src="flags/${c.BIRTH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
         const dFlagImg = c.DEATH_FLAG ? `<img src="flags/${c.DEATH_FLAG.toLowerCase()}.png" width="16" height="12"> ` : "";
 
