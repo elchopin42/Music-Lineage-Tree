@@ -70,19 +70,28 @@ function draw(rootId) {
     const edges = [];
 
     // Funció simple per crear nodes REALS
-    function crearNode(id, level) {
+function crearNode(id, level) {
         const c = fullData[id];
-        if (!c) return; // Seguretat: si no existeix, no facis res
+        if (!c) return;
 
         const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
         const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
         
+        // Comprovar si hi ha més branques
+        const teMestres = c.teachers && c.teachers.length > 0;
+        const teAlumnes = Object.keys(fullData).some(sId => fullData[sId].teachers.includes(id));
+        
+        // Afegim un indicador visual (+ ↑) o (+ ↓) si la línia segueix
+        let indicador = "";
+        if (level < 0 && teMestres) indicador = " <b>[+↑]</b>"; // Si és un mestre i té més mestres
+        if (level > 1 || (level === 1 && teAlumnes)) indicador = " <b>[+↓]</b>"; // Si és un alumne i té més alumnes
+
         const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
         const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
 
         nodes.push({
             id: id,
-            label: `<b>${title}</b>${sub}\n` +
+            label: `<b>${title}</b>${indicador}${sub}\n` +
                    `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
                    `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
             shape: 'box',
