@@ -88,7 +88,9 @@ function crearNode(id, level) {
         let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
         let indicadorBaix = (level > 0 && teAlumnes) ? "\n▼" : "";
 
-        // Construïm l'etiqueta combinant text simple i negretes
+        // Ajustem la mida de la font: 18px per al central, 14px per als altres
+        const fontSize = level === 0 ? 18 : 14;
+
         let label = `${indicadorDalt}<b>${title}</b>${sub}\n` +
                    `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
                    `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`;
@@ -98,9 +100,15 @@ function crearNode(id, level) {
             label: label,
             shape: 'box',
             level: level,
-            font: { multi: 'html', size: 14, align: 'center' },
+            font: { 
+                multi: 'html', 
+                size: fontSize, // Apliquem la mida dinàmica
+                align: 'center' 
+            },
             color: { background: bgColor, border: borderColor },
-            borderWidth: ((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1,
+            // El node central també pot tenir una vora un poc més present (2) 
+            // mentre que els de continuïtat mantenen el 3
+            borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1),
             margin: 10
         });
     }
