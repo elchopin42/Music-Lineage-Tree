@@ -96,11 +96,25 @@ function draw(rootId) {
     // 1. Dibuixem el centre
     crearNode(rootId, 0);
 
-    // 2. Dibuixem els mestres (Dalt)
+  // 2. Dibuixem els mestres (Dalt)
     fullData[rootId].teachers.forEach(tId => {
         if (fullData[tId]) {
+            // Si el mestre existeix al CSV, el dibuixem normal
             crearNode(tId, -1);
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
+        } else {
+            // Si el mestre NO existeix, creem un node de "Pendent"
+            nodes.push({
+                id: tId,
+                label: `<b>${tId}</b>\n<i>(Pending entry)</i>`,
+                shape: 'box',
+                level: -1,
+                font: { multi: 'html', size: 12, color: '#666666' },
+                color: { background: '#eeeeee', border: '#cccccc' },
+                borderDash: [5, 5], // Línia discontínua per indicar que és "fantasma"
+                margin: 10
+            });
+            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#cccccc' });
         }
     });
 
