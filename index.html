@@ -77,28 +77,42 @@ function crearNode(id, level) {
         const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
         const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
         
-        // Comprovar si hi ha més branques
+        // Comprovar continuïtat
         const teMestres = c.teachers && c.teachers.length > 0;
         const teAlumnes = Object.keys(fullData).some(sId => fullData[sId].teachers.includes(id));
         
-        // Afegim un indicador visual (+ ↑) o (+ ↓) si la línia segueix
-        let indicador = "";
-        if (level < 0 && teMestres) indicador = " <b>[+↑]</b>"; // Si és un mestre i té més mestres
-        if (level > 1 || (level === 1 && teAlumnes)) indicador = " <b>[+↓]</b>"; // Si és un alumne i té més alumnes
-
         const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
         const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
 
+        // Construïm l'etiqueta neta
+        let label = `<b>${title}</b>${sub}\n` +
+                   `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                   `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`;
+
+        // Afegim indicadors visuals EXTERNS mitjançant l'estil del node
+        let borderWidth = 1;
+        let borderDash = false;
+
+        // Si té continuïtat, fem la vora més gruixuda o especial
+        if ((level < 0 && teMestres) || (level > 0 && teAlumnes)) {
+            borderWidth = 4; // Vora gruixuda per indicar que "hi ha més"
+        }
+
         nodes.push({
             id: id,
-            label: `<b>${title}</b>${indicador}${sub}\n` +
-                   `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-                   `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`,
+            label: label,
             shape: 'box',
             level: level,
             font: { multi: 'html', size: 14 },
-            color: { background: bgColor, border: borderColor },
-            margin: 10
+            color: { 
+                background: bgColor, 
+                border: borderColor,
+                highlight: { background: bgColor, border: borderColor } 
+            },
+            borderWidth: borderWidth, // Aquí indiquem visualment la continuïtat
+            margin: 10,
+            // Afegim una petita ombra si té continuïtat per a que destaque
+            shadow: ((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? { enabled: true, color: 'rgba(0,0,0,0.2)', size: 10, x: 5, y: 5 } : false
         });
     }
 
