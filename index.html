@@ -8,30 +8,71 @@
     <style>
         body { font-family: sans-serif; margin: 0; background: #f4f7f6; }
         header { background: #2c3e50; color: white; padding: 10px; text-align: center; }
-        #controls { padding: 10px; text-align: center; background: white; border-bottom: 1px solid #ccc; }
-        select { padding: 8px; width: 300px; font-size: 16px; }
-        #mynetwork { width: 100%; height: calc(100vh - 120px); background: white; }
+        #controls { padding: 15px; text-align: center; background: white; border-bottom: 1px solid #ccc; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        select { padding: 8px; font-size: 16px; border-radius: 4px; border: 1px solid #ccc; }
+        #search { width: 300px; }
+        #mynetwork { width: 100%; height: calc(100vh - 130px); background: white; }
+        label { font-weight: bold; }
     </style>
 </head>
 <body>
 
 <header><h1>Musical Lineage Tree</h1></header>
+
 <div id="controls">
+    <label id="label-search" for="search">Cerca:</label>
     <select id="search"><option>Carregant dades...</option></select>
+    
+    <select id="lang-selector" onchange="changeLanguage(this.value)">
+        <option value="ca">Català</option>
+        <option value="es">Castellano</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="it">Italiano</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+    </select>
 </div>
+
 <div id="mynetwork"></div>
 
 <script>
+// 1. DICCIONARI DE TRADUCCIONS
+const i18n = {
+    ca: { select: "-- Tria un compositor --", pending: "Entrada pendent", search: "Cerca:" },
+    es: { select: "-- Elige un compositor --", pending: "Entrada pendiente", search: "Buscar:" },
+    en: { select: "-- Choose a composer --", pending: "Pending entry", search: "Search:" },
+    fr: { select: "-- Choisir un compositeur --", pending: "Entrée en attente", search: "Chercher:" },
+    it: { select: "-- Scegli un compositore --", pending: "Voce in attesa", search: "Cerca:" },
+    de: { select: "-- Komponisten wählen --", pending: "Eintrag ausstehend", search: "Suche:" },
+    pt: { select: "-- Escolha um compositor --", pending: "Entrada pendente", search: "Procurar:" },
+    nl: { select: "-- Kies een componist --", pending: "In afwachting", search: "Zoeken:" }
+};
+
+let currentLang = 'ca'; 
 let network = null;
 let fullData = {};
 
-// Converteix codis ISO (com "ES", "CA", "FR") directament a l'emoji de la bandera oficial
+// Converteix codis ISO a emoji
 function codeToEmoji(code) {
     if (!code || code.length !== 2) return code || "";
-    // Simplement convertim el codi de 2 lletres a l'emoji regional estàndard
     return code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
 }
+
+// Funció per canviar l'idioma
+function changeLanguage(lang) {
+    currentLang = lang;
+    const select = document.getElementById('search');
     
+    // Actualitzem textos de la interfície
+    select.options[0].textContent = i18n[currentLang].select;
+    document.getElementById('label-search').textContent = i18n[currentLang].search;
+    
+    // Si hi ha algú seleccionat, redibuixem per actualitzar "Pending entry" i fletxes
+    if (select.value) draw(select.value);
+}
+
 // Carrega el CSV
 Papa.parse("dades.csv", {
     download: true, header: true, skipEmptyLines: true,
@@ -44,9 +85,8 @@ Papa.parse("dades.csv", {
         });
         
         const select = document.getElementById('search');
-        select.innerHTML = '<option value="">-- Tria un compositor --</option>';
+        select.innerHTML = `<option value="">${i18n[currentLang].select}</option>`;
         
-        // Ordenació alfabètica per SORT_NAME
         results.data.sort((a,b) => {
             const nameA = (a.SORT_NAME || a.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
             const nameB = (b.SORT_NAME || b.SURNAME || "").toLowerCase().replace(/^(de |von |van |d')/, "");
@@ -63,126 +103,100 @@ Papa.parse("dades.csv", {
     }
 });
 
+function crearNode(id, level, nodesArray) {
+    const c = fullData[id];
+    if (!c) return;
+
+    const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
+    const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
+    
+    // Continuïtat
+    const teMestres = c.teachers && c.teachers.length > 0;
+    const teAlumnes = Object.keys(fullData).some(sId => fullData[sId].teachers.includes(id));
+    
+    const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
+    const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
+
+    let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
+    let indicadorBaix = (level > 0 && teAlumnes) ? "\n▼" : "";
+    const fontSize = level === 0 ? 18 : 14;
+
+    nodesArray.push({
+        id: id,
+        label: `${indicadorDalt}<b>${title}</b>${sub}\n` +
+               `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+               `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`,
+        shape: 'box',
+        level: level,
+        font: { multi: 'html', size: fontSize, align: 'center' },
+        color: { background: bgColor, border: borderColor },
+        borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1),
+        margin: 10
+    });
+}
+
 function draw(rootId) {
     if (!fullData[rootId]) return;
-
     const nodes = [];
     const edges = [];
 
-    // Funció simple per crear nodes REALS
-function crearNode(id, level) {
-        const c = fullData[id];
-        if (!c) return;
+    // 1. Centre
+    crearNode(rootId, 0, nodes);
 
-        const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
-        const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
-        
-        // Comprovar continuïtat
-        const teMestres = c.teachers && c.teachers.length > 0;
-        const teAlumnes = Object.keys(fullData).some(sId => fullData[sId].teachers.includes(id));
-        
-        const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
-        const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
-
-        // Indicadors de text simple
-        let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
-        let indicadorBaix = (level > 0 && teAlumnes) ? "\n▼" : "";
-
-        // Ajustem la mida de la font: 18px per al central, 14px per als altres
-        const fontSize = level === 0 ? 18 : 14;
-
-        let label = `${indicadorDalt}<b>${title}</b>${sub}\n` +
-                   `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-                   `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`;
-
-        nodes.push({
-            id: id,
-            label: label,
-            shape: 'box',
-            level: level,
-            font: { 
-                multi: 'html', 
-                size: fontSize, // Apliquem la mida dinàmica
-                align: 'center' 
-            },
-            color: { background: bgColor, border: borderColor },
-            // El node central també pot tenir una vora un poc més present (2) 
-            // mentre que els de continuïtat mantenen el 3
-            borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1),
-            margin: 10
-        });
-    }
-
-    // 1. Dibuixem el centre
-    crearNode(rootId, 0);
-
-  // 2. Dibuixem els mestres (Dalt)
+    // 2. Mestres (Dalt)
     fullData[rootId].teachers.forEach(tId => {
         if (fullData[tId]) {
-            // Si el mestre existeix al CSV, el dibuixem normal
-            crearNode(tId, -1);
+            crearNode(tId, -1, nodes);
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
         } else {
-            // Si el mestre NO existeix, creem un node de "Pendent"
+            // Node Pendent (traduït)
             nodes.push({
                 id: tId,
-                label: `<b>${tId}</b>\n<i>(Pending entry)</i>`,
+                label: `<b>${tId}</b>\n<i>(${i18n[currentLang].pending})</i>`,
                 shape: 'box',
                 level: -1,
                 font: { multi: 'html', size: 12, color: '#666666' },
                 color: { background: '#eeeeee', border: '#cccccc' },
-                borderDash: [5, 5], // Línia discontínua per indicar que és "fantasma"
+                borderDash: [5, 5],
                 margin: 10
             });
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#cccccc' });
         }
     });
 
-  // 3. Dibuixem els alumnes (Baix) - CRONOLÒGIC + ALFABÈTIC
-Object.keys(fullData)
-    .filter(sId => fullData[sId].teachers.includes(rootId))
-    .sort((a, b) => {
-        // Funció interna per treure només el número de "ca.1700" o cel·les amb text
-        const parseYear = (id) => {
-            const yearStr = fullData[id].BIRTH_YEAR;
-            if (!yearStr || yearStr.trim() === "") return 9999; // Si està buit, al final
-            const match = yearStr.match(/\d+/); // Busca el primer grup de números
-            return match ? parseInt(match[0]) : 9999; // Si no hi ha números, al final
-        };
+    // 3. Alumnes (Baix)
+    Object.keys(fullData)
+        .filter(sId => fullData[sId].teachers.includes(rootId))
+        .sort((a, b) => {
+            const parseYear = (id) => {
+                const yearStr = fullData[id].BIRTH_YEAR;
+                if (!yearStr) return 9999;
+                const match = yearStr.match(/\d+/);
+                return match ? parseInt(match[0]) : 9999;
+            };
+            const yearA = parseYear(a), yearB = parseYear(b);
+            return yearA === yearB ? (fullData[a].SURNAME || "").localeCompare(fullData[b].SURNAME || "") : yearA - yearB;
+        })
+        .forEach(sId => {
+            crearNode(sId, 1, nodes);
+            edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
+        });
 
-        const yearA = parseYear(a);
-        const yearB = parseYear(b);
-        
-        // Si l'any és el mateix (o tots dos són 9999), desempatem pel cognom
-        if (yearA === yearB) {
-            const nameA = (fullData[a].SURNAME || "").toLowerCase();
-            const nameB = (fullData[b].SURNAME || "").toLowerCase();
-            return nameA.localeCompare(nameB);
-        }
-        
-        return yearA - yearB;
-    })
-    .forEach(sId => {
-        crearNode(sId, 1);
-        edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
-    });
-
-    // Renderitzar la xarxa
     const container = document.getElementById('mynetwork');
     if (network) network.destroy();
-
     network = new vis.Network(container, { nodes, edges }, {
         layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
         physics: false,
         interaction: { dragNodes: false, selectable: true }
     });
 
-    // CLIC DIRECTE: Torna a la vida
     network.on("click", function(params) {
         if (params.nodes.length > 0) {
             const selectedId = params.nodes[0];
-            document.getElementById('search').value = selectedId;
-            draw(selectedId);
+            if (fullData[selectedId]) {
+                document.getElementById('search').value = selectedId;
+                draw(selectedId);
+            }
         }
     });
 }
