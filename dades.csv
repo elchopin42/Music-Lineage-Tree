@@ -29,7 +29,7 @@ e_granados,Enric,Granados i Campiña,,"Granados, Enric",es,Lleida,1867,,Mer de l
 r_vines,Ricard,Viñes i Roda,,"Viñes, Ricard",es,Lleida,1875,es,Barcelona,1943,f_pedrell
 f_poulenc,Francis,Poulenc,,"Poulenc, Francis",fr,Paris,1899,fr,Paris,1979,r_vines
 g_punto,Jan Václav,Stich,Giovanni Punto,"Punto, Giovanni",cz,Žehušice,1746,cz,Praha,1803,
-c_schumann,Clara,Wieck,Clara Schumann,"Schumann, Clara",de,Leipzig,1819,de,Frankfurt am Main,1896,
+c_schumann,Clara,Wieck,Clara Schumann,"Schumann, Clara",de,Leipzig,1819,de,Frankfurt am Main,1896,"f_wieck,ct_weinlig"
 j_fabrega,Josep,Fàbrega,,"Fàbrega, Josep",es,Barcelona,,es,Barcelona,1791,
 m_garcia,Miguel,García,Padre Basilio,"García, Miguel",es,Madrid,ca.1790,es,Madrid,,
 e_bartoli,Erasmo,Bartoli,,"Bartoli, Erasmo",it,Gaeta,1606,it,Napoli,1656,
@@ -197,7 +197,7 @@ l_magenti,Leopold,Magenti i Chelvi,,"Magenti, Leopold",es,Alberic,1894,es,Valèn
 j_segui,Salvador,Seguí Pérez,,"Seguí, Salvador",es,Massanassa,1939,es,Massanassa,2004,"m_palau,l_magenti"
 e_zubeldia,Emiliana,de Zubeldía i Inda,,"Zubeldía, Emiliana de",es,Jaitz,1888,mx,Hermosillo,1987,"b_selva,v_indy,d_paque"
 j_witkowski,Jean,Witkowski,,"Witkowski, Jean",fr,Vouziers,1895,fr,Lyon,1953,"b_selva,gm_witkowski"
-n_boulanger,Juliette Nadia,Boulanger,,"Boulanger, Nadia",fr,Paris,1887,fr,Paris,1979,"g_faure,l_vierne,a_gedalge,p_vidal,cm_widor"
+n_boulanger,Nadia,Boulanger,,"Boulanger, Nadia",fr,Paris,1887,fr,Paris,1979,"g_faure,l_vierne,a_gedalge,p_vidal,cm_widor"
 s_panxa_verda,Salvador,García García,Panxa Verda,"García, Salvador",es,Beniopa,1891,es,Quart de Poblet,1964,"f_tarrega,m_palau"
 f_tarrega,Francesc d'Assís,Tàrrega Eixea,,"Tàrrega, Francesc",es,Vila-real,1852,es,Barcelona,1909,"m_galiana,j_arcas"
 j_rodrigo,Joaquín,Rodrigo i Vidre,,"Rodrigo, Joaquín",es,Sagunt,1901,es,Madrid,1999,"f_antich,p_dukas,m_emmanuel,a_pirro"
@@ -241,7 +241,7 @@ m_belles,Montserrat,Bellés Sagarminaga,,"Bellés, Montserrat",es,Vinaròs,1943,
 r_benedito,Rafael,Benedito Vives,,"Benedito, Rafael",es,València,1885,es,València,1963,
 f_beneto,Francisco,Benetó Martínez,,"Benetó, Francisco",es,Castelló de la Ribera,1877,pt,Lisboa,1945,"a_goni,j_white"
 a_blanquer,Amand,Blanquer Ponsoda,,"Blanquer, Amand",es,Alcoi,1935,es,València,2005,"m_palau,m_asins,o_messiaen,g_petrassi"
-h_bosch,Hermelando,Bosch Peris,,"Bosch, Hermelando",es,Alginet,1908,es,Montanejos,1990,"m_palau,j_latorre"
+h_bosch,Hermelando,Bosch Peris,,"Bosch, Hermelando",es,Alginet,1908,es,Montanejos,1990,"m_palau,j_latorre_rubio"
 f_cabo,Francesc,Cabo Arnal,,"Cabo, Francesc",es,Nàquera,1768,es,Nàquera,1832,"f_morera,r_angles"
 f_canto,Francesc,Cantó i Botella,,"Cantó, Francesc",es,Alcoi,1811,es,Alcoi,1886,
 r_casasempere,Rafael,Casasempere Juan,,"Casasempere, Rafael",es,Alcoi,1909,es,Alcoi,1995,
@@ -256,7 +256,7 @@ a_cotes,Ambrosio,Cotes,,"Cotes, Ambrosio",es,Villena,ca.1550,es,Sevilla,1603,
 r_ceballos,Rodrigo,de Ceballos,,"Ceballos, Rodrigo de",es,Aracena,ca.1534,es,Granada,1581,
 j_cuevas,Juan,Cuevas Perales,,"Cuevas, Juan",es,Guadassuar,1782,es,València,1855,"f_morera,j_pons"
 a_domingo,Adelina,Domingo Pons,,"Domingo, Adelina",es,Benifaió,1882,es,Benifaió,1905,"a_goni,j_monasterio,j_pinilla"
-o_espla,Òscar,Esplà Triay,,"Esplà, Òscar",es,Alacant,1886,es,Madrid,1976,"j_latorre,c_saint-saens,m_reger"
+o_espla,Òscar,Esplà Triay,,"Esplà, Òscar",es,Alacant,1886,es,Madrid,1976,"j_latorre_baeza,c_saint-saens,m_reger"
 g_pittaluga,Gustavo,Pittaluga González del Campillo,,"Pittaluga, Gustavo",es,Madrid,1906,es,Madrid,1975,o_espla
 j_villatoro,Joaquín,Villatoro Medina,,"Villatoro, Joaquín",es,Castro del Río,1911,es,Madrid,1987,"o_espla,c_campo,p_dukas,a_cortot,c_koechlin"
 v_estarelles,Vicente,Estarelles Úbeda,,"Estarelles, Vicente",es,Alfarrasí,1908,es,Calatayud,1984,m_palau
@@ -297,6 +297,32 @@ s_gea,Salvador,Gea Bañuls,,"Gea, Salvador",es,El Real de Gandia,1880,es,Valènc
 r_giner,Rafael,Giner Estruch,,"Giner, Rafael",es,Vilallonga,1912,es,Vilallonga,1997,
 jm_gomis,Josep Melcior,Gomis i Colomer,,"Gomis, Josep Melcior",es,Ontinyent,1791,fr,Paris,1836,j_pons
 jl_gonzalez,José Luis,González Julià,,"González, José Luis",es,Alcoi,1932,es,Madrid,1998,"s_panxa_verda,r_casasempere,r_sainz,a_segovia"
+js_mastropiero,Johann Sebastian,Mastropiero,,"Mastropiero, Johann Sebastian",ar,,1968,,,,
 f_grau,Francisco,Grau Vergara,,"Grau, Francisco",es,Bigastre,1947,es,Madrid,2019,
 jb_guzman,Joan Baptista,Guzmán i Martínez,Manuel Guzmán i Martínez,"Guzmán, Manuel",es,Aldaia,1846,es,Montserrat,1909,"jm_ubeda,j_piqueras"
 f_hernandez,Francisco,Hernández Illana,,"Hernández, Francisco",es,Alzira,ca.1700,es,Burgos,1780,
+p_insa,Josep,Insa Martínez,Pepito Insa Martínez,"Insa, Pepito",es,Cocentaina,1924,es,Cocentaina,2010,e_perez_margarit
+jm_izquierdo,Josep Manuel,Izquierdo Romeu,,"Izquierdo, Josep Manuel",es,Catarroja,1890,es,València,1951,
+j_ferriz,Josep,Ferriz i Llorens,,"Ferriz, Josep",es,Algemesí,1913,es,Bunyol,2002,jm_izquierdo
+m_just,Manuel,Just Verdaguer,,"Just, Manuel",es,Catarroja,1707,es,València,1787,p_rabassa
+j_latorre_baeza,Juan,Latorre Baeza,,"Latorre, Juan",es,Alacant,1868,es,Alacant,1941,
+j_latorre_rubio,Justiniano,Latorre Rubio,,"Latorre, Justiniano",es,Utiel,1892,es,Alginet,1958,
+f_llacer,Francesc,Llàcer Pla,,"Llàcer, Francesc",es,València,1918,es,València,2002,"m_palau,s_gea,jv_baguena"
+v_lleo,Vicent,Lleó i Balbastre,,"Lleó, Vicent",es,Torrent,1870,es,Madrid,1922,"s_giner,jb_plasencia,l_alonso"
+l_alonso,Lambert,Alonso i Torres,,"Alonso, Lambert",es,Godella,1863,es,Godella,1929,a_cotogni
+t_lopez_torregrosa,Tomàs,López Torregrosa,,"López Torregrosa, Tomàs",es,Alacant,1868,es,Madrid,1913,
+j_lloret,Jaime,Lloret Miralles,,"Lloret, Jaime",es,Alcoi,1933,es,Alcoi,2018,a_blanquer
+j_brahms,Johannes,Brahms,,"Brahms, Johannes",de,Hamborg,1833,at,Wien,1897,e_marxsen
+f_schubert,Franz,Schubert,,"Schubert, Franz",at,Wien,1797,at,Wien,1828,a_salieri
+f_liszt,Franz,Liszt,,"Liszt, Franz",at,Doborján,1811,de,Bayreuth,1886,"a_liszt,c_czerny,a_salieri,a_reicha,f_paer"
+r_schumann,Robert,Schumann,,"Schumann, Robert",de,Zwickau,1810,de,Endenich,1856,"f_wieck,h_dorn,jg_kuntzsch"
+f_mendelssohn,Felix,Mendelssohn Bartholdy,,"Mendelssohn, Felix",de,Hamborg,1809,de,Leipzig,1847,"kf_zelter,l_berger,m_bigot,l_mendelssohn,f_lauska,i_moscheles"
+f_hensel,Fanny,Mendelssohn,Fanny Hensel,"Mendelssohn, Fanny",de,Hamborg,1805,de,Berlin,1847,"m_bigot,l_berger,l_mendelssohn,f_lauska,kf_zelter"
+t_albinoni,Tomaso,Albinoni,,"Albinoni, Tomaso",it,Venèsia,1671,it,Venèsia,1751,g_legrenzi
+e_marfany,Enric,Marfany i Gosset,,"Marfany, Enric",ad,Sant Julià de Lòria,1877,es,Barcelona,1957,
+f_tapies,Francesc,Tàpies i Torres,,"Tàpies, Francesc",es,Oliana,1898,es,Tarragona,1985,"e_marfany,l_refice,r_manari,c_tournemire"
+j_rheinberger,Josef,Rheinberger,,"Rheinberger, Josef",li,Vaduz,1839,de,Minga,1901,"f_lachner,p_schmutzer"
+d_bartolucci,Domenico,Bartolucci,,"Bartolucci, Domenico",it,Borgo San Lorenzo,1917,it,Roma,2013,i_pizzetti
+l_perosi,Lorenzo,Perosi,,"Perosi, Lorenzo",it,Tortona,1872,it,Roma,1956,fz_haberl
+l_ferre,Léo,Ferré,,"Ferré, Léo",mc,Mu̍negu,1916,it,Castellina in Chianti,1993,
+fm_marini,Francesco Maria,Marini,,"Marini, Francesco Maria",it,Pés're,ca.1600,sm,Città di San Marino,,
