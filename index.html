@@ -24,14 +24,14 @@
     <select id="search"><option>Carregant dades...</option></select>
     
     <select id="lang-selector" onchange="changeLanguage(this.value)">
-        <option value="ca">Català</option>
-        <option value="es">Castellano</option>
         <option value="en">English</option>
         <option value="fr">Français</option>
-        <option value="it">Italiano</option>
+        <option value="nl">Nederlands</option>
         <option value="de">Deutsch</option>
         <option value="pt">Português</option>
-        <option value="nl">Nederlands</option>
+        <option value="es">Castellano</option>
+        <option value="ca">Català</option>
+        <option value="it">Italiano</option>        
     </select>
 </div>
 
@@ -40,17 +40,17 @@
 <script>
 // 1. DICCIONARI DE TRADUCCIONS
 const i18n = {
-    ca: { select: "-- Tria un compositor --", pending: "Entrada pendent", search: "Cerca:" },
-    es: { select: "-- Elige un compositor --", pending: "Entrada pendiente", search: "Buscar:" },
     en: { select: "-- Choose a composer --", pending: "Pending entry", search: "Search:" },
     fr: { select: "-- Choisir un compositeur --", pending: "Entrée en attente", search: "Chercher:" },
-    it: { select: "-- Scegli un compositore --", pending: "Voce in attesa", search: "Cerca:" },
+    nl: { select: "-- Kies een componist --", pending: "In afwachting", search: "Zoeken:" }
     de: { select: "-- Komponisten wählen --", pending: "Eintrag ausstehend", search: "Suche:" },
     pt: { select: "-- Escolha um compositor --", pending: "Entrada pendente", search: "Procurar:" },
-    nl: { select: "-- Kies een componist --", pending: "In afwachting", search: "Zoeken:" }
+    es: { select: "-- Elige un compositor --", pending: "Entrada pendiente", search: "Buscar:" },
+    ca: { select: "-- Tria un compositor --", pending: "Entrada pendent", search: "Cerca:" },
+    it: { select: "-- Scegli un compositore --", pending: "Voce in attesa", search: "Cerca:" },
 };
 
-let currentLang = 'ca'; 
+let currentLang = 'en'; 
 let network = null;
 let fullData = {};
 
