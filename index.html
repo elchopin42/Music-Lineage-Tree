@@ -84,19 +84,14 @@ function crearNode(id, level) {
         const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
         const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
 
-        // Construïm l'etiqueta neta
-        let label = `<b>${title}</b>${sub}\n` +
+        // Indicadors de fletxa (fora del flux de text principal)
+        let arrowUp = (level < 0 && teMestres) ? "<div style='text-align:center; font-size:18px; line-height:10px;'>▲</div>" : "";
+        let arrowDown = (level > 0 && teAlumnes) ? "<div style='text-align:center; font-size:18px; line-height:10px;'>▼</div>" : "";
+
+        // Etiqueta amb fletxes dalt i baix si correspon
+        let label = `${arrowUp}<b>${title}</b>${sub}\n` +
                    `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-                   `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})`;
-
-        // Afegim indicadors visuals EXTERNS mitjançant l'estil del node
-        let borderWidth = 1;
-        let borderDash = false;
-
-        // Si té continuïtat, fem la vora més gruixuda o especial
-        if ((level < 0 && teMestres) || (level > 0 && teAlumnes)) {
-            borderWidth = 4; // Vora gruixuda per indicar que "hi ha més"
-        }
+                   `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${arrowDown}`;
 
         nodes.push({
             id: id,
@@ -106,13 +101,10 @@ function crearNode(id, level) {
             font: { multi: 'html', size: 14 },
             color: { 
                 background: bgColor, 
-                border: borderColor,
-                highlight: { background: bgColor, border: borderColor } 
+                border: borderColor 
             },
-            borderWidth: borderWidth, // Aquí indiquem visualment la continuïtat
-            margin: 10,
-            // Afegim una petita ombra si té continuïtat per a que destaque
-            shadow: ((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? { enabled: true, color: 'rgba(0,0,0,0.2)', size: 10, x: 5, y: 5 } : false
+            borderWidth: ((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1,
+            margin: 10
         });
     }
 
