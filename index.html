@@ -25,13 +25,13 @@
 let network = null;
 let fullData = {};
 
-// Converteix "ES" a emoji 🇪🇸
+// Converteix codis ISO (com "ES", "CA", "FR") directament a l'emoji de la bandera oficial
 function codeToEmoji(code) {
     if (!code || code.length !== 2) return code || "";
-    if (code.toLowerCase() === 'ca' || code.toLowerCase() === 'ct') return "🚩";
+    // Simplement convertim el codi de 2 lletres a l'emoji regional estàndard
     return code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
 }
-
+    
 // Carrega el CSV
 Papa.parse("dades.csv", {
     download: true, header: true, skipEmptyLines: true,
