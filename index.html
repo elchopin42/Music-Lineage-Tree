@@ -273,17 +273,17 @@ function crearNode(id, level, nodesArray) {
 
     nodesArray.push({
         id: id,
-        label: `${indicadorDalt}<b>${title}</b>${sub}\n` +
-               `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
-               `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`,
-        shape: 'box', 
-        level: level, 
+        label: label,
+        shape: 'box',
+        level: level,
         font: { multi: 'html', size: fontSize, align: 'center' },
         color: { background: bgColor, border: borderColor },
         borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1),
         margin: 10,
-        // Limitem l'amplària perquè els noms llargs salten de línia i el graf no siga tan ample
-        widthConstraint: { maximum: 180 }
+        
+        // Condició: Si és el node central (level 0), no li posem límit (false)
+        // Si és qualsevol altre node, li posem el límit de 180 per estalviar espai
+        widthConstraint: level === 0 ? false : { maximum: 200 }
     });
 }
 
@@ -302,7 +302,7 @@ function draw(rootId) {
                 label: `<b>${tId}</b>\n<i>(${i18n[currentLang].pending})</i>`,
                 shape: 'box', level: -1, font: { multi: 'html', size: 14, color: '#666666' },
                 color: { background: '#eeeeee', border: '#cccccc' }, borderDash: [5, 5], margin: 10,
-                widthConstraint: { maximum: 180 }
+                widthConstraint: { maximum: 200 }
             });
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#cccccc' });
         }
