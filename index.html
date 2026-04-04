@@ -271,7 +271,7 @@ function crearNode(id, level, nodesArray) {
     // Mida de font ampliada per a millor lectura en mòbil
     const fontSize = level === 0 ? 22 : 16;
 
-    nodesArray.push({
+nodesArray.push({
         id: id,
         label: label,
         shape: 'box',
@@ -281,9 +281,9 @@ function crearNode(id, level, nodesArray) {
         borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1),
         margin: 10,
         
-        // Condició: Si és el node central (level 0), no li posem límit (false)
-        // Si és qualsevol altre node, li posem el límit de 180 per estalviar espai
-        widthConstraint: level === 0 ? false : { maximum: 200 }
+        // Si és el central (level 0), li donem 600px (pràcticament infinit)
+        // Si és un altre, li donem els 200px que volies
+        widthConstraint: { maximum: level === 0 ? 600 : 200 }
     });
 }
 
