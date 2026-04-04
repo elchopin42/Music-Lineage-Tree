@@ -2,51 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Musical Lineage Tree</title>
     <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-<style>
-    body { font-family: sans-serif; margin: 0; background: #f4f7f6; overflow: hidden; }
-    header { background: #2c3e50; color: white; padding: 10px; text-align: center; position: relative; }
-    header h1 { font-size: 1.2rem; margin: 0; display: flex; justify-content: center; align-items: center; }
-
-    #controls { 
-        padding: 10px; 
-        background: white; 
-        border-bottom: 1px solid #ccc; 
-        display: flex; 
-        flex-wrap: wrap; 
-        justify-content: center; 
-        align-items: center; 
-        gap: 10px; 
-    }
-
-    /* El cercador ara s'adapta a l'ample disponible */
-    #search { width: 100%; max-width: 300px; padding: 8px; font-size: 16px; }
-    #lang-selector { padding: 8px; font-size: 16px; }
-    
-    #mynetwork { width: 100%; height: calc(100vh - 140px); background: white; }
-    
-    /* MODAL RESPONSIVE */
-    .modal-content { 
-        background: white; 
-        margin: 5% auto; 
-        padding: 20px; 
-        width: 85%; /* Més ample en mòbil */
-        max-height: 80vh;
-        overflow-y: auto;
-        border-radius: 12px; 
-    }
-
-    /* AJUSTS PER A MÒBIL */
-    @media (max-width: 600px) {
-        #controls { flex-direction: column; padding: 5px; }
-        #search { width: 90%; }
-        header h1 { font-size: 1rem; }
-        .modal-content { width: 90%; padding: 15px; margin: 2% auto; }
-    }
-</style>
+    <style>
+        body { font-family: sans-serif; margin: 0; background: #f4f7f6; }
+        header { background: #2c3e50; color: white; padding: 10px; text-align: center; position: relative; }
+        #controls { padding: 15px; text-align: center; background: white; border-bottom: 1px solid #ccc; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        select { padding: 8px; font-size: 16px; border-radius: 4px; border: 1px solid #ccc; }
+        #search { width: 300px; }
+        #mynetwork { width: 100%; height: calc(100vh - 130px); background: white; }
+        label { font-weight: bold; }
+        
+        /* Estils per al Modal (Informació) */
+        #modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); }
+        .modal-content { background: white; margin: 5% auto; padding: 30px; width: 60%; max-width: 700px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); line-height: 1.6; }
+        .modal-content h2 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .modal-content ul { padding-left: 20px; }
+        .modal-content li { margin-bottom: 10px; }
+        .close-btn { background: #2c3e50; color: white; padding: 10px 25px; border: none; border-radius: 4px; cursor: pointer; float: right; font-weight: bold; }
+        .info-icon { background: none; border: 1px solid white; color: white; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; font-size: 16px; margin-left: 10px; transition: 0.3s; }
+        .info-icon:hover { background: white; color: #2c3e50; }
+    </style>
 </head>
 <body>
 
@@ -295,29 +272,39 @@ function draw(rootId) {
     const nodes = [];
     const edges = [];
     crearNode(rootId, 0, nodes);
-    
-    // ... (aquí aniria tota la lògica de mestres i alumnes que ja tens) ...
-
+    fullData[rootId].teachers.forEach(tId => {
+        if (fullData[tId]) {
+            crearNode(tId, -1, nodes);
+            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#fa8c16' });
+        } else {
+            nodes.push({
+                id: tId,
+                label: `<b>${tId}</b>\n<i>(${i18n[currentLang].pending})</i>`,
+                shape: 'box', level: -1, font: { multi: 'html', size: 12, color: '#666666' },
+                color: { background: '#eeeeee', border: '#cccccc' }, borderDash: [5, 5], margin: 10
+            });
+            edges.push({ from: tId, to: rootId, arrows: 'to', color: '#cccccc' });
+        }
+    });
+    Object.keys(fullData).filter(sId => fullData[sId].teachers.includes(rootId)).sort((a, b) => {
+        const parseYear = (id) => {
+            const yearStr = fullData[id].BIRTH_YEAR;
+            if (!yearStr) return 9999;
+            const match = yearStr.match(/\d+/);
+            return match ? parseInt(match[0]) : 9999;
+        };
+        const yearA = parseYear(a), yearB = parseYear(b);
+        return yearA === yearB ? (fullData[a].SURNAME || "").localeCompare(fullData[b].SURNAME || "") : yearA - yearB;
+    }).forEach(sId => {
+        crearNode(sId, 1, nodes);
+        edges.push({ from: rootId, to: sId, arrows: 'to', color: '#52c41a' });
+    });
     const container = document.getElementById('mynetwork');
     if (network) network.destroy();
-    
-    // Creem la xarxa
     network = new vis.Network(container, { nodes, edges }, {
         layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
-        physics: false, 
-        interaction: { dragNodes: false, selectable: true }
+        physics: false, interaction: { dragNodes: false, selectable: true }
     });
-
-    // --- AQUÍ ESTÀ EL TRUC PER AL MÒBIL ---
-    // Aquest codi s'executa UNA VEGADA quan la xarxa ha acabat de dibuixar-se
-    network.once("afterDrawing", function() {
-        network.fit({
-            animation: { duration: 500, easingFunction: 'easeInOutQuad' }
-        });
-    });
-    // --------------------------------------
-
-    // Després ve el codi del clic que ja tenies
     network.on("click", function(params) {
         if (params.nodes.length > 0) {
             const selectedId = params.nodes[0];
