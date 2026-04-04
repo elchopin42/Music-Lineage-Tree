@@ -7,23 +7,51 @@
     <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { font-family: sans-serif; margin: 0; background: #f4f7f6; }
-        header { background: #2c3e50; color: white; padding: 10px; text-align: center; position: relative; }
-        #controls { padding: 15px; text-align: center; background: white; border-bottom: 1px solid #ccc; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        body { font-family: sans-serif; margin: 0; background: #f4f7f6; overflow-x: hidden; }
+        header { background: #2c3e50; color: white; padding: 15px; text-align: center; position: relative; }
+        header h1 { font-size: 1.4rem; margin: 0; display: flex; justify-content: center; align-items: center; }
+        
+        #controls { 
+            padding: 10px; 
+            background: white; 
+            border-bottom: 1px solid #ccc; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 10px; 
+        }
+
         select { padding: 8px; font-size: 16px; border-radius: 4px; border: 1px solid #ccc; }
-        #search { width: 300px; }
-        #mynetwork { width: 100%; height: calc(100vh - 130px); background: white; }
+        #search { width: 100%; max-width: 350px; }
+        #mynetwork { width: 100%; height: calc(100vh - 160px); background: white; }
         label { font-weight: bold; }
         
-        /* Estils per al Modal (Informació) */
+        /* Estils per al Modal */
         #modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); }
-        .modal-content { background: white; margin: 5% auto; padding: 30px; width: 60%; max-width: 700px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); line-height: 1.6; }
+        .modal-content { 
+            background: white; 
+            margin: 5% auto; 
+            padding: 25px; 
+            width: 85%; 
+            max-width: 700px; 
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 12px; 
+            line-height: 1.6; 
+        }
         .modal-content h2 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .modal-content ul { padding-left: 20px; }
-        .modal-content li { margin-bottom: 10px; }
-        .close-btn { background: #2c3e50; color: white; padding: 10px 25px; border: none; border-radius: 4px; cursor: pointer; float: right; font-weight: bold; }
-        .info-icon { background: none; border: 1px solid white; color: white; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; font-size: 16px; margin-left: 10px; transition: 0.3s; }
-        .info-icon:hover { background: white; color: #2c3e50; }
+        .close-btn { background: #2c3e50; color: white; padding: 10px 25px; border: none; border-radius: 4px; cursor: pointer; float: right; }
+        .info-icon { background: none; border: 1px solid white; color: white; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; font-size: 16px; margin-left: 10px; }
+
+        /* AJUSTS ESPECÍFICS PER A MÒBIL */
+        @media (max-width: 600px) {
+            #controls { flex-direction: column; padding: 15px; }
+            #label-search { display: none; } /* Ocultem "Search" per estalviar espai */
+            #search { width: 100%; }
+            header h1 { font-size: 1.1rem; }
+            .modal-content { width: 90%; margin: 2% auto; padding: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -66,114 +94,98 @@
 const i18n = {
     en: {
         select: "-- Choose a composer --", pending: "Pending entry", search: "Search:", loading: "Loading data...",
-        about_title: "Project Information",
-        intro: "Interactive database exploring the pedagogical connections and lineage between composers and musicians through history.",
-        close: "Close",
-        rules: [
+        about_title: "Project Information", intro: "Interactive database exploring the pedagogical connections and lineage between composers and musicians through history.",
+        close: "Close", rules: [
             "All names of composers and cities are in their original language.",
             "For names and places originally in Cyrillic, Arabic, or other non-Latin alphabets, English transliteration has been used.",
             "Flags refer to the current country of each city, rather than the historical state or empire to which it belonged at the time.",
             "In the case of disputed territories, the flag of the country currently in de facto control of the area has been used.",
             "Dates of birth and death for Russian composers may not be exact due to the historical use of the Julian calendar.",
-            "This project only includes composers who passed away before the year 2026. Therefore, any deaths occurring after this date may not be reflected in the current data."
+            "This project only includes composers who passed away before the year 2026."
         ]
     },
     fr: {
         select: "-- Choisir un compositeur --", pending: "Entrée en attente", search: "Chercher:", loading: "Chargement...",
-        about_title: "À propos du projet",
-        intro: "Base de données interactive explorant les connexions pédagogiques et la lignée entre compositeurs et musiciens à travers l'histoire.",
-        close: "Fermer",
-        rules: [
+        about_title: "À propos du projet", intro: "Base de données interactive explorant les connexions pédagogiques et la lignée entre compositeurs et musiciens.",
+        close: "Fermer", rules: [
             "Tous les noms de compositeurs et de villes sont dans leur langue d'origine.",
-            "Pour les noms et lieux originellement en alphabets cyrillique, arabe ou autres non latins, la translittération anglaise a été utilisée.",
-            "Les drapeaux font référence au pays actuel de chaque ville, plutôt qu'à l'état historique ou à l'empire auquel elle appartenait à l'époque.",
-            "Dans le cas de territoires contestés, le drapeau du pays exerçant actuellement un contrôle de facto sur la zone a été utilisé.",
-            "Les dates de naissance et de décès des compositeurs russes peuvent ne pas être exactes en raison de l'utilisation historique du calendrier julien.",
-            "Ce projet inclut uniquement les compositeurs décédés avant l'année 2026. Par conséquent, tout décès survenant après cette date peut ne pas être reflété."
+            "Pour les alphabets non latins, la translittération anglaise a été utilisée.",
+            "Les drapeaux font référence au pays actuel de chaque ville.",
+            "Pour les territoires contestés, le drapeau du contrôle de facto est utilisé.",
+            "Les dates pour les Russes peuvent varier (calendrier julien).",
+            "Seuls les compositeurs décédés avant 2026 sont inclus."
         ]
     },
     nl: {
         select: "-- Kies een componist --", pending: "In afwachting", search: "Zoeken:", loading: "Laden...",
-        about_title: "Over het project",
-        intro: "Interactieve database die de pedagogische verbindingen en afstamming tussen componisten en muzikanten door de geschiedenis heen verkent.",
-        close: "Sluiten",
-        rules: [
-            "Alle namen van componisten en steden zijn in hun oorspronkelijke taal.",
-            "Voor namen en plaatsen die oorspronkelijk in het Cyrillisch, Arabisch of andere niet-Latijnse alfabetten waren, is de Engelse transliteratie gebruikt.",
-            "Vlaggen verwijzen naar het huidige land van elke stad, in plaats van de historische staat of het rijk waartoe het destijds behoorde.",
-            "In het geval van betwiste gebieden is de vlag gebruikt van het land dat momenteel de feitelijke controle over het gebied heeft.",
-            "Geboorte- en overlijdensdata van Russische componisten zijn mogelijk niet exact vanwege het historische gebruik van de Juliaanse kalender.",
-            "Dit project omvat alleen componisten die vóór het jaar 2026 zijn overleden. Overlijdens na deze datum zijn mogelijk niet verwerkt."
+        about_title: "Over het project", intro: "Interactieve database die de pedagogische verbindingen en afstamming tussen muzikanten verkent.",
+        close: "Sluiten", rules: [
+            "Alle namen zijn in de oorspronkelijke taal.",
+            "Engelse transliteratie voor niet-Latijnse alfabetten.",
+            "Vlaggen verwijzen naar het huidige land.",
+            "De facto controle vlag voor betwiste gebieden.",
+            "Juliaanse kalender kan data van Russen beïnvloeden.",
+            "Inclusief overledenen vóór 2026."
         ]
     },
     de: {
         select: "-- Komponisten wählen --", pending: "Eintrag ausstehend", search: "Suche:", loading: "Laden...",
-        about_title: "Über das Projekt",
-        intro: "Interaktive Datenbank zur Erforschung der pädagogischen Verbindungen und Abstammungslinien zwischen Komponisten und Musikern im Laufe der Geschichte.",
-        close: "Schließen",
-        rules: [
-            "Alle Namen von Komponisten und Städten sind in ihrer Originalsprache verfasst.",
-            "Für Namen und Orte, die ursprünglich in kyrillischen, arabischen oder anderen nicht-lateinischen Alphabeten verfasst waren, wurde die englische Transliteration verwendet.",
-            "Flaggen beziehen sich auf das heutige Land jeder Stadt und nicht auf den historischen Staat oder das Reich, dem sie damals angehörte.",
-            "Im Falle umstrittener Gebiete wurde die Flagge des Landes verwendet, das derzeit die faktische Kontrolle über das Gebiet ausübt.",
-            "Geburts- und Sterbedaten russischer Komponisten sind aufgrund der historischen Verwendung des julianischen Kalenders möglicherweise nicht exakt.",
-            "Dieses Projekt berücksichtigt nur Komponisten, die vor dem Jahr 2026 verstorben sind."
+        about_title: "Über das Projekt", intro: "Interaktive Datenbank zur Erforschung der pädagogischen Verbindungen zwischen Musikern.",
+        close: "Schließen", rules: [
+            "Namen in der Originalsprache.",
+            "Englische Transliteration für nicht-lateinische Schriften.",
+            "Flaggen beziehen sich auf das heutige Land.",
+            "De-facto-Kontrolle bei umstrittenen Gebieten.",
+            "Russische Daten können aufgrund des julianischen Kalenders abweichen.",
+            "Nur Komponisten, die vor 2026 verstorben sind."
         ]
     },
     pt: {
         select: "-- Escolha um compositor --", pending: "Entrada pendente", search: "Procurar:", loading: "Carregando...",
-        about_title: "Sobre o Projeto",
-        intro: "Base de dados interativa que explora as conexões pedagógicas e a linhagem entre compositores e músicos ao longo da história.",
-        close: "Fechar",
-        rules: [
-            "Todos os nomes de compositores e cidades estão na sua língua original.",
-            "Para nomes e locais originalmente em alfabetos cirílico, árabe ou outros não latinos, foi utilizada a transliteração para o inglês.",
-            "As bandeiras referem-se ao país atual de cada cidade, e não ao estado ou império histórico a que pertencia na época.",
-            "No caso de territórios em disputa, foi utilizada a bandeira do país que detém atualmente o controlo de facto da área.",
-            "As datas de nascimento e morte de compositores russos podem não ser exatas devido ao uso histórico do calendário juliano.",
-            "Este projeto inclui apenas compositores que faleceram antes do ano 2026."
+        about_title: "Sobre o Projeto", intro: "Base de dados interativa sobre conexões pedagógicas entre músicos.",
+        close: "Fechar", rules: [
+            "Nomes na língua original.",
+            "Transliteração inglesa para alfabetos não latinos.",
+            "Bandeiras do país atual.",
+            "Bandeira de controlo de facto para áreas em disputa.",
+            "Datas russas podem variar (calendário juliano).",
+            "Apenas finados antes de 2026."
         ]
     },
     es: {
         select: "-- Elige un compositor --", pending: "Entrada pendiente", search: "Buscar:", loading: "Cargando...",
-        about_title: "Sobre el Proyecto",
-        intro: "Base de datos interactiva que explora las conexiones pedagógicas y el linaje entre compositores y músicos a lo largo de la historia.",
-        close: "Cerrar",
-        rules: [
-            "Todos los nombres de compositores y ciudades están en su idioma original.",
-            "Para nombres y lugares originalmente en alfabetos cirílico, árabe u otros no latinos, se ha utilizado la transliteración al inglés.",
-            "Las banderas se refieren al país actual de cada ciudad, en lugar del estado o imperio histórico al que pertenecía en su momento.",
-            "En caso de territorios en disputa, se ha utilizado la bandera del país que actualmente tiene el control de facto del área.",
-            "Las fechas de nacimiento y muerte de los compositores rusos pueden no ser exactas debido al uso histórico del calendario juliano.",
-            "Este proyecto solo incluye compositores fallecidos antes del año 2026."
+        about_title: "Sobre el Proyecto", intro: "Base de datos interactiva que explora las conexiones pedagógicas entre músicos.",
+        close: "Cerrar", rules: [
+            "Nombres en su idioma original.",
+            "Translitesración al inglés para alfabetos no latinos.",
+            "Banderas del país actual.",
+            "Control de facto para territorios en disputa.",
+            "Calendario juliano puede afectar fechas rusas.",
+            "Solo fallecidos antes de 2026."
         ]
     },
     ca: {
         select: "-- Tria un compositor --", pending: "Entrada pendent", search: "Cerca:", loading: "Carregant...",
-        about_title: "Sobre el Projecte",
-        intro: "Base de dades interactiva que explora les connexions pedagògiques i el llinatge entre compositors i músics al llarg de la història.",
-        close: "Tancar",
-        rules: [
-            "Tots els noms de compositors i ciutats estan en el seu idioma original.",
-            "Per a noms i llocs originalment en alfabets ciríl·lic, àrab o altres no llatins, s'ha utilitzat la transliteració a l'anglès.",
-            "Les banderes es refereixen al país actual de cada ciutat, en lloc de l'estat o imperi històric al qual pertanyia en el seu moment.",
-            "En cas de territoris en disputa, s'ha utilitzat la bandera del país que actualment té el control de facto de l'àrea.",
-            "Les dates de naixement i mort dels compositors russos poden no ser exactes a causa de l'ús històric del calendari julià.",
-            "Aquest projecte només inclou compositors finats abans de l'any 2026."
+        about_title: "Sobre el Projecte", intro: "Base de dades interactiva que explora les connexions pedagògiques entre músics.",
+        close: "Tancar", rules: [
+            "Noms en l'idioma original.",
+            "Transliteració a l'anglès per a alfabets no llatins.",
+            "Banderes del país actual.",
+            "Control de facto per a territoris en disputa.",
+            "El calendari julià pot afectar dates russes.",
+            "Només finats abans de 2026."
         ]
     },
     it: {
         select: "-- Scegli un compositore --", pending: "Voce in attesa", search: "Cerca:", loading: "Caricamento...",
-        about_title: "Informazioni sul progetto",
-        intro: "Database interattivo che esplora le connessioni pedagogiche e la stirpe tra compositori e musicisti attraverso la storia.",
-        close: "Chiudi",
-        rules: [
-            "Tutti i nomi di compositori e città sono nella loro lingua originale.",
-            "Per i nomi e i luoghi originariamente in alfabeti cirillico, arabo o altri non latini, è stata utilizzata la traslitterazione inglese.",
-            "Le bandiere si riferiscono allo stato attuale di ogni città, piuttosto che allo stato storico o all'impero a cui apparteneva all'epoca.",
-            "Nel caso di territoris contesi, è stata utilizzata la bandiera del paese che attualmente detiene il controllo de facto dell'area.",
-            "Le date di nascita e morte dei compositori russi potrebbero no essere esatte a causa dell'uso storico del calendario giuliano.",
-            "Questo progetto include solo compositori scomparsi prima dell'anno 2026."
+        about_title: "Informazioni sul progetto", intro: "Database interattivo sulle connessioni pedagogiche tra musicisti.",
+        close: "Chiudi", rules: [
+            "Nomi in lingua originale.",
+            "Traslitterazione inglese per alfabeti non latini.",
+            "Bandiere del paese attuale.",
+            "Controllo de facto per territori contesi.",
+            "Il calendario giuliano può influire sulle date russe.",
+            "Solo scomparsi prima del 2026."
         ]
     }
 };
@@ -255,16 +267,23 @@ function crearNode(id, level, nodesArray) {
     const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
     let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
     let indicadorBaix = (level > 0 && teAlumnes) ? "\n▼" : "";
+    
+    // Mida de font ampliada per a millor lectura en mòbil
     const fontSize = level === 0 ? 22 : 16;
+
     nodesArray.push({
         id: id,
         label: `${indicadorDalt}<b>${title}</b>${sub}\n` +
                `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
                `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`,
-        shape: 'box', level: level, font: { multi: 'html', size: fontSize, align: 'center' },
+        shape: 'box', 
+        level: level, 
+        font: { multi: 'html', size: fontSize, align: 'center' },
         color: { background: bgColor, border: borderColor },
         borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1),
-        margin: 10
+        margin: 10,
+        // Limitem l'amplària perquè els noms llargs salten de línia i el graf no siga tan ample
+        widthConstraint: { maximum: 180 }
     });
 }
 
@@ -281,8 +300,9 @@ function draw(rootId) {
             nodes.push({
                 id: tId,
                 label: `<b>${tId}</b>\n<i>(${i18n[currentLang].pending})</i>`,
-                shape: 'box', level: -1, font: { multi: 'html', size: 12, color: '#666666' },
-                color: { background: '#eeeeee', border: '#cccccc' }, borderDash: [5, 5], margin: 10
+                shape: 'box', level: -1, font: { multi: 'html', size: 14, color: '#666666' },
+                color: { background: '#eeeeee', border: '#cccccc' }, borderDash: [5, 5], margin: 10,
+                widthConstraint: { maximum: 180 }
             });
             edges.push({ from: tId, to: rootId, arrows: 'to', color: '#cccccc' });
         }
@@ -303,7 +323,7 @@ function draw(rootId) {
     const container = document.getElementById('mynetwork');
     if (network) network.destroy();
     network = new vis.Network(container, { nodes, edges }, {
-        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 300 } },
+        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 250 } },
         physics: false, interaction: { dragNodes: false, selectable: true }
     });
     network.on("click", function(params) {
