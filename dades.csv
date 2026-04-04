@@ -326,3 +326,39 @@ d_bartolucci,Domenico,Bartolucci,,"Bartolucci, Domenico",it,Borgo San Lorenzo,19
 l_perosi,Lorenzo,Perosi,,"Perosi, Lorenzo",it,Tortona,1872,it,Roma,1956,fz_haberl
 l_ferre,Léo,Ferré,,"Ferré, Léo",mc,Mu̍negu,1916,it,Castellina in Chianti,1993,
 fm_marini,Francesco Maria,Marini,,"Marini, Francesco Maria",it,Pés're,ca.1600,sm,Città di San Marino,,
+a_marcello,Alessandro,Marcello,,"Marcello, Alessandro",it,Venèsia,1673,it,Venèsia,1747,
+b_marcello,Benedetto,Marcello,,"Marcello, Benedetto",it,Venèsia,1686,it,Brèsa,1739,"f_gasparini,a_lotti"
+b_galuppi,Baldassare,Galuppi,,"Galuppi, Baldassare",it,Burano,1706,it,Venèsia,1785,"b_marcello,a_lotti"
+gb_serini,Giovanni Battista,Serini,,"Serini, Giovanni Battista",it,Cremona,ca.1724,it,,,b_galuppi
+a_adolfati,Andrea,Adolfati,,"Adolfati, Andrea",it,Venèsia,1721,it,Pàdoa,1760,b_galuppi
+c_petzold,Christian,Petzold,,"Petzold, Christian",de,Königstein,1677,de,Dresden,1733,
+ch_graun,Carl Heinrich,Graun,,"Graun, Carl Heinrich",de,Wahrenbrück,1704,de,Berlin,1759,"c_petzold,jc_smith,jz_grundid"
+jg_graun,Johann Gottlieb,Graun,,"Graun, Johann Gottlieb",de,Wahrenbrück,1703,de,Berlin,1771,"c_petzold,jg_pisendel,g_tartini"
+n_grenon,Nicolas,Grenon,,"Grenon, Nicolas",fr,,ca.1375,fr,Cambrai,1456,
+g_dufay,Guillaume,Dufay,,"Dufay, Guillaume",be,Beersel,ca.1397,fr,Cambrai,1474,"n_grenon,r_loqueville"
+r_loqueville,Richard,Loqueville,,"Loqueville, Richard",fr,,,fr,Cambrai,1418,
+g_binchois,Gilles,Binchois,,"Binchois, Gilles",be,Mons,ca.1400,fr,Soignies,1450,g_dufay
+j_ockeghem,Johannes,Ockeghem,,"Ockeghem, Johannes",be,Saint-Ghislain,ca.1410,fr,Tours,1497,g_binchois
+j_prioris,Johannes,Prioris,,"Prioris, Johannes",be,,ca.1460,fr,,1514,j_ockeghem
+j_ghiselin,Johannes,Ghiselin,,"Ghiselin, Johannes",be,,ca.1455,be,,ca.1510,j_ockeghem
+j_des_pres,Josquin,Des Prés,,"Des Prés, Josquin",fr,Beaurevoir,ca.1450,fr,Condé-sur-l'Escaut,1521,j_ockeghem
+j_mouton,Jean,Mouton,,"Mouton, Jean",fr,Samer,1459,fr,Saint-Quentin,1522,j_des_pres
+j_richafort,Jean,Richafort,,"Richafort, Jean",be,,ca.1480,be,Brugge,1547,
+a_willaert,Adrian,Willaert,,"Willaert, Adrian",be,Rumbeke,ca.1490,it,Venèsia,1562,j_mouton
+g_zarlino,Gioseffo,Zarlino,,"Zarlino, Gioseffo",it,Cióxa,1517,it,Venèsia,1590,a_willaert
+h_glarean,Heinrich,Glarean,Henricus Glareanus,"Glarean, Heinrich",ch,Mollis,1488,de,Friburg im Brisgau,1563,
+o_lassus,Roland,de Lassus,Orlando di Lasso,"Lasso, Orlando di",be,Mons,ca.1532,de,Minga,1594,h_reggio
+h_lantins,Hugo,de Lantins,,"Lantins, Hugo de",be,,ca.1400,,,,j_ciconia
+j_ciconia,Johannes,Ciconia,,"Ciconia, Johannes",be,Lîdje,ca.1370,it,Pàdoa,1412,
+j_regis,Johannes,Koninck,Johannes Regis,"Regis, Johannes",be,,ca.1425,be,Soignies,1496,g_dufay
+j_obrecht,Jacob,Obrecht,,"Obrecht, Jacob",be,Gent,1457,it,Fràra,1505,
+j_dunstable,John,Dunstable,,"Dunstable, John",gb,,ca.1390,gb,London,1453,
+l_power,Leonel,Power,,"Power, Leonel",gb,Kent,ca.1375,gb,Canterbury,1445,
+p_vitry,Philippe,de Vitry,,"Vitry, Philippe de",fr,Paris,1291,fr,Meaux,1361,
+leonin,Léonin,,,Léonin,fr,Paris,ca.1135,fr,Paris,ca.1201,
+perotin,Pérotin,,,Pérotin,fr,Paris,ca.1155,fr,,ca.1230,
+anonymous_IV,Anonymous,IV,,Anonymous IV,gb,,,,,,"leonin,perotin"
+f_koln,Franco,von Köln,Franco Teutonicus,"Köln, Franco von",de,,,,,,j_garlande
+j_garlande,Jean,de Garlande,Johannes Gallicus,"Garlande, Jean de",fr,,ca.1270,fr,,1320,perotin
+g_machaut,Guillaume,de Machaut,,"Machaut, Guillaume de",fr,Reims,ca.1300,fr,Reims,1377,p_vitry
+j_muris,Johannes,de Muris,,"Muris, Johannes de",fr,Paris,,fr,Paris,,p_vitry
