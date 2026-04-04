@@ -286,7 +286,7 @@ function crearNode(id, level, nodesArray) {
         level: level,
         font: { multi: 'html', size: fontSize, align: 'center' },
         color: { background: bgColor, border: borderColor },
-        borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1),
+        borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 2 : 1),
         margin: 10,
         // ARA SÍ: Central ample (600), resta estret (200)
         widthConstraint: { maximum: level === 0 ? 600 : 200 }
@@ -329,7 +329,7 @@ function draw(rootId) {
     const container = document.getElementById('mynetwork');
     if (network) network.destroy();
     network = new vis.Network(container, { nodes, edges }, {
-        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 150, nodeSpacing: 250 } },
+        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 220, nodeSpacing: 250 } },
         physics: false, interaction: { dragNodes: false, selectable: true }
     });
     network.on("click", function(params) {
