@@ -272,7 +272,7 @@ function crearNode(id, level, nodesArray) {
     let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
     let indicadorBaix = (level > 0 && teAlumnes) ? "\n▼" : "";
     
-    const fontSize = level === 0 ? 22 : 16;
+    const fontSize = level === 0 ? 24 : 16;
 
     // DEFINIM LA VARIABLE LABEL (Això és el que faltava)
     const nodeLabel = `${indicadorDalt}<b>${title}</b>${sub}\n` +
@@ -286,7 +286,7 @@ function crearNode(id, level, nodesArray) {
         level: level,
         font: { multi: 'html', size: fontSize, align: 'center' },
         color: { background: bgColor, border: borderColor },
-        borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 2 : 1),
+        borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 1.5 : 1),
         margin: 10,
         // ARA SÍ: Central ample (600), resta estret (200)
         widthConstraint: { maximum: level === 0 ? 600 : 200 }
