@@ -259,30 +259,36 @@ Papa.parse("dades.csv", {
 function crearNode(id, level, nodesArray) {
     const c = fullData[id];
     if (!c) return;
+
     const bgColor = level === 0 ? '#e6f7ff' : (level < 0 ? '#fff7e6' : '#f6ffed');
     const borderColor = level === 0 ? '#1890ff' : (level < 0 ? '#fa8c16' : '#52c41a');
+    
     const teMestres = c.teachers && c.teachers.length > 0;
     const teAlumnes = Object.keys(fullData).some(sId => fullData[sId].teachers.includes(id));
+    
     const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
     const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
+
     let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
     let indicadorBaix = (level > 0 && teAlumnes) ? "\n▼" : "";
     
-    // Mida de font ampliada per a millor lectura en mòbil
     const fontSize = level === 0 ? 22 : 16;
 
-nodesArray.push({
+    // DEFINIM LA VARIABLE LABEL (Això és el que faltava)
+    const nodeLabel = `${indicadorDalt}<b>${title}</b>${sub}\n` +
+                      `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
+                      `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`;
+
+    nodesArray.push({
         id: id,
-        label: label,
+        label: nodeLabel,
         shape: 'box',
         level: level,
         font: { multi: 'html', size: fontSize, align: 'center' },
         color: { background: bgColor, border: borderColor },
         borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 3 : 1),
         margin: 10,
-        
-        // Si és el central (level 0), li donem 600px (pràcticament infinit)
-        // Si és un altre, li donem els 200px que volies
+        // ARA SÍ: Central ample (600), resta estret (200)
         widthConstraint: { maximum: level === 0 ? 600 : 200 }
     });
 }
