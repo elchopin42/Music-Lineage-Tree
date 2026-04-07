@@ -267,18 +267,22 @@ function crearNode(id, level, nodesArray) {
     const teAlumnes = Object.keys(fullData).some(sId => fullData[sId].teachers.includes(id));
     
     const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
-    const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) ? `\n(${c.NAME} ${c.SURNAME})` : "";
+    
+    // Si hi ha DISPLAY_NAME, preparem el nom real en cursiva i més petit.
+    // He canviat els parèntesis per <i> i <small>
+    const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
+                ? `\n<small><i>${c.NAME} ${c.SURNAME}</i></small>` 
+                : "";
 
     let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
     let indicadorBaix = (level > 0 && teAlumnes) ? "\n▼" : "";
     
     const fontSize = level === 0 ? 24 : 16;
 
-    // DEFINIM LA VARIABLE LABEL (Això és el que faltava)
+    // Ara nodeLabel ja inclou el títol principal i el "sub" amb el nou format
     const nodeLabel = `${indicadorDalt}<b>${title}</b>${sub}\n` +
                       `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
                       `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`;
-
     nodesArray.push({
         id: id,
         label: nodeLabel,
