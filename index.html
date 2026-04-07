@@ -293,12 +293,23 @@ function crearNode(id, level, nodesArray) {
             multi: 'html', 
             size: fontSize, 
             align: 'center',
-            // Definim que qualsevol cosa dins de <i> tingui una mida menor
-            italics: { size: fontSize * 0.75, color: '#555555' } 
+            // L'interlineat en Vis-network es gestiona en part amb el lineSpacing
+            lineSpacing: 8, 
+            // Aquí definim la mida petita per a les cursives
+            italics: { 
+                size: fontSize * 0.7, // 30% més petit que el títol
+                color: '#555555',
+                mod: 'italic'
+            },
+            // També podem definir el negreta (títol) per si vols que ressalte més
+            bold: {
+                size: fontSize,
+                mod: 'bold'
+            }
         },
         color: { background: bgColor, border: borderColor },
         borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 1.5 : 1),
-        margin: 10,
+        margin: 12, // Augmentem un poc el marge intern del quadre
         widthConstraint: { maximum: level === 0 ? 600 : 200 }
     });
 }
