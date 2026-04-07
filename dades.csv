@@ -87,7 +87,7 @@ jb_lambert,Joan Baptista,Lambert i Caminal,,"Lambert, Joan Baptista",es,Barcelon
 r_talens,Rafael,Talens Pelló,,"Talens, Rafael",es,Cullera,1933,es,Boadilla del Monte,2012,"j_ferriz,l_magenti"
 c_taltabull,Cristòfor,Taltabull i Balaguer,,"Taltabull, Cristòfor",es,Barcelona,1888,es,Barcelona,1964,"f_pedrell,c_martinez,j_font,f_klose,m_reger,a_gedalge,c_toumemire,c_koechlin"
 h_angles,Higini,Anglès i Pàmies,,"Anglès, Higini",es,Maspujols,1888,it,Roma,1969,"f_pedrell,j_barbera,jm_cogul,vm_gibert,gm_sunyol,w_gurlitt,f_ludwig"
-jm_peris_polo,José María,Peris Polo,,"Peris Polo, José María",es,"jb_guzman,s_giner",1889,es,Almassora,1936,"f_pedrell,e_torres,v_ripolles"
+jm_peris_polo,José María,Peris Polo,,"Peris Polo, José María",es,Cinctorres,1889,es,Almassora,1936,"f_pedrell,e_torres,v_ripolles"
 e_torres,Eduardo,Torres Pérez,,"Torres, Eduardo",es,Albaida,1872,es,Sevilla,1934,"jb_guzman,s_giner"
 v_garcia_julbe,Vicente,García Julbe,,"García Julbe, Vicente",es,Vinaròs,1903,es,Vinaròs,1997,"jm_peris_polo,v_ripolles,j_cumellas"
 r_gerhard,Robert,Gerhard i Ottenwaelder,,"Gerhard, Robert",es,Valls,1896,gb,Cambridge,1970,"f_pedrell,a_schonberg"
@@ -436,3 +436,42 @@ p_locatelli,Pietro,Locatelli,,"Locatelli, Pietro",it,Bèrghem,1695,nl,Amsterdam,
 jm_leclair,Jean-Marie,Leclair,,"Leclair, Jean-Marie",fr,Lyon,1697,fr,Paris,1764,"p_locatelli,a_corelli,jb_somis"
 gb_somis,Giovanni Battista,Somis,,"Somis, Giovanni Battista",it,Turin,1686,it,Turin,1763,"a_vivaldi,a_corelli"
 gl_somis,Giovanni Lorenzo,Somis,,"Somis, Giovanni Lorenzo",it,Turin,1688,it,Turin,1775,gn_laurenti
+t_carreno,María Teresa,Carreño García de Sena,,"Carreño, Teresa",ve,Caracas,1853,us,New York,1917,"a_rubinstein,lm_gottschalk,g_mathias"
+e_albert,Eugen,d'Albert,,"Albert, Eugen d'",gb,Glasgow,1864,lv,Riga,1932,"f_liszt,a_sullivan,h_richter"
+e_sauret,Émile,Sauret,,"Sauret, Émile",fr,Dun-sur-Auron,1852,gb,London,1920,ca_beirot
+o_chew_becker,Ottawa,Chew,Otie Chew Becker,"Chew Becker, Otie",gb,London,1880,us,Los Ángeles,1953,"e_sauret,j_joachim"
+j_goldsmith,Jerrald,Goldsmith,Jerry Goldsmith,"Goldsmith, Jerry",us,Carson,1929,us,Los Ángeles,2004,"m_castelnuovo,j_gimpel,m_rozsa"
+e_bernstein,Elmer,Bernstein,,"Bernstein, Elmer",us,New York,1922,us,Ojai,2004,"m_castelnuovo,i_citkowitz"
+l_bernstein,Louis,Bernstein,Leonard Bernstein,"Bernstein, Leonard",us,Lawrence,1918,us,New York,1990,"n_boulanger,r_stoehr,w_piston,f_reiner,i_vengerova,h_gebhard"
+i_citkowitz,Israel,Citkowitz,,"Citkowitz, Israel",pl,Skierniewice,1909,gb,Westminster,1974,"n_boulanger,a_copland,r_sessions"
+h_mancini,Enrico Nicola,Mancini,Henry Mancini,"Mancini, Henry",us,Cleveland,1924,us,Beverly Hills,1994,"m_castelnuovo,m_adkins,e_krenek"
+a_previn,Andreas Ludwig,Previn,André Previn,"Previn, André",de,Berlin,1929,us,New York,2019,m_castelnuovo
+n_riddle,Nelson,Riddle,,"Riddle, Nelson",us,Oradell,1921,us,Los Ángeles,1985,m_castelnuovo
+a_newman,Alfred,Newman,,"Newman, Alfred",uf,New Haven,1901,us,Los Ángeles,1970,"s_stojowsi,r_goldmark,a_schonberg"
+j_horner,James,Horner,,"Horner, James",us,Los Ángeles,1953,us,Los Padres National Forest,2015,"g_ligeti,p_chihara"
+e_morricone,Ennio,Morricone,,"Morricone, Ennio",it,Roma,1928,it,Roma,2020,"m_morricone,g_petrassi"
+f_ferrara,Franco,Ferrara,,"Ferrara, Franco",it,Palermu,1911,it,Firenze,1985,"a_belleti,f_ivaldi,a_consolini,c_nordio"
+s_salva,Salvador,Salvá Sapena,,"Salvá, Salvador",es,Xàbia,1927,es,Xàbia,2001,
+jm_cervera,José María,Cervera Lloret,,"Cervera, José María",es,Alboraig,1910,es,Picassent,2002,"p_sosa,jm_izquierdo,j_ruiz_manzanares"
+j_ruiz_manzanares,Jacinto,Ruiz de Manzanares,,"Manzanares, Jacinto",es,Corella,1872,es,València,1937,"j_canto,d_zabala,e_arrieta"
+a_company,Antonio,Company Barber,,"Company, Antonio",es,Tavernes de la Valldigna,1922,es,,,s_panxa_verda
+j_salvador,Josefina,Salvador Segarra,,"Salvador, Josefina",es,Castelló de la Plana,1920,es,València,2006,"a_mus,g_enescu,r_benedetti"
+m_salvador,Matilde,Salvador Segarra,,"Salvador, Matilde",es,Castelló de la Plana,1918,es,València,2007,v_asencio
+l_sanchez_fernandez,Luis,Sánchez Fernández,,"Sánchez Fernández, Luis",es,València,1907,es,Málaga,1957,"m_palau,a_amoros,j_bellver"
+r_segura,Robert,Segura Villalba,,"Segura, Robert",es,València,1849,es,València,1902,"jb_plasencia_valls,e_compta"
+d_sendra,Dolores,Sendra Bordes,,"Sendra, Dolores",es,Pego,1927,es,Pego,2019,"m_palau,l_magenti"
+j_serrano,Josep,Serrano Simeón,,"Serrano, Josep",es,Sueca,1873,es,Madrid,1941,"s_giner,m_penella_raga,r_segura,a_goni"
+m_settimio,Marcelo,Settimio,,"Settimio, Marcelo",es,València,ca.1600,es,Sogorb,1655,jb_comes
+e_soler,Eduard,Soler Pérez,,"Soler, Eduard",es,València,1895,es,València,1967,v_ripolles
+p_sosa,Pedro,Sosa López,,"Sosa, Pedro",es,Requena,1887,es,Requena,1953,"s_giner,a_amoros,f_penarroja"
+f_penarroja,Francisco,Peñarroja Martínez,,"Peñarroja, Francisco",es,La Vall d'Uixó,1868,es,La Vall d'Uixó,1920,s_giner
+f_tito,Francisco,Tito Pérez,,"Tito, Francisco",es,La Vila Joiosa,1874,es,La Vila Joiosa,1950,"jb_pastor,jm_ubeda"
+l_torregrosa,Luis,Torregrosa García,,"Torregrosa, Luis",es,Alacant,1871,es,Madrid,1960,
+f_tormo,Fernando,Tormo Ibáñez,,"Tormo, Fernando",es,Albaida,1882,es,Albaida,1964,
+v_tormo,Vicenta,Tormo Serrano,,"Tormo, Vicenta",es,València,1857,es,Madrid,1936,
+e_torro,Enrique,Torró Insa,,"Torró, Enrique",es,Cocentaina,1922,es,Cocentaina,2005,e_perez_margarit
+b_traver,Benet,Traver i Garcia,,"Traver, Benet",es,Vila-real,1866,es,Vila-real,1933,a_amoros
+jb_ubeda,José María,Úbeda Montés,,"Úbeda, José María",es,Gandia,1839,es,València,1909,"p_perez_gascon,f_bonastre"
+e_valdes,Emili,Valdés Perlasia,,"Valdés, Emili",es,Castalla,1912,es,Castalla,1998,m_palau
+j_vasco,José,Vasco,,"Vasco, José",es,Alacant,1790,es,Murcia,1844,j_alexandre
+e_ximenez,Eduardo,Ximénez Cos,,"Ximénez, Eduardo",es,València,1820,es,València,1900,p_perez_gascon
