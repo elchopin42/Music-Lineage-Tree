@@ -268,10 +268,11 @@ function crearNode(id, level, nodesArray) {
     
     const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
     
-    // Si hi ha DISPLAY_NAME, preparem el nom real en cursiva i més petit.
-    // He canviat els parèntesis per <i> i <small>
+    // Utilitzem <i> per a la cursiva i una mida de font fixa més petita (p.ex. 12 o 14)
+    // En Vis-network, per a canviar la mida dins d'una etiqueta multi-font,
+    // sovint és millor aplicar l'estil al bloc sencer o usar el format que ell reconeix.
     const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
-                ? `\n<small><i>${c.NAME} ${c.SURNAME}</i></small>` 
+                ? `\n<i>${c.NAME} ${c.SURNAME}</i>` 
                 : "";
 
     let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
@@ -288,11 +289,16 @@ function crearNode(id, level, nodesArray) {
         label: nodeLabel,
         shape: 'box',
         level: level,
-        font: { multi: 'html', size: fontSize, align: 'center' },
+        font: { 
+            multi: 'html', 
+            size: fontSize, 
+            align: 'center',
+            // Definim que qualsevol cosa dins de <i> tingui una mida menor
+            italics: { size: fontSize * 0.75, color: '#555555' } 
+        },
         color: { background: bgColor, border: borderColor },
         borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 1.5 : 1),
         margin: 10,
-        // ARA SÍ: Central ample (600), resta estret (200)
         widthConstraint: { maximum: level === 0 ? 600 : 200 }
     });
 }
