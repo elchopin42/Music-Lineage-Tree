@@ -1,33 +1,33 @@
 ID_CODE,NAME,SURNAME,DISPLAY_NAME,SORT_NAME,BIRTH_FLAG,BIRTH_PLACE,BIRTH_YEAR,DEATH_FLAG,DEATH_PLACE,DEATH_YEAR,STUDENT_OF
-f_pedrell,Felip,Pedrell i Sabaté,,"Pedrell, Felip",es,Tortosa,1841,es,Barcelona,1922,"j_broca,j_nin"
-j_nin,Joan Antoni,Nin i Serra,,"Nin, Joan Antoni",es,Vilanova i la Geltrú,1804,es,Tortosa,1867,r_aleix
-a_coscollano,Andreu,Coscollano i Llorach,,"Coscollano, Andreu",es,Benicarló,1813,es,Tortosa,1879,"j_nin,j_ferrer"
-r_aleix,Ramon,Aleix i Batlle,,"Aleix, Ramon",es,Barcelona,1784,es,Barcelona,1850,f_andrevi
-f_andrevi,Francesc,Andreví i Castellar,,"Andreví, Francesc",es,Sanaüja,1786,es,Barcelona,1853,"c_baguer,j_quintana,f_queralt"
-c_baguer,Carles,Baguer i Mariner,,"Baguer, Carles",es,Barcelona,1768,es,Barcelona,1808,f_mariner
+f_pedrell,Felip,Pedrell i Sabaté,Felip Pedrell,"Pedrell, Felip",es,Tortosa,1841,es,Barcelona,1922,"j_broca,j_nin"
+j_nin,Joan Antoni,Nin i Serra,Joan Antoni Nin,"Nin, Joan Antoni",es,Vilanova i la Geltrú,1804,es,Tortosa,1867,r_aleix
+a_coscollano,Andreu,Coscollano i Llorach,Andreu Coscollano,"Coscollano, Andreu",es,Benicarló,1813,es,Tortosa,1879,"j_nin,j_ferrer"
+r_aleix,Ramon,Aleix i Batlle,Ramon Aleix,"Aleix, Ramon",es,Barcelona,1784,es,Barcelona,1850,f_andrevi
+f_andrevi,Francesc,Andreví i Castellar,Francesc Andreví,"Andreví, Francesc",es,Sanaüja,1786,es,Barcelona,1853,"c_baguer,j_quintana,f_queralt"
+c_baguer,Carles,Baguer i Mariner,Carles Baguer,"Baguer, Carles",es,Barcelona,1768,es,Barcelona,1808,f_mariner
 f_mariner,Francesc,Mariner,,"Mariner, Francesc",es,Barcelona,1720,es,Barcelona,1789,
 j_quintana,Joan,Quintana,,"Quintana, Joan",es,Manresa,1786,es,Barcelona,1853,j_pons
 f_queralt,Francesc,Queralt,,"Queralt, Francesc",es,Les Borges Blanques,1740,es,Barcelona,1825,
-j_pons,Josep,Pons i Pons,,"Pons, Josep",es,Girona,1770,es,València,1818,"e_gonima,f_junca,j_balius"
-r_carnicer,Ramon,Carnicer i Battle,,"Carnicer, Ramon",es,Tàrrega,1789,es,Madrid,1855,"c_baguer,f_queralt"
-b_saldoni,Baltasar,Saldoni i Remendo,,"Saldoni, Baltasar",es,Barcelona,1807,es,Madrid,1889,"f_andrevi,r_carnicer"
-f_barbieri,Francisco de Asís,Asenjo Barbieri,,"Barbieri, Francisco",es,Madrid,1823,es,Madrid,1894,"b_saldoni,r_carnicer"
-j_broca,Josep,Brocà i Codina,,"Brocà, Josep",es,Reus,1805,es,Barcelona,1882,d_aguado
-d_aguado,Dionisio Tomás Ventura,Aguado y García,,"Aguado, Dionisio",es,Madrid,1784,es,Madrid,1849,"m_garcia,m_populo_garcia"
-m_populo_garcia,Manuel del Pópulo Vicente,García,,"García, Manuel",es,Sevilla,1775,fr,Paris,1832,g_ansani
-g_ansani,Giovanni,Ansani,,"Ansani, Giovanni",it,Roma,1744,it,Firenze,1826,n_porpora
+j_pons,Josep,Pons i Pons,Josep Pons,"Pons, Josep",es,Girona,1770,es,València,1818,"e_gonima,f_junca,j_balius"
+r_carnicer,Ramon,Carnicer i Battle,Ramon Carnicer,"Carnicer, Ramon",es,Tàrrega,1789,es,Madrid,1855,"c_baguer,f_queralt"
+b_saldoni,Baltasar,Saldoni i Remendo,Baltasar Saldoni,"Saldoni, Baltasar",es,Barcelona,1807,es,Madrid,1889,"f_andrevi,r_carnicer"
+f_barbieri,Francisco de Asís,Asenjo Barbieri,Francisco Barbieri,"Barbieri, Francisco",es,Madrid,1823,es,Madrid,1894,"b_saldoni,r_carnicer"
+j_broca,Josep,Brocà i Codina,Josep Brocà,"Brocà, Josep",es,Reus,1805,es,Barcelona,1882,d_aguado
+d_aguado,Dionisio Tomás Ventura,Aguado y García,Dionisio Aguado,"Aguado, Dionisio",es,Madrid,1784,es,Madrid,1849,"m_garcia,m_populo_garcia"
+m_populo_garcia,Manuel del Pópulo Vicente,García,Manuel García,"García, Manuel",es,Sevilla,1775,fr,Paris,1832,g_ansani
+g_ansani,Giovanni,Ansani,Giovanni Ansani,"Ansani, Giovanni",it,Roma,1744,it,Firenze,1826,n_porpora
 n_porpora,Nicola,Porpora,,"Porpora, Nicola",it,Napule,1686,it,Napule,1768,g_greco
 g_greco,Gaetano,Greco,,"Greco, Gaetano",it,Napule,1657,it,Napule,1728,"g_ursino,g_salvatore"
-j_haydn,Franz Joseph,Haydn,,"Haydn, Joseph",at,Rohrau,1732,at,Wien,1809,n_porpora
+j_haydn,Franz Joseph,Haydn,Joseph Haydn,"Haydn, Joseph",at,Rohrau,1732,at,Wien,1809,n_porpora
 f_durante,Francesco,Durante,,"Durante, Francesco",it,Frattamaggiore,1684,it,Napule,1755,g_greco
 g_abos,Girolamo,Abos,,"Abos, Girolamo",mt,La Valetta,1715,it,Napule,1760,"f_durante,g_greco"
 g_ursino,Gennaro,Ursino,,"Ursino, Gennaro",it,Roio del Sangro,1650,it,Napule,1715,g_salvatore
 g_salvatore,Giovanni,Salvatore,,"Salvatore, Giovanni",it,Castelvenere,1611,it,Napule,1688,"gm_sabino,e_bartoli"
-m_falla,Manuel,de Falla y Matheu,,"Falla, Manuel de",es,Cádiz,1876,ar,Alta Gracia,1946,f_pedrell
+m_falla,Manuel María de los Dolores Clemente Ramón del Sagrado Corazón de Jesús,de Falla y Matheu,Manuel de Falla,"Falla, Manuel de",es,Cádiz,1876,ar,Alta Gracia,1946,f_pedrell
 r_garcia_ascot,Rosa,García Ascot,,"García Ascot, Rosa",es,Madrid,1902,es,Torrelaguna,2002,"f_pedrell,m_falla,e_granados,n_boulanger"
-e_granados,Enric,Granados i Campiña,,"Granados, Enric",es,Lleida,1867,,Mer de la Manche,1922,"f_pedrell,r_vines"
-r_vines,Ricard,Viñes i Roda,,"Viñes, Ricard",es,Lleida,1875,es,Barcelona,1943,f_pedrell
-f_poulenc,Francis,Poulenc,,"Poulenc, Francis",fr,Paris,1899,fr,Paris,1979,r_vines
+e_granados,Enric,Granados i Campiña,Enric Granados,"Granados, Enric",es,Lleida,1867,,Mer de la Manche,1922,"f_pedrell,r_vines"
+r_vines,Ricard,Viñes i Roda,Ricard Viñes,"Viñes, Ricard",es,Lleida,1875,es,Barcelona,1943,f_pedrell
+f_poulenc,Francis Jean Marcel,Poulenc,Francis Poulenc,"Poulenc, Francis",fr,Paris,1899,fr,Paris,1979,r_vines
 g_punto,Jan Václav,Stich,Giovanni Punto,"Punto, Giovanni",cz,Žehušice,1746,cz,Praha,1803,
 c_schumann,Clara,Wieck,Clara Schumann,"Schumann, Clara",de,Leipzig,1819,de,Frankfurt am Main,1896,"f_wieck,ct_weinlig"
 j_fabrega,Josep,Fàbrega,,"Fàbrega, Josep",es,Barcelona,,es,Barcelona,1791,
@@ -37,8 +37,8 @@ gm_sabino,Giovanni Maria,Sabino,,"Sabino, Giovanni Maria",it,Turi,1588,it,Napule
 p_testa,Prospero,Testa,,"Testa, Prospero",it,,,it,Napule,,
 g_strozzi,Gregorio,Strozzi,,"Strozzi, Gregorio",it,San Severino Lucano,ca.1615,it,Napule,1693,gm_sabino
 e_gonima,Emmanuel,Gónima,,"Gónima, Emmanuel",es,Lleida,1712,es,Girona,1792,"p_llinas,b_tria"
-f_junca,Francesc,Juncà Carol,,"Juncà, Francesc",es,Sabadell,1742,es,Girona,1833,
-j_balius,Jaume,Balius i Vila,,"Balius, Jaume",es,Barcelona,1750,es,Córdoba,1822,
+f_junca,Francesc,Juncà Carol,Francesc Juncà,"Juncà, Francesc",es,Sabadell,1742,es,Girona,1833,
+j_balius,Jaume,Balius i Vila,Jaume Balius,"Balius, Jaume",es,Barcelona,1750,es,Córdoba,1822,
 p_llinas,Pau,Llinàs,,"Llinàs, Pau",es,Barcelona,1680,es,Barcelona,1749,b_buscarons
 b_tria,Bernat,Tria,,"Tria, Bernat",es,Barcelona,,es,Barcelona,1754,
 b_buscarons,Benet,Buscarons,,"Buscarons, Benet",es,Barcelona,1647,es,Barcelona,1711,m_albareda
@@ -57,276 +57,276 @@ m_romero,Mathieu,Rosmarin,Mateo Romero,"Romero, Mateo",be,Liège,1575,es,Madrid,
 j_gaz,Josep,Gaz,,"Gaz, Josep",es,Martorell,1656,es,Girona,1713,"lv_gargallo,m_albareda"
 f_olivelles,Felip,Olivelles,,"Olivelles, Felip",es,Barcelona,ca.1660,es,La Bisbal del Penedès,1702,lv_gargallo
 j_gay,Josepe,Gay,,"Gay, Josepe",es,València,,es,Zaragoza,1587,
-t_milans,Tomàs,Milans i Godayol,,"Milans, Tomàs",es,Canet de Mar,1672,es,Canet de Mar,1742,f_olivelles
-c_milans,Carles,Milans i Godayol,,"Milans, Carles",es,Canet de Mar,1669,es,Martorell,1724,f_olivelles
-t_milans_campus,Tomàs,Milans i Campús,,"Milans i Campús, Tomàs",es,Martorell,1707,es,Barcelona,1761,t_milans
+t_milans,Tomàs,Milans i Godayol,Tomàs Milans,"Milans i Godayol, Tomàs",es,Canet de Mar,1672,es,Canet de Mar,1742,f_olivelles
+c_milans,Carles,Milans i Godayol,Carles Milans,"Milans i Godayol, Carles",es,Canet de Mar,1669,es,Martorell,1724,f_olivelles
+t_milans_campus,Tomàs,Milans i Campús,Tomàs Milans,"Milans i Campús, Tomàs",es,Martorell,1707,es,Barcelona,1761,t_milans
 m_robledo,Melchor,Robledo,,"Robledo, Melchor",es,Segovia,ca.1510,es,Zaragoza,1586,
-s_aguilera,Sebastián,Aguilera de Heredia,,"Aguilera, Sebastián",es,Zaragoza,1561,es,Zaragoza,1627,"m_robledo,p_ruimonte"
+s_aguilera,Sebastián,Aguilera de Heredia,Sebastián Aguilera,"Aguilera, Sebastián",es,Zaragoza,1561,es,Zaragoza,1627,"m_robledo,p_ruimonte"
 j_ximenez,Jusepe,Ximénez,,"Ximénez, Jusepe",es,Tudela,ca.1600,es,Zaragoza,1672,s_aguilera
-n_freixas,Narcisa,Freixas i Cruells,,"Freixas, Narcisa",es,Sabadell,1859,es,Barcelona,1926,"f_pedrell,jb_pujol"
-d_mas,Domènec,Mas i Serracant,,"Mas, Domènec",es,Barcelona,1866,es,Barcelona,1926,"f_pedrell,j_marraco,e_granados,e_morera,c_candi,g_balart"
-a_noguera,Antoni,Noguera i Balaguer,,"Noguera, Antoni",es,Palma,1860,es,Palma,1904,"f_pedrell,g_massot"
-b_samper,Baltasar,Samper i Marquès,,"Samper, Baltasar",es,Palma,1888,mx,Ciudad de México,1966,"f_pedrell,a_noguera,e_granados,e_risler"
-i_albeniz,Isaac,Albéniz i Pascual,,"Albéniz, Isaac",es,Camprodon,1860,fr,Cambo-les-Bains,1909,"f_pedrell,af_marmontel,fa_gevaert,e_compta,m_mendizabal,c_reinecke"
-m_escalas,Matilde,Escalas i Xamení,,"Escalas, Matilde",es,Palma,1870,es,Palma,1936,f_pedrell
-f_alio,Francesc,Alió i Brea,,"Alió, Francesc",es,Barcelona,1862,es,Barcelona,1908,"f_pedrell,a_nicolau,a_barba,cg_vidiella"
-a_salazar,Adolfo,Salazar Castro,,"Salazar, Adolfo",es,Madrid,1890,mx,Ciudad de México,1966,"f_pedrell,b_perez_casas"
+n_freixas,Narcisa,Freixas i Cruells,Narcisa Freixas,"Freixas, Narcisa",es,Sabadell,1859,es,Barcelona,1926,"f_pedrell,jb_pujol"
+d_mas,Domènec,Mas i Serracant,Domènec Mas,"Mas, Domènec",es,Barcelona,1866,es,Barcelona,1926,"f_pedrell,j_marraco,e_granados,e_morera,c_candi,g_balart"
+a_noguera,Antoni,Noguera i Balaguer,Antoni Noguera,"Noguera, Antoni",es,Palma,1860,es,Palma,1904,"f_pedrell,g_massot"
+b_samper,Baltasar,Samper i Marquès,Baltasar Samper,"Samper, Baltasar",es,Palma,1888,mx,Ciudad de México,1966,"f_pedrell,a_noguera,e_granados,e_risler"
+i_albeniz,Isaac,Albéniz i Pascual,Isaac Albéniz,"Albéniz, Isaac",es,Camprodon,1860,fr,Cambo-les-Bains,1909,"f_pedrell,af_marmontel,fa_gevaert,e_compta,m_mendizabal,c_reinecke"
+m_escalas,Matilde,Escalas i Xamení,Matilde Escalas,"Escalas, Matilde",es,Palma,1870,es,Palma,1936,f_pedrell
+f_alio,Francesc,Alió i Brea,Francesc Alió,"Alió, Francesc",es,Barcelona,1862,es,Barcelona,1908,"f_pedrell,a_nicolau,a_barba,cg_vidiella"
+a_salazar,Adolfo,Salazar Castro,Adolfo Salazar,"Salazar, Adolfo",es,Madrid,1890,mx,Ciudad de México,1966,"f_pedrell,b_perez_casas"
 b_perez_casas,Bartolomé,Pérez Casas,,"Pérez Casas, Bartolomé",es,Lorca,1873,es,Madrid,1956,"f_pedrell,j_canto"
-j_canto,Joan,Cantó i Francès,,"Cantó, Joan",es,Alcoi,1856,es,Madrid,1903,"f_canto,m_galiana,e_arrieta"
-ca_fontova,Conrad Abelard,Fontova i Planes,,"Fontova, Conrad",es,Barcelona,1865,ar,Buenos Aires,1923,"f_pedrell,cg_vidiella,a_greef"
-l_millet,Lluís,Millet i Pagès,,"Millet, Lluís",es,El Masnou,1867,es,Barcelona,1941,"f_pedrell,j_rodoreda,cg_vidiella"
-a_romea,Alfred,Romea i Catalina,,"Romea, Alfred",es,Madrid,1884,es,Barcelona,1955,"f_pedrell,j_lamote,m_mas"
-j_lamote,Joan,Lamote de Grignon i Bocquet,,"Lamote de Grignon, Joan",es,Barcelona,1872,es,Barcelona,1949,"f_pedrell,j_abarcat,a_nicolau"
+j_canto,Joan,Cantó i Francès,Joan Cantó,"Cantó, Joan",es,Alcoi,1856,es,Madrid,1903,"f_canto,m_galiana,e_arrieta"
+ca_fontova,Conrad Abelard,Fontova i Planes,Conrad Fontova,"Fontova, Conrad",es,Barcelona,1865,ar,Buenos Aires,1923,"f_pedrell,cg_vidiella,a_greef"
+l_millet,Lluís,Millet i Pagès,Lluís Millet,"Millet, Lluís",es,El Masnou,1867,es,Barcelona,1941,"f_pedrell,j_rodoreda,cg_vidiella"
+a_romea,Alfred,Romea i Catalina,Alfred Romea,"Romea, Alfred",es,Madrid,1884,es,Barcelona,1955,"f_pedrell,j_lamote,m_mas"
+j_lamote,Joan,Lamote de Grignon i Bocquet,Joan Lamote de Grignon,"Lamote de Grignon, Joan",es,Barcelona,1872,es,Barcelona,1949,"f_pedrell,j_abarcat,a_nicolau"
 f_santos,Félix,de Santos,,"Santos, Félix de",es,Matapozuelos,1874,es,Barcelona,1946,"f_pedrell,p_sarasate,b_cateura"
-jj_nin,Josep Joaquim,Nin i Castellanos,,"Nin, Joaquim",cu,La Habana,1879,cu,La Habana,1949,"f_pedrell,cg_vidiella,v_indy"
-a_massana,Antoni,Massana i Bertran,,"Massana, Antoni",es,Barcelona,1890,es,Raïmat,1966,"f_pedrell,n_otano,d_mas,e_morera,f_marshall,vm_gibert,e_granados"
-n_otano,José María Nemesio,Otaño y Egino,,"Otaño, Nemesio",es,Azkoitia,1880,es,Donostia,1956,f_pedrell
+jj_nin,Josep Joaquim,Nin i Castellanos,Joaquim Nin,"Nin, Joaquim",cu,La Habana,1879,cu,La Habana,1949,"f_pedrell,cg_vidiella,v_indy"
+a_massana,Antoni,Massana i Bertran,Antoni Massana,"Massana, Antoni",es,Barcelona,1890,es,Raïmat,1966,"f_pedrell,n_otano,d_mas,e_morera,f_marshall,vm_gibert,e_granados"
+n_otano,José María Nemesio,Otaño y Egino,Nemesio Otaño,"Otaño, Nemesio",es,Azkoitia,1880,es,Donostia,1956,f_pedrell
 p_blanco,Pedro,Blanco López,,"Blanco López, Pedro",es,Llión,1883,pt,Porto,1919,"f_pedrell,j_canto"
 j_gomez_garcia,Julio,Gómez García,,"Gómez García, Julio",es,Madrid,1886,es,Madrid,1973,"f_pedrell,t_breton,e_serrano"
-jb_lambert,Joan Baptista,Lambert i Caminal,,"Lambert, Joan Baptista",es,Barcelona,1884,es,Barcelona,1945,"f_pedrell,d_mas,e_morera,j_malats,jb_pellicer"
-r_talens,Rafael,Talens Pelló,,"Talens, Rafael",es,Cullera,1933,es,Boadilla del Monte,2012,"j_ferriz,l_magenti"
-c_taltabull,Cristòfor,Taltabull i Balaguer,,"Taltabull, Cristòfor",es,Barcelona,1888,es,Barcelona,1964,"f_pedrell,c_martinez,j_font,f_klose,m_reger,a_gedalge,c_toumemire,c_koechlin"
-h_angles,Higini,Anglès i Pàmies,,"Anglès, Higini",es,Maspujols,1888,it,Roma,1969,"f_pedrell,j_barbera,jm_cogul,vm_gibert,gm_sunyol,w_gurlitt,f_ludwig"
+jb_lambert,Joan Baptista,Lambert i Caminal,Joan Baptista Lambert,"Lambert, Joan Baptista",es,Barcelona,1884,es,Barcelona,1945,"f_pedrell,d_mas,e_morera,j_malats,jb_pellicer"
+r_talens,Rafael,Talens Pelló,Rafael Talens,"Talens, Rafael",es,Cullera,1933,es,Boadilla del Monte,2012,"j_ferriz,l_magenti"
+c_taltabull,Cristòfor,Taltabull i Balaguer,Cristòfor Taltabull,"Taltabull, Cristòfor",es,Barcelona,1888,es,Barcelona,1964,"f_pedrell,c_martinez,j_font,f_klose,m_reger,a_gedalge,c_toumemire,c_koechlin"
+h_angles,Higini,Anglès i Pàmies,Higini Anglès,"Anglès, Higini",es,Maspujols,1888,it,Roma,1969,"f_pedrell,j_barbera,jm_cogul,vm_gibert,gm_sunyol,w_gurlitt,f_ludwig"
 jm_peris_polo,José María,Peris Polo,,"Peris Polo, José María",es,Cinctorres,1889,es,Almassora,1936,"f_pedrell,e_torres,v_ripolles"
-e_torres,Eduardo,Torres Pérez,,"Torres, Eduardo",es,Albaida,1872,es,Sevilla,1934,"jb_guzman,s_giner"
+e_torres,Eduardo,Torres Pérez,Eduardo Torres,"Torres, Eduardo",es,Albaida,1872,es,Sevilla,1934,"jb_guzman,s_giner"
 v_garcia_julbe,Vicente,García Julbe,,"García Julbe, Vicente",es,Vinaròs,1903,es,Vinaròs,1997,"jm_peris_polo,v_ripolles,j_cumellas"
-r_gerhard,Robert,Gerhard i Ottenwaelder,,"Gerhard, Robert",es,Valls,1896,gb,Cambridge,1970,"f_pedrell,a_schonberg"
-c_santos,Carles,Santos Ventura,,"Santos, Carles",es,Vinaròs,1940,es,Vinaròs,2017,"m_tagliaferro,r_casadesus,j_fevrier,m_long,h_datyner"
-l_querol,Leopoldo,Querol i Roso,,"Querol, Leopoldo",es,Vinaròs,1899,es,Benicàssim,1985,"f_pedrell,f_antich,s_jadassohn"
-v_garces,Vicente,Garcés Queralt,,"Garcés, Vicent",es,Benifairó de les Valls,1906,es,València,1984,"l_querol,m_palau,g_auric"
-v_ripolles,Vicent,Ripollès i Pérez,,"Ripollès, Vicent",es,Castelló de la Plana,1867,es,Rocafort,1943,"f_pedrell,s_giner"
-s_giner,Salvador,Giner i Vidal,,"Giner, Salvador",es,València,1832,es,València,1911,p_perez_gascon
-j_cumellas,Josep,Cumellas i Ribó,,"Cumellas, Josep",es,Barcelona,1875,es,Barcelona,1940,"j_lamote,e_granados,a_nicolau,e_daniel,v_costa"
-e_lopez-chavarri,Eduard,López-Chávarri i Marco,,"López-Chávarri, Eduard",es,València,1871,es,València,1970,"f_pedrell,f_antich,s_jadassohn"
-j_bellver,Josep,Bellver i Abells,,"Bellver, Josep",es,València,1869,es,València,1945,
-a_iturbi,Amparo,Iturbi Báguena,,"Iturbi, Amparo",es,Alboraia,1898,us,Beverly Hills,1969,e_lopez-chavarri
-j_iturbi,Josep,Iturbi Báguena,,"Iturbi, Josep",es,València,1895,us,Los Ángeles,1980,"j_bellver,w_landowska"
+r_gerhard,Robert,Gerhard i Ottenwaelder,Robert Gerhard,"Gerhard, Robert",es,Valls,1896,gb,Cambridge,1970,"f_pedrell,a_schonberg"
+c_santos,Carles,Santos Ventura,Carles Santos,"Santos, Carles",es,Vinaròs,1940,es,Vinaròs,2017,"m_tagliaferro,r_casadesus,j_fevrier,m_long,h_datyner"
+l_querol,Leopoldo,Querol i Roso,Leopoldo Querol,"Querol, Leopoldo",es,Vinaròs,1899,es,Benicàssim,1985,"f_pedrell,f_antich,s_jadassohn"
+v_garces,Vicente,Garcés Queralt,Vicent Garcés,"Garcés, Vicent",es,Benifairó de les Valls,1906,es,València,1984,"l_querol,m_palau,g_auric"
+v_ripolles,Vicent,Ripollès i Pérez,Vicent Ripollès,"Ripollès, Vicent",es,Castelló de la Plana,1867,es,Rocafort,1943,"f_pedrell,s_giner"
+s_giner,Salvador,Giner i Vidal,Salvador Giner,"Giner, Salvador",es,València,1832,es,València,1911,p_perez_gascon
+j_cumellas,Josep,Cumellas i Ribó,Josep Cumellas,"Cumellas, Josep",es,Barcelona,1875,es,Barcelona,1940,"j_lamote,e_granados,a_nicolau,e_daniel,v_costa"
+e_lopez-chavarri,Eduard,López-Chávarri i Marco,Eduard López-Chávarri,"López-Chávarri, Eduard",es,València,1871,es,València,1970,"f_pedrell,f_antich,s_jadassohn"
+j_bellver,Josep,Bellver i Abells,Josep Bellver,"Bellver, Josep",es,València,1869,es,València,1945,
+a_iturbi,Amparo,Iturbi Báguena,Amparo Iturbi,"Iturbi, Amparo",es,Alboraia,1898,us,Beverly Hills,1969,e_lopez-chavarri
+j_iturbi,Josep,Iturbi Báguena,Josep Iturbi,"Iturbi, Josep",es,València,1895,us,Los Ángeles,1980,"j_bellver,w_landowska"
 f_lang,François,Lang,,"Lang, François",fr,Paris,1908,pl,Auschwitz,1944,"j_iturbi,l_levy,p_paray,m_dupre"
-w_landowska,Wanda,Landowska,,"Landowska, Wanda",pl,Warszawa,1879,us,Lakeville,1959,
+w_landowska,Wanda Aleksandra,Landowska,Wanda Landowska,"Landowska, Wanda",pl,Warszawa,1879,us,Lakeville,1959,
 a_wiele,Aimée,Van de Wiele,,"Wiele, Aimée Van de",be,Bruxelles,1907,be,Uccle,1991,w_landowska
-m_palau,Manuel,Palau i Boix,,"Palau, Manuel",es,Alfara del Patriarca,1893,es,València,1967,"m_ravel,c_koechlin"
-g_auric,Georges,Auric,,"Auric, Georges",fr,Lodeva,1899,fr,Paris,1983,g_caussade
-m_ravel,Maurice,Ravel,,"Ravel, Maurice",fr,Ziburu,1875,fr,Paris,1937,"g_faure,cw_beriot,a_gedalge,e_pessard,s_riera,e_anthiome,cor_bibard,h_ghys"
-c_koechlin,Charles,Koechlin,,"Koechlin, Charles",fr,Paris,1867,fr,Lo Raiòu Canadèu,1950,"g_faure,a_taudou,j_massenet,a_gedalge"
-r_olmos,Ricardo,Olmos Canet,,"Olmos, Ricardo",es,Massamagrell,1905,es,Madrid,1986,"m_palau,c_koechlin"
-jc_arriaga,Juan Crisóstomo,de Arriaga y Bazola,,"Arriaga, Juan Crisóstomo de",es,Bilbo,1806,fr,Paris,1826,"p_baillot,fj_fetis,l_cherubini"
-j_llongueras,Joan,Llongueras i Badia,,"Llongueras, Joan",es,Barcelona,1880,es,Barcelona,1953,"d_mas,e_granados,l_millet,e_morera"
-f_rafols,Fèlix,Ràfols Ràfols,,"Ràfols, Fèlix",es,Barcelona,1893,cu,Camagüey,1961,"d_mas,e_granados,r_goberna"
-jm_thomas,Joan Maria,Thomàs i Sabater,,"Thomàs, Joan Maria",es,Palma,1896,es,Palma,1966,"d_mas,a_noguera,e_daniel,j_hure"
-j_sancho,Josep,Sancho i Marraco,,"Sancho, Josep",es,La Garriga,1879,es,La Garriga,1960,"d_mas,j_vinas,j_marraco"
-r_llates,Rossend,Llates i Serrat,,"Llates, Rossend",es,Barcelona,1899,es,Barcelona,1973,"d_mas,m_viscasillas"
-j_banet,Jaume,Banet i Illa,,"Banet, Jaume",es,Mataró,1929,es,Mataró,2007,"d_mas,c_taltabull,h_vilamanya,e_ribo,a_perez_moya"
-j_borras,Joan,Borràs i de Palau,,"Borràs, Joan",es,Barcelona,1868,es,Barcelona,1953,"d_mas,p_tintorer,f_brunet"
+m_palau,Manuel,Palau i Boix,Manuel Palau,"Palau, Manuel",es,Alfara del Patriarca,1893,es,València,1967,"m_ravel,c_koechlin"
+g_auric,Georges Abel Louis,Auric,Georges Auric,"Auric, Georges",fr,Lodeva,1899,fr,Paris,1983,g_caussade
+m_ravel,Joseph Maurice,Ravel,Maurice Ravel,"Ravel, Maurice",fr,Ziburu,1875,fr,Paris,1937,"g_faure,cw_beriot,a_gedalge,e_pessard,s_riera,e_anthiome,cor_bibard,h_ghys"
+c_koechlin,Charles Louis Eugène,Koechlin,Charles Koechlin,"Koechlin, Charles",fr,Paris,1867,fr,Lo Raiòu Canadèu,1950,"g_faure,a_taudou,j_massenet,a_gedalge"
+r_olmos,Ricardo,Olmos Canet,Ricardo Olmos,"Olmos, Ricardo",es,Massamagrell,1905,es,Madrid,1986,"m_palau,c_koechlin"
+jc_arriaga,Juan Crisóstomo Jacobo Antonio,de Arriaga y Bazola,Juan Crisóstomo de Arriaga,"Arriaga, Juan Crisóstomo de",es,Bilbo,1806,fr,Paris,1826,"p_baillot,fj_fetis,l_cherubini"
+j_llongueras,Joan,Llongueras i Badia,Joan Llongueras,"Llongueras, Joan",es,Barcelona,1880,es,Barcelona,1953,"d_mas,e_granados,l_millet,e_morera"
+f_rafols,Fèlix,Ràfols Ràfols,Fèlix Ràfols,"Ràfols, Fèlix",es,Barcelona,1893,cu,Camagüey,1961,"d_mas,e_granados,r_goberna"
+jm_thomas,Joan Maria,Thomàs i Sabater,Joan Maria Thomàs,"Thomàs, Joan Maria",es,Palma,1896,es,Palma,1966,"d_mas,a_noguera,e_daniel,j_hure"
+j_sancho,Josep,Sancho i Marraco,Josep Sancho,"Sancho, Josep",es,La Garriga,1879,es,La Garriga,1960,"d_mas,j_vinas,j_marraco"
+r_llates,Rossend,Llates i Serrat,Rossend Llates,"Llates, Rossend",es,Barcelona,1899,es,Barcelona,1973,"d_mas,m_viscasillas"
+j_banet,Jaume,Banet i Illa,Jaume Banet,"Banet, Jaume",es,Mataró,1929,es,Mataró,2007,"d_mas,c_taltabull,h_vilamanya,e_ribo,a_perez_moya"
+j_borras,Joan,Borràs i de Palau,Joan Borràs,"Borràs, Joan",es,Barcelona,1868,es,Barcelona,1953,"d_mas,p_tintorer,f_brunet"
 f_madriguera,Francesca,Madriguerea i Rodon,Paquita Madriguera,"Madriguera, Paquita",es,Igualada,1900,uy,Montevideo,1965,"d_mas,e_granados,i_philipp"
-e_madriguera,Enric,Madriguerea i Rodon,,"Madriguera, Enric",es,Barcelona,1902,us,Danbury,1973,"j_manen,l_auer,j_heifetz,m_elman,e_zimbalist"
-m_auge,Miquel,Augé i Vila,,"Augé, Miquel",es,Manresa,1885,es,Barcelona,1936,"d_mas,f_baldello"
-jm_vidal,Josep Maria,Vidal i Torrens,,"Vidal, Josep Maria",es,Barcelona,1924,es,Barcelona,2015,"d_mas,a_larrocha,f_marshall"
+e_madriguera,Enric,Madriguerea i Rodon,Enric Madriguera,"Madriguera, Enric",es,Barcelona,1902,us,Danbury,1973,"j_manen,l_auer,j_heifetz,m_elman,e_zimbalist"
+m_auge,Miquel,Augé i Vila,Miquel Augé,"Augé, Miquel",es,Manresa,1885,es,Barcelona,1936,"d_mas,f_baldello"
+jm_vidal,Josep Maria,Vidal i Torrens,Josep Maria Vidal,"Vidal, Josep Maria",es,Barcelona,1924,es,Barcelona,2015,"d_mas,a_larrocha,f_marshall"
 m_castelnuovo,Mario,Castelnuovo-Tedesco,,"Castelnuovo-Tedesco, Mario",it,Firenze,1895,us,Beverly Hills,1968,"e_valle_paz,i_pizzetti"
-m_barrientos,Maria,Barrientos i Llopis,,"Barrientos, Maria",es,Barcelona,1884,fr,Ziburu,1946,jb_pellicer
-a_grau,Agustí,Grau i Huguet,,"Grau, Agustí",es,Alforja,1893,es,Alforja,1964,e_morera
-j_gibert,Joan,Gibert Camins,,"Gibert, Joan",es,Barcelona,1890,es,Barcelona,1966,"l_millet,r_goberna,i_philipp,a_cortot,w_landowska,v_indy"
-e_toldra,Eduard,Toldrà i Soler,,"Toldrà, Eduard",es,Vilanova i la Geltrú,1895,es,Barcelona,1962,"l_millet,a_nicolau,r_galvez"
-m_blancafort,Manuel,Blancafort i de Rosselló,,"Blancafort, Manuel",es,La Garriga,1897,es,Barcelona,1987,jb_pujol
-r_lamote,Ricard,Lamote de Grignon i Ribas,,"Lamote de Grignon, Ricard",es,Barcelona,1899,es,Barcelona,1962,b_galvez
-f_mompou,Frederic,Mompou i Dencausse,,"Mompou, Frederic",es,Barcelona,1893,es,Barcelona,1987,"p_serra,m_serra,l_diemer,e_pessard,f_motte-lacroix"
-j_pahissa,Jaume,Pahissa i Jo,,"Pahissa, Jaume",es,Barcelona,1880,ar,Buenos Aires,1969,e_morera
-a_cortot,Alfred,Cortot,,"Cortot, Alfred",ch,Nyon,1877,ch,Lausanne,1962,"l_diemer,e_decombes"
+m_barrientos,Maria,Barrientos i Llopis,Maria Barrientos,"Barrientos, Maria",es,Barcelona,1884,fr,Ziburu,1946,jb_pellicer
+a_grau,Agustí,Grau i Huguet,Agustí Grau,"Grau, Agustí",es,Alforja,1893,es,Alforja,1964,e_morera
+j_gibert,Joan,Gibert Camins,Joan Gibert,"Gibert, Joan",es,Barcelona,1890,es,Barcelona,1966,"l_millet,r_goberna,i_philipp,a_cortot,w_landowska,v_indy"
+e_toldra,Eduard,Toldrà i Soler,Eduard Toldrà,"Toldrà, Eduard",es,Vilanova i la Geltrú,1895,es,Barcelona,1962,"l_millet,a_nicolau,r_galvez"
+m_blancafort,Manuel,Blancafort i de Rosselló,Manuel Blancafort,"Blancafort, Manuel",es,La Garriga,1897,es,Barcelona,1987,jb_pujol
+r_lamote,Ricard,Lamote de Grignon i Ribas,Ricard Lamote de Grignon,"Lamote de Grignon, Ricard",es,Barcelona,1899,es,Barcelona,1962,b_galvez
+f_mompou,Frederic,Mompou i Dencausse,Frederic Mompou,"Mompou, Frederic",es,Barcelona,1893,es,Barcelona,1987,"p_serra,m_serra,l_diemer,e_pessard,f_motte-lacroix"
+j_pahissa,Jaume,Pahissa i Jo,Jaume Pahissa,"Pahissa, Jaume",es,Barcelona,1880,ar,Buenos Aires,1969,e_morera
+a_cortot,Alfred,Cortot,Alfred Cortot,"Cortot, Alfred",ch,Nyon,1877,ch,Lausanne,1962,"l_diemer,e_decombes"
 e_fernandez_arbos,Enrique,Fernández Arbós,,"Fernández Arbós, Enrique",es,Madrid,1863,es,Donostia,1939,"j_monasterio,h_vieuxtemps,fa_gevaert,j_joachim"
-d_severac,Deodat,de Severac,,"Severac, Deodat de",fr,Sant Felitz de Lauragués,1872,fr,Ceret,1921,"i_albeniz,v_indy,a_magnard,a_guilmant"
-r_castera,René,de Castéra,,"Castéra, René de",fr,Dacs,1873,fr,En Gomèr,1955,"i_albeniz,v_indy,c_bordes,a_guilmant"
+d_severac,Marie-Joseph-Alexandre Déodat,de Séverac,Déodat de Séverac,"Séverac, Déodat de",fr,Sant Felitz de Lauragués,1872,fr,Ceret,1921,"i_albeniz,v_indy,a_magnard,a_guilmant"
+r_castera,René Charles Marie d'Avezac,de Castéra,René de Castéra,"Castéra, René de",fr,Dacs,1873,fr,En Gomèr,1955,"i_albeniz,v_indy,c_bordes,a_guilmant"
 c_sansoni,Clara,Sansoni,,"Sansoni, Clara",it,Pistoia,1893,it,Firenze,1977,"i_albeniz,f_plante"
-g_tarrago,Gracià,Tarragó i Pons,,"Tarragó, Gracià",es,Salamanca,1892,es,Barcelona,1973,"f_pedrell,b_perez_casas,m_llobet,a_fernandez_bordas"
-v_echevarria,Victorino,Echevarría López,,"Echevarría, Victorino",es,Becerril de Campos,1898,es,Madrid,1963,"b_perez_casas,c_campo,p_hindemith"
-x_montsalvatge,Xavier,Montsalvatge i Bassols,,"Montsalvatge, Xavier",es,Girona,1912,es,Barcelona,2002,"l_millet,e_morera,j_pahissa,e_toldra"
-m_canals,Maria,Canals i Cendrós,,"Canals, Maria",es,Barcelona,1914,es,Barcelona,2010,"l_millet,r_vines"
-a_vives,Amadeu,Vives i Roig,,"Vives, Amadeu",es,Collbató,1871,es,Madrid,1932,"c_vives,j_ribera"
-e_garreta,Enriqueta,Garreta i Toldrà,,"Garreta, Enriqueta",es,Barcelona,1907,es,Barcelona,1971,"l_millet,r_vines,jb_pellicer"
-p_casals,Pau,Casals i Defilló,,"Casals, Pau",es,El Vendrell,1876,pr,San Juan,1973,v_mirecki
+g_tarrago,Gracià,Tarragó i Pons,Gracià Tarragó,"Tarragó, Gracià",es,Salamanca,1892,es,Barcelona,1973,"f_pedrell,b_perez_casas,m_llobet,a_fernandez_bordas"
+v_echevarria,Victorino,Echevarría López,Victorino Echevarría,"Echevarría, Victorino",es,Becerril de Campos,1898,es,Madrid,1963,"b_perez_casas,c_campo,p_hindemith"
+x_montsalvatge,Xavier,Montsalvatge i Bassols,Xavier Montsalvatge,"Montsalvatge, Xavier",es,Girona,1912,es,Barcelona,2002,"l_millet,e_morera,j_pahissa,e_toldra"
+m_canals,Maria,Canals i Cendrós,Maria Canals,"Canals, Maria",es,Barcelona,1914,es,Barcelona,2010,"l_millet,r_vines"
+a_vives,Amadeu,Vives i Roig,Amadeu Vives,"Vives, Amadeu",es,Collbató,1871,es,Madrid,1932,"c_vives,j_ribera"
+e_garreta,Enriqueta,Garreta i Toldrà,Enriqueta Garreta,"Garreta, Enriqueta",es,Barcelona,1907,es,Barcelona,1971,"l_millet,r_vines,jb_pellicer"
+p_casals,Pau,Casals i Defilló,Pau Casals,"Casals, Pau",es,El Vendrell,1876,pr,San Juan,1973,v_mirecki
 j_alvin,Juliette,Alvin,,"Alvin, Juliette",fr,Limòtges,1982,gb,London,1982,p_casals
-g_cassado,Gaspar,Cassadó i Moreu,,"Cassadó, Gaspar",es,Barcelona,1897,es,Madrid,1966,"p_casals,j_cassado,m_ravel"
-j_cassado,Joaquim,Cassadó i Valls,,"Cassadó, Joaquim",es,Mataró,1867,es,Barcelona,1926,"m_blanch,s_puigsech,j_vilaseca"
+g_cassado,Gaspar,Cassadó i Moreu,Gaspar Cassadó,"Cassadó, Gaspar",es,Barcelona,1897,es,Madrid,1966,"p_casals,j_cassado,m_ravel"
+j_cassado,Joaquim,Cassadó i Valls,Joaquim Cassadó,"Cassadó, Joaquim",es,Mataró,1867,es,Barcelona,1926,"m_blanch,s_puigsech,j_vilaseca"
 b_greenhouse,Bernard,Greenhouse,,"Greenhouse, Bernard",us,Newark,1916,us,Wellfleet,2011,"p_casals,f_salmond,e_feuermann,d_alexanian"
-j_du_pre,Jacqueline,du Pré,,"Pré, Jaqueline du",gb,Oxford,1945,gb,London,1987,"p_casals,p_tortelier,m_rostropovich,w_pleeth"
+j_du_pre,Jacqueline Mary,du Pré,Jacqueline du Pré,"Pré, Jacqueline du",gb,Oxford,1945,gb,London,1987,"p_casals,p_tortelier,m_rostropovich,w_pleeth"
 a_schneider,Abram,Sznejder,Alexander Schneider,"Schneider, Alexander",lt,Vilnius,1908,us,New York,1993,"p_casals,a_rebner"
 c_badia,Concepció,Badia i Millàs,Conxita Badia,"Badia, Conxita",es,Barcelon,1897,es,Barcelona,1975,"p_casals,e_granados,m_falla,a_colome"
 e_papastavrou,Eleftherios,Papastavrou,,"Papastavrou, Eleftherios",gr,Thessaloníki,1920,gr,Athína,2008,p_casals
-a_colome,Antoni,Colomé i Bosomba,,"Colomé, Antoni",es,El Masnou,1870,es,,1952,
-m_plantada,Mercè,Plantada i Vicente,,"Plantada, Mercè",es,Sant Gervasi de Cassoles,1892,es,Vilafranca del Penedès,1976,a_colome
-p_rufi,Pilar,Rufí i Bosch,,"Rufí, Pilar",es,Barcelona,1892,es,Barcelona,1969,"a_colome,j_barbera"
-f_casanovas,Francesc,Casanovas i Tallardá,,"Casanovas, Francesc",es,Barcelona,1899,es,Murcia,1986,"j_lamote,e_morera"
-jg_escoriaza,José Gregorio,Escoriaza Leceta,,"Escoriaza, José Gregorio",es,Vitoria-Gasteiz,1884,es,Vitoria-Gasteiz,1943,"j_lamote,js_aramburu"
-js_aramburu,Juan Santiago,Aramburu Salinas,,"Aramburu, Juan Santiago",es,Agurain,1860,es,Vitoria-Gasteiz,1937,
-l_aramburu,Luis,Aramburu Martínez de San Vicente,,"Aramburu, Luis",es,Vitoria-Gasteiz,1905,es,Vitoria-Gasteiz,1999,js_aramburu
-a_cabane,Adolf,Cabané i Pibernat,,"Cabané, Adolf",es,Sabadell,1911,es,Barcelona,1993,"j_lamote,b_socias,j_zamacois,j_muset"
-f_ardevol,Francesc,Ardèvol i Blanch,,"Ardèvol, Francesc",es,Reus,1918,es,Icod de los Vinos,2000,"j_lamote,cg_vidiella,a_nicolau"
-l_benejam,Lluís,Benejam i Agell,,"Benejam, Lluís",es,Barcelona,1914,us,Birmingham,1968,"j_lamote,a_bosom,j_barbera,a_massana,f_guerin"
-me_botet,María Enma,Botet Dubois,,"Botet, María Enma",cu,Matanzas,1903,us,Miami,1989,"jj_nin,h_blanck"
-j_sandaran,Juli,Sandaran i Sambeat,,"Sandaran, Juli",es,Barcelona,1914,es,Barcelona,1995,"a_massana,c_taltabull,p_vallribera"
-s_giribet,Simó,Giribet i Puig,,"Giribet, Simó",es,Cervera,1914,es,Barcelona,1983,a_massana
+a_colome,Antoni,Colomé i Bosomba,Antoni Colomé,"Colomé, Antoni",es,El Masnou,1870,es,,1952,
+m_plantada,Mercè,Plantada i Vicente,Mercè Plantada,"Plantada, Mercè",es,Sant Gervasi de Cassoles,1892,es,Vilafranca del Penedès,1976,a_colome
+p_rufi,Pilar,Rufí i Bosch,Pilar Rufí,"Rufí, Pilar",es,Barcelona,1892,es,Barcelona,1969,"a_colome,j_barbera"
+f_casanovas,Francesc,Casanovas i Tallardá,Francesc Casanovas,"Casanovas, Francesc",es,Barcelona,1899,es,Murcia,1986,"j_lamote,e_morera"
+jg_escoriaza,José Gregorio,Escoriaza Leceta,José Gregorio Escoriaza,"Escoriaza, José Gregorio",es,Vitoria-Gasteiz,1884,es,Vitoria-Gasteiz,1943,"j_lamote,js_aramburu"
+js_aramburu,Juan Santiago,Aramburu Salinas,Juan Santiago Aramburu,"Aramburu, Juan Santiago",es,Agurain,1860,es,Vitoria-Gasteiz,1937,
+l_aramburu,Luis,Aramburu Martínez de San Vicente,Luis Aramburu,"Aramburu, Luis",es,Vitoria-Gasteiz,1905,es,Vitoria-Gasteiz,1999,js_aramburu
+a_cabane,Adolf,Cabané i Pibernat,Adolf Cabané,"Cabané, Adolf",es,Sabadell,1911,es,Barcelona,1993,"j_lamote,b_socias,j_zamacois,j_muset"
+f_ardevol,Francesc,Ardèvol i Blanch,Francesc Ardèvol,"Ardèvol, Francesc",es,Reus,1918,es,Icod de los Vinos,2000,"j_lamote,cg_vidiella,a_nicolau"
+l_benejam,Lluís,Benejam i Agell,Lluís Benejam,"Benejam, Lluís",es,Barcelona,1914,us,Birmingham,1968,"j_lamote,a_bosom,j_barbera,a_massana,f_guerin"
+me_botet,María Enma,Botet Dubois,María Enma Botet,"Botet, María Enma",cu,Matanzas,1903,us,Miami,1989,"jj_nin,h_blanck"
+j_sandaran,Juli,Sandaran i Sambeat,Juli Sandaran,"Sandaran, Juli",es,Barcelona,1914,es,Barcelona,1995,"a_massana,c_taltabull,p_vallribera"
+s_giribet,Simó,Giribet i Puig,Simó Giribet,"Giribet, Simó",es,Cervera,1914,es,Barcelona,1983,a_massana
 a_garcia_abril,Antón,García Abril,,"García Abril, Antón",es,Teruel,1933,es,Madrid,2021,j_gomez_garcia
-c_bernaola,Carmelo Alonso,Bernaola,,"Bernaola, Carmelo",es,Otxandio,1929,es,Madrid,2002,"j_gomez_garcia,e_maso,f_cales"
-a_arteaga,Ángel,Arteaga de la Guía,,"Arteaga, Ángel",es,Campo de Criptana,1928,es,Madrid,1984,"j_gomez_garcia,v_echevarria,f_cales,c_orff,h_genzmer"
-a_gonzalez_acilu,Agustín,González García de Acilu,,"González Acilu, Agustín",es,Altsasu,1929,es,Madrid,2023,j_gomez_garcia
+c_bernaola,Carmelo,Alonso Bernaola,,"Alonso Bernaola, Carmelo",es,Otxandio,1929,es,Madrid,2002,"j_gomez_garcia,e_maso,f_cales"
+a_arteaga,Ángel,Arteaga de la Guía,Ángel Arteaga,"Arteaga, Ángel",es,Campo de Criptana,1928,es,Madrid,1984,"j_gomez_garcia,v_echevarria,f_cales,c_orff,h_genzmer"
+a_gonzalez_acilu,Agustín,González García de Acilu,Agustín González Acilu,"González Acilu, Agustín",es,Altsasu,1929,es,Madrid,2023,j_gomez_garcia
 m_perez_guiterrez,Mariano,Pérez Gutiérrez,,"Pérez Gutiérrez, Mariano",es,Pisón de Castejón,1932,es,Madrid,1994,"j_gomez_garcia,f_cales,j_guridi"
 s_moreno_manzano,Salvador,Moreno Manzano,,"Moreno Manzano, Salvador",mx,Orizaba,1916,mx,Ciudad de México,1999,"c_taltabull,c_chavez"
-x_benguerel,Xavier,Benguerel i Godó,,"Benguerel, Xavier",es,Barcelona,1931,es,Barcelona,2017,c_taltabull
-j_guinjoan,Joan,Guinjoan Gispert,,"Guinjoan, Joan",es,Riudoms,1931,es,Barcelona,2019,"c_taltabull,p_wissmer"
+x_benguerel,Xavier,Benguerel i Godó,Xavier Benguerel,"Benguerel, Xavier",es,Barcelona,1931,es,Barcelona,2017,c_taltabull
+j_guinjoan,Joan,Guinjoan Gispert,Joan Guinjoan,"Guinjoan, Joan",es,Riudoms,1931,es,Barcelona,2019,"c_taltabull,p_wissmer"
 jm_mestres_quadreny,Josep Maria,Mestres Quadreny,,"Mestres Quadreny, Josep Maria",es,Manresa,1929,es,Barcelona,2021,c_taltabull
-j_soler,Josep,Soler i Sardà,,"Soler, Josep",es,Vilafranca del Penedès,1935,es,Barcelona,2022,"c_taltabull,r_leibowitz"
-j_casanovas,Josep,Casanovas i Puig,,"Casanovas, Josep",es,Barcelona,1924,es,Barcelona,1996,c_taltabull
-j_llobet,Josep,Llobet i Terricabres,,"Llobet, Josep",es,Figueres,1922,es,Barcelona,2013,"c_taltabull,j_barbera,f_alfonso"
-t_borras,Teresa,Borràs i Fornell,,"Borràs, Teresa",es,Manresa,1923,es,Mataró,2010,"c_taltabull,e_cervera"
-m_cabero,Manuel,Cabero i Vernedas,,"Cabero, Manuel",es,Barcelona,1926,es,Barcelona,2022,c_taltabull
-j_cercos,Josep,Cercós i Fransí,,"Cercós, Josep",es,Barcelona,1925,es,Barcelona,1989,"c_taltabull,d_nueda,r_lamote,e_cervera,h_scherchen"
-g_estrada,Francesc Xavier,Estrada i Gamissans,Gregori Estrada i Gamissans,"Estrada, Gregori",es,Manresa,1918,es,Montserrat,2015,"c_taltabull,a_ferrer,i_civil,a_rodamilans,j_muset,a_marchal,j_barbera"
-mt_gimenez,Maria Teresa,Giménez i Morell,,"Giménez, Maria Teresa",es,Barcelona,1928,es,Barcelona,2021,c_taltabull
-e_gispert,Enric,Gispert i Fabrés,,"Gispert, Enric",es,Barcelona,1925,es,Barcelona,1990,c_taltabull
-m_gols,Marçal,Gols i Cavagliani,,"Gols, Marçal",es,Barcelona,1928,es,Barcelona,2020,"c_taltabull,s_celibidache"
-p_jaquetti,Palmira,Jaquetti i Isant,,"Jaquetti, Palmira",es,Barcelona,1895,es,Els Monjos,1963,"c_taltabull,r_lamote"
-i_segarra,Ireneu,Segarra i Malla,,"Segarra, Ireneu",es,Ivars d'Urgell,1917,es,Montserrat,2005,"c_taltabull,a_ferrer,a_rodamilans,j_barbera,f_marshall,n_boulanger"
-jb_pellicer,Joan Baptista,Pellicer i Cardona,,"Pellicer, Joan Baptista",es,Maó,1862,es,Barcelona,1930,g_mathias
-f_bonastre,Francesc,Bonastre i Bertran,,"Bonastre, Francesc",es,Montblanc,1944,es,Barcelona,2017,"h_angles,m_querol,m_riquer"
-l_feininger,Laurence,Feininger,,"Feininger, Laurence",de,Berlin,1909,it,Freienfeld,1976,h_angles
-j_homs,Joaquim,Homs i Oller,,"Homs, Joaquim",es,Barcelona,1906,es,Barcelona,2003,r_gerhard
-r_goberna,Robert,Goberna i Franchi,,"Goberna, Robert",es,Barcelona,1859,es,Barcelona,1934,cg_vidiella
-n_bonet,Narcís,Bonet i Armengol,,"Bonet, Narcís",es,Barcelona,1933,fr,Paris,2019,"e_toldra,j_massia,m_carbonell,n_boulanger"
+j_soler,Josep,Soler i Sardà,Josep Soler,"Soler, Josep",es,Vilafranca del Penedès,1935,es,Barcelona,2022,"c_taltabull,r_leibowitz"
+j_casanovas,Josep,Casanovas i Puig,Josep Casanovas,"Casanovas, Josep",es,Barcelona,1924,es,Barcelona,1996,c_taltabull
+j_llobet,Josep,Llobet i Terricabres,Josep Llobet,"Llobet, Josep",es,Figueres,1922,es,Barcelona,2013,"c_taltabull,j_barbera,f_alfonso"
+t_borras,Teresa,Borràs i Fornell,Teresa Borràs,"Borràs, Teresa",es,Manresa,1923,es,Mataró,2010,"c_taltabull,e_cervera"
+m_cabero,Manuel,Cabero i Vernedas,Manuel Cabero,"Cabero, Manuel",es,Barcelona,1926,es,Barcelona,2022,c_taltabull
+j_cercos,Josep,Cercós i Fransí,Josep Cercós,"Cercós, Josep",es,Barcelona,1925,es,Barcelona,1989,"c_taltabull,d_nueda,r_lamote,e_cervera,h_scherchen"
+g_estrada,Francesc Xavier,Estrada i Gamissans,Gregori Estrada,"Estrada, Gregori",es,Manresa,1918,es,Montserrat,2015,"c_taltabull,a_ferrer,i_civil,a_rodamilans,j_muset,a_marchal,j_barbera"
+mt_gimenez,Maria Teresa,Giménez i Morell,Maria Teresa Giménez,"Giménez, Maria Teresa",es,Barcelona,1928,es,Barcelona,2021,c_taltabull
+e_gispert,Enric,Gispert i Fabrés,Enric Gispert,"Gispert, Enric",es,Barcelona,1925,es,Barcelona,1990,c_taltabull
+m_gols,Marçal,Gols i Cavagliani,Marçal Gols,"Gols, Marçal",es,Barcelona,1928,es,Barcelona,2020,"c_taltabull,s_celibidache"
+p_jaquetti,Palmira,Jaquetti i Isant,Palmira Jaquetti,"Jaquetti, Palmira",es,Barcelona,1895,es,Els Monjos,1963,"c_taltabull,r_lamote"
+i_segarra,Ireneu,Segarra i Malla,Ireneu Segarra,"Segarra, Ireneu",es,Ivars d'Urgell,1917,es,Montserrat,2005,"c_taltabull,a_ferrer,a_rodamilans,j_barbera,f_marshall,n_boulanger"
+jb_pellicer,Joan Baptista,Pellicer i Cardona,Joan Baptista Pellicer,"Pellicer, Joan Baptista",es,Maó,1862,es,Barcelona,1930,g_mathias
+f_bonastre,Francesc,Bonastre i Bertran,Francesc Bonastre,"Bonastre, Francesc",es,Montblanc,1944,es,Barcelona,2017,"h_angles,m_querol,m_riquer"
+l_feininger,Laurence Karl Johann,Feininger,Laurence Feininger,"Feininger, Laurence",de,Berlin,1909,it,Freienfeld,1976,h_angles
+j_homs,Joaquim,Homs i Oller,Joaquim Homs,"Homs, Joaquim",es,Barcelona,1906,es,Barcelona,2003,r_gerhard
+r_goberna,Robert,Goberna i Franchi,Robert Goberna,"Goberna, Robert",es,Barcelona,1859,es,Barcelona,1934,cg_vidiella
+n_bonet,Narcís,Bonet i Armengol,Narcís Bonet,"Bonet, Narcís",es,Barcelona,1933,fr,Paris,2019,"e_toldra,j_massia,m_carbonell,n_boulanger"
 b_selva,Marie Blanche,Selva,Blanca Selva i Henry,"Selva, Blanca",fr,Briva,1884,fr,Sent Amanç de Talende,1942,"s_chene,a_duvernoy,v_indy"
-r_tarrago,Renata,Tarragó Fàbregas,,"Tarragó, Renata",es,Barcelona,1927,es,Badalona,2005,g_tarrago
-g_landazabal,Germán María,Landazábal Galagarza,,"Landazábal, Germán",es,Araia,1884,ar,Gualeguay,1953,"js_aramburu,j_trago,v_arin"
-l_magenti,Leopold,Magenti i Chelvi,,"Magenti, Leopold",es,Alberic,1894,es,València,1969,"jj_nin,j_turina"
-j_segui,Salvador,Seguí Pérez,,"Seguí, Salvador",es,Massanassa,1939,es,Massanassa,2004,"m_palau,l_magenti"
-e_zubeldia,Emiliana,de Zubeldía i Inda,,"Zubeldía, Emiliana de",es,Jaitz,1888,mx,Hermosillo,1987,"b_selva,v_indy,d_paque"
-j_witkowski,Jean,Witkowski,,"Witkowski, Jean",fr,Vouziers,1895,fr,Lyon,1953,"b_selva,gm_witkowski"
-n_boulanger,Nadia,Boulanger,,"Boulanger, Nadia",fr,Paris,1887,fr,Paris,1979,"g_faure,l_vierne,a_gedalge,p_vidal,cm_widor"
+r_tarrago,Renata,Tarragó Fàbregas,Renata Tarragó,"Tarragó, Renata",es,Barcelona,1927,es,Badalona,2005,g_tarrago
+g_landazabal,Germán María,Landazábal Galagarza,Germán Landazábal,"Landazábal, Germán",es,Araia,1884,ar,Gualeguay,1953,"js_aramburu,j_trago,v_arin"
+l_magenti,Leopold,Magenti i Chelvi,Leopold Magenti,"Magenti, Leopold",es,Alberic,1894,es,València,1969,"jj_nin,j_turina"
+j_segui,Salvador,Seguí Pérez,Salvador Seguí,"Seguí, Salvador",es,Massanassa,1939,es,Massanassa,2004,"m_palau,l_magenti"
+e_zubeldia,Emiliana,de Zubeldía i Inda,Emiliana de Zubeldía,"Zubeldía, Emiliana de",es,Jaitz,1888,mx,Hermosillo,1987,"b_selva,v_indy,d_paque"
+j_witkowski,Jean Lucien Eugène Martin,Witkowski,Jean Witkowski,"Witkowski, Jean",fr,Vouziers,1895,fr,Lyon,1953,"b_selva,gm_witkowski"
+n_boulanger,Juliette Nadia,Boulanger,Nadia Boulanger,"Boulanger, Nadia",fr,Paris,1887,fr,Paris,1979,"g_faure,l_vierne,a_gedalge,p_vidal,cm_widor"
 s_panxa_verda,Salvador,García García,Panxa Verda,"García, Salvador",es,Beniopa,1891,es,Quart de Poblet,1964,"f_tarrega,m_palau"
-f_tarrega,Francesc d'Assís,Tàrrega Eixea,,"Tàrrega, Francesc",es,Vila-real,1852,es,Barcelona,1909,"m_galiana,j_arcas"
-j_rodrigo,Joaquín,Rodrigo i Vidre,,"Rodrigo, Joaquín",es,Sagunt,1901,es,Madrid,1999,"f_antich,p_dukas,m_emmanuel,a_pirro"
-m_galiana,Miguel,Galiana Folqués,,"Galiana, Miguel",es,Ontinyent,1814,es,Ontinyent,1880,
-r_chapi,Ruperto,Chapí Lorente,,"Chapí, Ruperto",es,Villena,1851,es,Madrid,1909,"m_galiana,e_arrieta"
+f_tarrega,Francesc d'Assís,Tàrrega Eixea,Francesc Tàrrega,"Tàrrega, Francesc",es,Vila-real,1852,es,Barcelona,1909,"m_galiana,j_arcas"
+j_rodrigo,Joaquín,Rodrigo i Vidre,Joaquín Rodrigo,"Rodrigo, Joaquín",es,Sagunt,1901,es,Madrid,1999,"f_antich,p_dukas,m_emmanuel,a_pirro"
+m_galiana,Miguel,Galiana Folqués,Miguel Galiana,"Galiana, Miguel",es,Ontinyent,1814,es,Ontinyent,1880,
+r_chapi,Ruperto,Chapí Lorente,Ruperto Chapí,"Chapí, Ruperto",es,Villena,1851,es,Madrid,1909,"m_galiana,e_arrieta"
 e_perez_monllor,Evaristo,Pérez Monllor,,"Pérez Monllor, Evaristo",es,Alcoi,1880,es,Alcoi,1930,"m_galiana,c_perez_laporta"
 c_perez_monllor,Camilo,Pérez Monllor,,"Pérez Monllor, Camilo",es,Alcoi,1877,es,Madrid,1947,"m_galiana,c_perez_laporta,j_canto"
-a_javayoles,Alfredo,Javayoles López,,"Javayoles, Alfredo",es,Elx,1865,es,Elx,1944,m_galiana
-j_arcas,Julio Gabino,Arcas Lacal,Julián Arcas Lacal,"Arcas, Julián",es,María,1832,es,Antequera,1882,d_aguado
+a_javayoles,Alfredo,Javayoles López,Alfredo Javayoles,"Javayoles, Alfredo",es,Elx,1865,es,Elx,1944,m_galiana
+j_arcas,Julio Gabino,Arcas Lacal,Julián Arcas,"Arcas, Julián",es,María,1832,es,Antequera,1882,d_aguado
 h_vinalesa,José,Orts Lloris,Honorato de Vinalesa,"Vinalesa, Honorato de",es,Vinalesa,1901,es,Massamagrell,1973,m_palau
 v_martin_soler,Vicent,Martín i Soler,,"Martín i Soler, Vicent",es,València,1754,ru,Sankt-Peterburg,1806,"f_morera,m_narro"
-f_morera,Francesc,Morera Cots,,"Morera, Francesc",es,Sant Mateu,1731,es,València,1793,j_prades
-m_narro,Manuel,Narro Campos,,"Narro, Manuel",es,València,1729,es,València,1776,
-v_pashkevich,Vasily,Pashkevich,,"Pashkevich, Vasily",ua,,ca.1742,ru,Sankt-Peterburg,1797,v_martin_soler
-y_fomin,Yevstigney,Fomin,,"Fomin, Yevstigney",ru,Sankt-Peterburg,1761,ru,Sankt-Peterburg,1800,"v_martin_soler,gb_martini"
-j_prades,Josep,Prades i Gallent,,"Prades, Josep",es,Vilafermosa,1689,es,Vilafermosa,1757,jb_cabanilles
-j_teixidor,Jaume,Teixidor Dalmau,,"Teixidor, Jaume",es,Barcelona,1884,es,Barakaldo,1957,"a_vives,d_mas"
+f_morera,Francesc,Morera Cots,Francesc Morera,"Morera, Francesc",es,Sant Mateu,1731,es,València,1793,j_prades
+m_narro,Manuel,Narro Campos,Manuel Narro,"Narro, Manuel",es,València,1729,es,València,1776,
+v_pashkevich,Vasily Alexeyevich,Pashkevich,Vasily Pashkevich,"Pashkevich, Vasily",ua,,ca.1742,ru,Sankt-Peterburg,1797,v_martin_soler
+y_fomin,Yevstigney Ipat'yevich,Fomin,Yevstigney Fomin,"Fomin, Yevstigney",ru,Sankt-Peterburg,1761,ru,Sankt-Peterburg,1800,"v_martin_soler,gb_martini"
+j_prades,Josep,Prades i Gallent,Josep Prades,"Prades, Josep",es,Vilafermosa,1689,es,Vilafermosa,1757,jb_cabanilles
+j_teixidor,Jaume,Teixidor Dalmau,Jaume Teixidor,"Teixidor, Jaume",es,Barcelona,1884,es,Barakaldo,1957,"a_vives,d_mas"
 gb_martini,Giovanni Battista,Martini,Padre Martini,"Martini, Giovanni Battista",it,Bulåggna,1706,it,Bulåggna,1784,ga_perti
 jb_cabanilles,Joan Baptista,Cabanilles,,"Cabanilles, Joan Baptista",es,Algemesí,1644,es,València,1712,u_vargas
 n_mariner,Nicolás,Mariner,,"Mariner, Nicolás",es,Teruel,,es,València,1636,
-l_roso,Lluís,Roso Bover,,"Roso, Lluís",es,Vinaròs,1836,es,Vinaròs,1911,
-mt_oller,Maria Teresa,Oller Benlloch,,"Oller, Maria Teresa",es,València,1920,es,València,2018,"m_palau,r_benedito,a_garrigues,e_jarnack"
-jm_alcacer,José María,Alcácer Martínez,,"Alcácer, José María",es,Aldaia,1899,es,Madrid,1994,"v_ripolles,m_palau,e_vega,c_campo"
+l_roso,Lluís,Roso Bover,Lluís Roso,"Roso, Lluís",es,Vinaròs,1836,es,Vinaròs,1911,
+mt_oller,Maria Teresa,Oller Benlloch,Maria Teresa Oller,"Oller, Maria Teresa",es,València,1920,es,València,2018,"m_palau,r_benedito,a_garrigues,e_jarnack"
+jm_alcacer,José María,Alcácer Martínez,Josep María Alcácer,"Alcácer, José María",es,Aldaia,1899,es,Madrid,1994,"v_ripolles,m_palau,e_vega,c_campo"
 j_alexandre,Josep,Alexandre,,"Alexandre, Josep",es,Oriola,ca.1772,es,Oriola,1832,
-f_alfonso,Frederic,Alfonso i Ferrer,,"Alfonso, Frederic",es,València,1879,es,Barcelona,1946,"m_penella_raga,jm_ubeda,f_gavagnach,e_daniel"
-j_alos,Juan,Alós Tormo,,"Alós, Juan",es,València,1914,es,València,1982,"f_costa,j_manen,e_casals,e_borel,j_thibaud"
-a_amoros,Amanci,Amorós Sirvent,,"Amorós, Amanci",es,Agullent,1854,es,Sant Cugat del Vallès,1925,s_giner
-f_antich,Francesc,Antich Carbonell,,"Antich, Francesc",es,Silla,1860,es,València,1926,
-f_argemi_casamada,Francesc d'Assís,Argemí i Casamada,,"Argemí i Casamada, Francesc",es,Badalona,1822,es,Vinaròs,1887,p_marsal
-f_argemi_mustich,Francesc d'Assís,Argemí Mustich,,"Argemí Mustich, Francesc",es,Vinaròs,1891,es,Badalona,1969,f_pedrell
-p_artola,Perfecto,Artola Prats,,"Artola, Perfecto",es,Benassal,1904,es,Málaga,1992,"j_palanca,l_millet,e_vega,j_nori"
-v_asencio,Vicent,Asencio i Ruano,,"Asencio, Vicent",es,València,1908,es,València,1979,"e_morera,f_marshall,j_turina,e_halffter"
-mc_asenjo,María de la Concepción,Asenjo Vilar,,"Asenjo, María de la Concepción",es,València,1875,es,Madrid,1921,"r_segura,b_max"
-m_asensi,Miquel,Asensi i Martín,,"Asensi, Miquel",es,Llíria,1879,es,Ontinyent,1945,s_giner
-f_avinent,Francesc,Avinent Tirado,,"Avinent, Francesc",es,Castelló de la Plana,1857,es,Castelló de la Plana,1931,
-jv_baguena,Josep Vicent,Bàguena i Soler,,"Bàguena, Josep",es,València,1908,es,València,1995,"j_iturbi,f_tito"
-m_baixauli,Mariano,Baixauli Biguer,,"Baixauli, Mariano",es,València,1861,es,València,1923,
-f_balaguer,Francisco,Balaguer Mariel,,"Balaguer, Francisco",es,Villalonga,1896,ar,Buenos Aires,1965,p_sosa
-jb_belda,Juan Bautista,Belda Pastor,,"Belda, Juan Bautista",es,Bocairent,1890,es,Benisoda,1936,jb_pastor
-m_belles,Montserrat,Bellés Sagarminaga,,"Bellés, Montserrat",es,Vinaròs,1943,es,Alacant,1998,"c_halffter,f_cales,g_gombau"
-r_benedito,Rafael,Benedito Vives,,"Benedito, Rafael",es,València,1885,es,València,1963,
-f_beneto,Francisco,Benetó Martínez,,"Benetó, Francisco",es,Castelló de la Ribera,1877,pt,Lisboa,1945,"a_goni,j_white"
-a_blanquer,Amand,Blanquer Ponsoda,,"Blanquer, Amand",es,Alcoi,1935,es,València,2005,"m_palau,m_asins,o_messiaen,g_petrassi"
-h_bosch,Hermelando,Bosch Peris,,"Bosch, Hermelando",es,Alginet,1908,es,Montanejos,1990,"m_palau,j_latorre_rubio"
-f_cabo,Francesc,Cabo Arnal,,"Cabo, Francesc",es,Nàquera,1768,es,Nàquera,1832,"f_morera,r_angles"
-f_canto,Francesc,Cantó i Botella,,"Cantó, Francesc",es,Alcoi,1811,es,Alcoi,1886,
-r_casasempere,Rafael,Casasempere Juan,,"Casasempere, Rafael",es,Alcoi,1909,es,Alcoi,1995,
-r_cercos,Ramón,Cercós Pérez,,"Cercós, Ramón",es,València,1936,es,València,2010,"e_lopez-chavarri,m_palau,l_magenti,d_nueda,j_iturbi,e_dominguez"
-a_chover,Antonio,Chover Salom,,"Chover, Antonio",es,Tavernes de la Valldigna,1922,es,València,2014,"m_palau,s_panxa_verda,f_tormo"
-j_climent,Josep,Climent Barber,,"Climent, Josep",es,Oliva,1927,es,Oliva,2017,"e_soler,j_piedra,j_roca"
+f_alfonso,Frederic,Alfonso i Ferrer,Frederic Alfonso,"Alfonso, Frederic",es,València,1879,es,Barcelona,1946,"m_penella_raga,jm_ubeda,f_gavagnach,e_daniel"
+j_alos,Juan,Alós Tormo,Joan Alós,"Alós, Juan",es,València,1914,es,València,1982,"f_costa,j_manen,e_casals,e_borel,j_thibaud"
+a_amoros,Amanci,Amorós Sirvent,Amanci Amorós,"Amorós, Amanci",es,Agullent,1854,es,Sant Cugat del Vallès,1925,s_giner
+f_antich,Francesc,Antich Carbonell,Francesc Antich,"Antich, Francesc",es,Silla,1860,es,València,1926,
+f_argemi_casamada,Francesc d'Assís,Argemí i Casamada,Francesc Argemí,"Argemí i Casamada, Francesc",es,Badalona,1822,es,Vinaròs,1887,p_marsal
+f_argemi_mustich,Francesc d'Assís,Argemí Mustich,Francesc Argemí,"Argemí Mustich, Francesc",es,Vinaròs,1891,es,Badalona,1969,f_pedrell
+p_artola,Perfecto,Artola Prats,Perfecto Artola,"Artola, Perfecto",es,Benassal,1904,es,Málaga,1992,"j_palanca,l_millet,e_vega,j_nori"
+v_asencio,Vicent,Asencio i Ruano,Vicent Asencio,"Asencio, Vicent",es,València,1908,es,València,1979,"e_morera,f_marshall,j_turina,e_halffter"
+mc_asenjo,María de la Concepción,Asenjo Vilar,Concepción Asenjo,"Asenjo, Concepción",es,València,1875,es,Madrid,1921,"r_segura,b_max"
+m_asensi,Miquel,Asensi i Martín,Miquel Asensi,"Asensi, Miquel",es,Llíria,1879,es,Ontinyent,1945,s_giner
+f_avinent,Francesc,Avinent Tirado,Francesc Avinent,"Avinent, Francesc",es,Castelló de la Plana,1857,es,Castelló de la Plana,1931,
+jv_baguena,Josep Vicent,Bàguena i Soler,Josep Bàguena,"Bàguena, Josep",es,València,1908,es,València,1995,"j_iturbi,f_tito"
+m_baixauli,Mariano,Baixauli Biguer,Mariano Baixauli,"Baixauli, Mariano",es,València,1861,es,València,1923,
+f_balaguer,Francisco,Balaguer Mariel,Francisco Balaguer,"Balaguer, Francisco",es,Villalonga,1896,ar,Buenos Aires,1965,p_sosa
+jb_belda,Juan Bautista,Belda Pastor,Juan Bautista Belda,"Belda, Juan Bautista",es,Bocairent,1890,es,Benisoda,1936,jb_pastor
+m_belles,Montserrat,Bellés Sagarminaga,Montserrat Bellés,"Bellés, Montserrat",es,Vinaròs,1943,es,Alacant,1998,"c_halffter,f_cales,g_gombau"
+r_benedito,Rafael,Benedito Vives,Rafael Benedito,"Benedito, Rafael",es,València,1885,es,València,1963,
+f_beneto,Francisco,Benetó Martínez,Francisco Benetó,"Benetó, Francisco",es,Castelló de la Ribera,1877,pt,Lisboa,1945,"a_goni,j_white"
+a_blanquer,Amand,Blanquer Ponsoda,Amand Blanquer,"Blanquer, Amand",es,Alcoi,1935,es,València,2005,"m_palau,m_asins,o_messiaen,g_petrassi"
+h_bosch,Hermelando,Bosch Peris,Hermelando Bosch,"Bosch, Hermelando",es,Alginet,1908,es,Montanejos,1990,"m_palau,j_latorre_rubio"
+f_cabo,Francesc,Cabo Arnal,Francesc Cabo,"Cabo, Francesc",es,Nàquera,1768,es,Nàquera,1832,"f_morera,r_angles"
+f_canto,Francesc,Cantó i Botella,Francesc Cantó,"Cantó, Francesc",es,Alcoi,1811,es,Alcoi,1886,
+r_casasempere,Rafael,Casasempere Juan,Rafael Casasempere,"Casasempere, Rafael",es,Alcoi,1909,es,Alcoi,1995,
+r_cercos,Ramón,Cercós Pérez,Ramón Cercós,"Cercós, Ramón",es,València,1936,es,València,2010,"e_lopez-chavarri,m_palau,l_magenti,d_nueda,j_iturbi,e_dominguez"
+a_chover,Antonio,Chover Salom,Antonio Chover,"Chover, Antonio",es,Tavernes de la Valldigna,1922,es,València,2014,"m_palau,s_panxa_verda,f_tormo"
+j_climent,Josep,Climent Barber,Josep Climent,"Climent, Josep",es,Oliva,1927,es,Oliva,2017,"e_soler,j_piedra,j_roca"
 jb_comes,Joan Baptista,Comes,,"Comes, Joan Baptista",es,València,ca.1582,es,València,1643,jg_peres
-r_corell,Ramón,Corell Saurí,,"Corell, Ramón",es,Foios,1910,es,València,1970,m_palau
-v_costa,Vicent,Costa Nogueras,,"Costa, Vicent",es,Alcoi,1852,es,Barcelona,1919,"jb_pujol,j_sariols,g_balart,h_bulow,gf_pfeiffer,f_liszt"
-"jb_pujol,j_sariols,g_balart,h_bulow,gf_pfeiffer,f_liszt",Joan Baptista,Pujol i Riu,,"Pujol, Joan Baptista",es,Barcelona,1835,es,Barcelona,1898,"g_sala,p_tintorer,nh_reber,e_prudent,j_rosenhain"
+r_corell,Ramón,Corell Saurí,Ramón Corell,"Corell, Ramón",es,Foios,1910,es,València,1970,m_palau
+v_costa,Vicent,Costa Nogueras,Viceent Costa,"Costa, Vicent",es,Alcoi,1852,es,Barcelona,1919,"jb_pujol,j_sariols,g_balart,h_bulow,gf_pfeiffer,f_liszt"
+"jb_pujol,j_sariols,g_balart,h_bulow,gf_pfeiffer,f_liszt",Joan Baptista,Pujol i Riu,Joan Baptista Pujol,"Pujol, Joan Baptista",es,Barcelona,1835,es,Barcelona,1898,"g_sala,p_tintorer,nh_reber,e_prudent,j_rosenhain"
 a_cotes,Ambrosio,Cotes,,"Cotes, Ambrosio",es,Villena,ca.1550,es,Sevilla,1603,
 r_ceballos,Rodrigo,de Ceballos,,"Ceballos, Rodrigo de",es,Aracena,ca.1534,es,Granada,1581,
-j_cuevas,Juan,Cuevas Perales,,"Cuevas, Juan",es,Guadassuar,1782,es,València,1855,"f_morera,j_pons"
-a_domingo,Adelina,Domingo Pons,,"Domingo, Adelina",es,Benifaió,1882,es,Benifaió,1905,"a_goni,j_monasterio,j_pinilla"
-o_espla,Òscar,Esplà Triay,,"Esplà, Òscar",es,Alacant,1886,es,Madrid,1976,"j_latorre_baeza,c_saint-saens,m_reger"
-g_pittaluga,Gustavo,Pittaluga González del Campillo,,"Pittaluga, Gustavo",es,Madrid,1906,es,Madrid,1975,o_espla
-j_villatoro,Joaquín,Villatoro Medina,,"Villatoro, Joaquín",es,Castro del Río,1911,es,Madrid,1987,"o_espla,c_campo,p_dukas,a_cortot,c_koechlin"
-v_estarelles,Vicente,Estarelles Úbeda,,"Estarelles, Vicente",es,Alfarrasí,1908,es,Calatayud,1984,m_palau
-r_esteve,Rafael,Esteve Nicolau,,"Esteve, Rafael",es,Muro d'Alcoi,1871,es,Muro d'Alcoi,1942,
-f_esteve,Francisco,Esteve Pastor,Paco Esteve Pastor,"Esteve, Paco",es,Muro d'Alcoi,1915,es,València,1989,p_sosa
+j_cuevas,Juan,Cuevas Perales,Juan Cuevas,"Cuevas, Juan",es,Guadassuar,1782,es,València,1855,"f_morera,j_pons"
+a_domingo,Adelina,Domingo Pons,Adelina Domingo,"Domingo, Adelina",es,Benifaió,1882,es,Benifaió,1905,"a_goni,j_monasterio,j_pinilla"
+o_espla,Òscar,Esplà Triay,Òscar Esplà,"Esplà, Òscar",es,Alacant,1886,es,Madrid,1976,"j_latorre_baeza,c_saint-saens,m_reger"
+g_pittaluga,Gustavo,Pittaluga González del Campillo,Gustavo Pittaluga,"Pittaluga, Gustavo",es,Madrid,1906,es,Madrid,1975,o_espla
+j_villatoro,Joaquín,Villatoro Medina,Joaquín Vilatoro,"Villatoro, Joaquín",es,Castro del Río,1911,es,Madrid,1987,"o_espla,c_campo,p_dukas,a_cortot,c_koechlin"
+v_estarelles,Vicente,Estarelles Úbeda,Vicente Estarelles,"Estarelles, Vicente",es,Alfarrasí,1908,es,Calatayud,1984,m_palau
+r_esteve,Rafael,Esteve Nicolau,Rafael Esteve,"Esteve, Rafael",es,Muro d'Alcoi,1871,es,Muro d'Alcoi,1942,
+f_esteve,Francisco,Esteve Pastor,Paco Esteve,"Esteve, Paco",es,Muro d'Alcoi,1915,es,València,1989,p_sosa
 j_evangelista,José,Evangelista,,"Evangelista, José",es,València,1943,ca,Montréal,2023,"v_asencio,a_prevost,b_mather"
-j_falomir,José,Falomir Almela,Pepe Falomir Almela,"Falomir, Pepe",es,Castelló de la Plana,1931,es,Castelló de la Plana,2014,
-j_fayos,Josep,Fayós Pascual,,"Fayós, Josep",es,València,1871,es,València,1931,s_giner
-l_boulanger,Marie-Juliette,Boulanger,Lili Boulanger,"Boulanger, Lili",fr,Paris,1893,fr,Mézy-sur-Seine,1918,"n_boulanger,p_vidal,g_faure,g_caussade,a_hasselmans"
+j_falomir,José,Falomir Almela,Pepe Falomir,"Falomir, Pepe",es,Castelló de la Plana,1931,es,Castelló de la Plana,2014,
+j_fayos,Josep,Fayós Pascual,Josep Fayós,"Fayós, Josep",es,València,1871,es,València,1931,s_giner
+l_boulanger,Marie-Juliette Olga,Boulanger,Lili Boulanger,"Boulanger, Lili",fr,Paris,1893,fr,Mézy-sur-Seine,1918,"n_boulanger,p_vidal,g_faure,g_caussade,a_hasselmans"
 j_ferrer,Jaume,Ferrer,,"Ferrer, Jaume",es,Cervera del Maestrat,1762,es,San Lorenzo del Escorial,1824,a_soler
 a_soler,Antoni,Soler i Ramos,Pare Soler,"Soler, Antoni",es,Olot,1729,es,El Escorial,1783,"d_scarlatti,j_nebra,b_esteve,m_espona"
-jb_bruguera,Joan Baptista,Bruguera i Morreras,,"Bruguera, Joan Baptista",es,Figueres,,es,,ca.1766,
+jb_bruguera,Joan Baptista,Bruguera i Morreras,Joan Baptista Bruguera,"Bruguera, Joan Baptista",es,Figueres,,es,,ca.1766,
 wa_mozart,Joannes Chrysostomus Wolfgangus Theophilus,Mozart,Wolfgang Amadeus Mozart,"Mozart, Wolfgang Amadeus",at,Salzburg,1756,at,Wien,1791,"j_schobert,jc_bach,l_mozart,gb_martini"
 n_mozart,Maria Anna Walburga Ignatia,Mozart,Nannerl Mozart,"Mozart, Nannerl",at,Salzburg,1751,at,Salzburg,1829,l_mozart
 l_beethoven,Ludwig,van Beethoven,,"Beethoven, Ludwig van",de,Bonn,1770,at,Wien,1827,"cg_neefe,j_haydn,a_salieri,j_schenk,jg_albrechtsberger,g_eeden,m_clementi"
-a_vivaldi,Antonio,Vivaldi,,"Vivaldi, Antonio",it,Venèsia,1678,at,Wien,1741,"gb_vivaldi,g_legrenzi"
+a_vivaldi,Antonio Lucio,Vivaldi,Antonio Vivaldi,"Vivaldi, Antonio",it,Venèsia,1678,at,Wien,1741,"gb_vivaldi,g_legrenzi"
 js_bach,Johann Sebastian,Bach,,"Bach, Johann Sebastian",de,Eisenach,1685,de,Leipzig,1750,"ja_bach,jc_bach1671,jl_bach,jc_bach1645,d_buxtehude"
 gf_handel,Georg Friedrich,Händel,,"Händel, Georg Friedrich",de,Halle,1685,gb,London,1759,fw_zachau
 pi_tchaikovsky,Pyotr Illich,Tchaikovsky,,"Tchaikovsky, Pyotr Illich",ru,Votkinsk,1840,ru,Sankt-Peterburg,1893,"n_zaremba,a_rubinstein"
-f_chopin,Fryderyk,Chopin,,"Chopin, Fryderyk",pl,Żelazowa Wola,1810,fr,Paris,1849,"w_zywny,j_elsner,w_wuerfel"
-a_dvorak,Antonín,Dvořák,,"Dvořák, Antonín",cz,Nelahozeves,1841,cz,Praha,1904,"jl_zvonar,a_liehmann"
+f_chopin,Fryderyk Franciszek,Chopin,Fryderyk Chopin,"Chopin, Fryderyk",pl,Żelazowa Wola,1810,fr,Paris,1849,"w_zywny,j_elsner,w_wuerfel"
+a_dvorak,Antonín Leopold,Dvořák,Antonín Dvořák,"Dvořák, Antonín",cz,Nelahozeves,1841,cz,Praha,1904,"jl_zvonar,a_liehmann"
 g_mahler,Gustav,Mahler,,"Mahler, Gustav",cz,Kaliště,1860,at,Wien,1911,"r_fuchs,f_krenn,j_epstein"
-o_merikanto,Oskar,Mattsson,Oskar Merikanto,"Merikanto, Oskar",fi,Helsinki,1868,fi,Oitti,1924,"j_haark,f_kullak,a_becker,g_scharwenka,c_reinecke,s_jadassohn"
-a_beach,Amy,Beach,,"Beach, Amy",us,Henniker,1867,us,New York,1944,"e_perabo,c_baermann"
+o_merikanto,Frans Oskar,Mattsson,Oskar Merikanto,"Merikanto, Oskar",fi,Helsinki,1868,fi,Oitti,1924,"j_haark,f_kullak,a_becker,g_scharwenka,c_reinecke,s_jadassohn"
+a_beach,Amy Marcy Cheney,Beach,Amy Beach,"Beach, Amy",us,Henniker,1867,us,New York,1944,"e_perabo,c_baermann"
 j_felipe,Jerónimo,Felipe,,"Felipe, Jerónimo",es,València,ca.1575,es,València,1613,jb_peres
-v_feliu,Vicente,Feliu i Roig,,"Feliu, Vicente",es,València,1899,es,Benicarló,1991,
-jm_ferrero,José María,Ferrero Pastor,,"Ferrero, José María",es,Ontinyent,1926,es,Bocairent,1987,"r_corell,v_perez-jorge"
-l_foglietti,Luis,Foglietti Alberola,,"Foglietti, Luis",es,Alacant,1877,es,Madrid,1918,
-d_fortea,Daniel,Fortea i Guimerà,,"Fortea, Daniel",es,Benlloc,1878,es,Castelló de la Plana,1953,f_tarrega
-g_gallud,Guadalupe,Gallud Sirvent,,"Gallud, Guadalupe",es,Ibi,1873,es,Córdoba,1970,
-e_garces,Enric,Garcés i Garcés,,"Garcés, Enric",es,Faura,1909,es,Madrid,1981,
-j_garces,Joan,Garcés Queralt,,"Garcés, Joan",es,Benifairó de les Valls,1914,es,Faura,2014,"m_palau,l_querol,b_perez_casas,l_freitas"
-v_garcia_velcaire,Vicent,Garcia Velcaire,,"Garcia, Vicent",es,València,1593,es,Toledo,1650,
+v_feliu,Vicente,Feliu i Roig,Vicente Feliu,"Feliu, Vicente",es,València,1899,es,Benicarló,1991,
+jm_ferrero,José María,Ferrero Pastor,José María Ferrero,"Ferrero, José María",es,Ontinyent,1926,es,Bocairent,1987,"r_corell,v_perez-jorge"
+l_foglietti,Luis,Foglietti Alberola,Luis Foglietti,"Foglietti, Luis",es,Alacant,1877,es,Madrid,1918,
+d_fortea,Daniel,Fortea i Guimerà,Daniel Fortea,"Fortea, Daniel",es,Benlloc,1878,es,Castelló de la Plana,1953,f_tarrega
+g_gallud,Guadalupe,Gallud Sirvent,Guadalupe Gallud,"Gallud, Guadalupe",es,Ibi,1873,es,Córdoba,1970,
+e_garces,Enric,Garcés i Garcés,Enric Garcés,"Garcés, Enric",es,Faura,1909,es,Madrid,1981,
+j_garces,Joan,Garcés Queralt,Joan Garcés,"Garcés, Joan",es,Benifairó de les Valls,1914,es,Faura,2014,"m_palau,l_querol,b_perez_casas,l_freitas"
+v_garcia_velcaire,Vicent,Garcia Velcaire,Vicent Garcia,"Garcia, Vicent",es,València,1593,es,Toledo,1650,
 f_navarro,Francisco,Navarro,,"Navarro, Francisco",es,Cuevas de Cañart,ca.1610,es,València,1650,"v_garcia_velcaire,m_ximeno"
 m_ximeno,Miguel,Ximeno,,"Ximeno, Miguel",es,Aliaga,,es,,ca.1623,
-a_garrigues,Amparo,Garrigues Cotanda,,"Garrigues, Amparo",es,València,1903,es,València,1945,w_landowska
-s_gea,Salvador,Gea Bañuls,,"Gea, Salvador",es,El Real de Gandia,1880,es,València,1964,"l_plasencia_valls,v_ripolles"
-r_giner,Rafael,Giner Estruch,,"Giner, Rafael",es,Vilallonga,1912,es,Vilallonga,1997,
-jm_gomis,Josep Melcior,Gomis i Colomer,,"Gomis, Josep Melcior",es,Ontinyent,1791,fr,Paris,1836,j_pons
-jl_gonzalez,José Luis,González Julià,,"González, José Luis",es,Alcoi,1932,es,Madrid,1998,"s_panxa_verda,r_casasempere,r_sainz,a_segovia"
+a_garrigues,Amparo,Garrigues Cotanda,Amparo Garrigues,"Garrigues, Amparo",es,València,1903,es,València,1945,w_landowska
+s_gea,Salvador,Gea Bañuls,Salvador Gea,"Gea, Salvador",es,El Real de Gandia,1880,es,València,1964,"l_plasencia_valls,v_ripolles"
+r_giner,Rafael,Giner Estruch,Rafael Giner,"Giner, Rafael",es,Vilallonga,1912,es,Vilallonga,1997,
+jm_gomis,Josep Melcior,Gomis i Colomer,Josep Melcior Gomis,"Gomis, Josep Melcior",es,Ontinyent,1791,fr,Paris,1836,j_pons
+jl_gonzalez,José Luis,González Julià,José Luis González,"González, José Luis",es,Alcoi,1932,es,Madrid,1998,"s_panxa_verda,r_casasempere,r_sainz,a_segovia"
 js_mastropiero,Johann Sebastian,Mastropiero,,"Mastropiero, Johann Sebastian",ar,,1968,,,,
-f_grau,Francisco,Grau Vergara,,"Grau, Francisco",es,Bigastre,1947,es,Madrid,2019,
-jb_guzman,Joan Baptista,Guzmán i Martínez,Manuel Guzmán i Martínez,"Guzmán, Manuel",es,Aldaia,1846,es,Montserrat,1909,"jm_ubeda,j_piqueras"
-f_hernandez,Francisco,Hernández Illana,,"Hernández, Francisco",es,Alzira,ca.1700,es,Burgos,1780,
-p_insa,Josep,Insa Martínez,Pepito Insa Martínez,"Insa, Pepito",es,Cocentaina,1924,es,Cocentaina,2010,e_perez_margarit
-jm_izquierdo,Josep Manuel,Izquierdo Romeu,,"Izquierdo, Josep Manuel",es,Catarroja,1890,es,València,1951,
-j_ferriz,Josep,Ferriz i Llorens,,"Ferriz, Josep",es,Algemesí,1913,es,Bunyol,2002,jm_izquierdo
-m_just,Manuel,Just Verdaguer,,"Just, Manuel",es,Catarroja,1707,es,València,1787,p_rabassa
-j_latorre_baeza,Juan,Latorre Baeza,,"Latorre, Juan",es,Alacant,1868,es,Alacant,1941,
-j_latorre_rubio,Justiniano,Latorre Rubio,,"Latorre, Justiniano",es,Utiel,1892,es,Alginet,1958,
-f_llacer,Francesc,Llàcer Pla,,"Llàcer, Francesc",es,València,1918,es,València,2002,"m_palau,s_gea,jv_baguena"
-v_lleo,Vicent,Lleó i Balbastre,,"Lleó, Vicent",es,Torrent,1870,es,Madrid,1922,"s_giner,jb_plasencia_valls,l_alonso"
-l_alonso,Lambert,Alonso i Torres,,"Alonso, Lambert",es,Godella,1863,es,Godella,1929,a_cotogni
+f_grau,Francisco,Grau Vergara,Francisco Grau,"Grau, Francisco",es,Bigastre,1947,es,Madrid,2019,
+jb_guzman,Joan Baptista,Guzmán i Martínez,Manuel Guzmán,"Guzmán, Manuel",es,Aldaia,1846,es,Montserrat,1909,"jm_ubeda,j_piqueras"
+f_hernandez,Francisco,Hernández Illana,Francisco Hernández,"Hernández, Francisco",es,Alzira,ca.1700,es,Burgos,1780,
+p_insa,Josep,Insa Martínez,Pepito Insa,"Insa, Pepito",es,Cocentaina,1924,es,Cocentaina,2010,e_perez_margarit
+jm_izquierdo,Josep Manuel,Izquierdo Romeu,Josep Manuel Izquierdo,"Izquierdo, Josep Manuel",es,Catarroja,1890,es,València,1951,
+j_ferriz,Josep,Ferriz i Llorens,Josep Ferriz,"Ferriz, Josep",es,Algemesí,1913,es,Bunyol,2002,jm_izquierdo
+m_just,Manuel,Just Verdaguer,Manuel Just,"Just, Manuel",es,Catarroja,1707,es,València,1787,p_rabassa
+j_latorre_baeza,Juan,Latorre Baeza,Juan Latorre,"Latorre, Juan",es,Alacant,1868,es,Alacant,1941,
+j_latorre_rubio,Justiniano,Latorre Rubio,Justiniano Laotorre,"Latorre, Justiniano",es,Utiel,1892,es,Alginet,1958,
+f_llacer,Francesc,Llàcer Pla,Francesc Llàcer,"Llàcer, Francesc",es,València,1918,es,València,2002,"m_palau,s_gea,jv_baguena"
+v_lleo,Vicent,Lleó i Balbastre,Vicent Lleó,"Lleó, Vicent",es,Torrent,1870,es,Madrid,1922,"s_giner,jb_plasencia_valls,l_alonso"
+l_alonso,Lambert,Alonso i Torres,Lambert Alonso,"Alonso, Lambert",es,Godella,1863,es,Godella,1929,a_cotogni
 t_lopez_torregrosa,Tomàs,López Torregrosa,,"López Torregrosa, Tomàs",es,Alacant,1868,es,Madrid,1913,
-j_lloret,Jaime,Lloret Miralles,,"Lloret, Jaime",es,Alcoi,1933,es,Alcoi,2018,a_blanquer
+j_lloret,Jaime,Lloret Miralles,Jaime Lloret,"Lloret, Jaime",es,Alcoi,1933,es,Alcoi,2018,a_blanquer
 j_brahms,Johannes,Brahms,,"Brahms, Johannes",de,Hamborg,1833,at,Wien,1897,e_marxsen
-f_schubert,Franz,Schubert,,"Schubert, Franz",at,Wien,1797,at,Wien,1828,a_salieri
+f_schubert,Franz Peter,Schubert,Franz Schubert,"Schubert, Franz",at,Wien,1797,at,Wien,1828,a_salieri
 f_liszt,Franz,Liszt,,"Liszt, Franz",at,Doborján,1811,de,Bayreuth,1886,"a_liszt,c_czerny,a_salieri,a_reicha,f_paer"
-r_schumann,Robert,Schumann,,"Schumann, Robert",de,Zwickau,1810,de,Endenich,1856,"f_wieck,h_dorn,jg_kuntzsch"
-f_mendelssohn,Felix,Mendelssohn Bartholdy,,"Mendelssohn, Felix",de,Hamborg,1809,de,Leipzig,1847,"kf_zelter,l_berger,m_bigot,l_mendelssohn,f_lauska,i_moscheles"
-f_hensel,Fanny,Mendelssohn,Fanny Hensel,"Mendelssohn, Fanny",de,Hamborg,1805,de,Berlin,1847,"m_bigot,l_berger,l_mendelssohn,f_lauska,kf_zelter"
-t_albinoni,Tomaso,Albinoni,,"Albinoni, Tomaso",it,Venèsia,1671,it,Venèsia,1751,g_legrenzi
-e_marfany,Enric,Marfany i Gosset,,"Marfany, Enric",ad,Sant Julià de Lòria,1877,es,Barcelona,1957,
-f_tapies,Francesc,Tàpies i Torres,,"Tàpies, Francesc",es,Oliana,1898,es,Tarragona,1985,"e_marfany,l_refice,r_manari,c_tournemire"
+r_schumann,Robert Alexander,Schumann,Robert Schumann,"Schumann, Robert",de,Zwickau,1810,de,Endenich,1856,"f_wieck,h_dorn,jg_kuntzsch"
+f_mendelssohn,Jakob Ludwig Felix,Mendelssohn Bartholdy,Felix Mendelssohn,"Mendelssohn, Felix",de,Hamborg,1809,de,Leipzig,1847,"kf_zelter,l_berger,m_bigot,l_mendelssohn,f_lauska,i_moscheles"
+f_hensel,Fanny Cäcilie,Mendelssohn,Fanny Hensel,"Mendelssohn, Fanny",de,Hamborg,1805,de,Berlin,1847,"m_bigot,l_berger,l_mendelssohn,f_lauska,kf_zelter"
+t_albinoni,Tomaso Giovanni,Albinoni,Tomaso Albinoni,"Albinoni, Tomaso",it,Venèsia,1671,it,Venèsia,1751,g_legrenzi
+e_marfany,Enric,Marfany i Gosset,Enric Marfany,"Marfany, Enric",ad,Sant Julià de Lòria,1877,es,Barcelona,1957,
+f_tapies,Francesc,Tàpies i Torres,Francesc Tàpies,"Tàpies, Francesc",es,Oliana,1898,es,Tarragona,1985,"e_marfany,l_refice,r_manari,c_tournemire"
 j_rheinberger,Josef,Rheinberger,,"Rheinberger, Josef",li,Vaduz,1839,de,Minga,1901,"f_lachner,p_schmutzer"
 d_bartolucci,Domenico,Bartolucci,,"Bartolucci, Domenico",it,Borgo San Lorenzo,1917,it,Roma,2013,i_pizzetti
 l_perosi,Lorenzo,Perosi,,"Perosi, Lorenzo",it,Tortona,1872,it,Roma,1956,fz_haberl
-l_ferre,Léo,Ferré,,"Ferré, Léo",mc,Mu̍negu,1916,it,Castellina in Chianti,1993,
+l_ferre,Léo Albert Charles Antoine,Ferré,Léo Ferré,"Ferré, Léo",mc,Mu̍negu,1916,it,Castellina in Chianti,1993,
 fm_marini,Francesco Maria,Marini,,"Marini, Francesco Maria",it,Pés're,ca.1600,sm,Città di San Marino,,
-a_marcello,Alessandro,Marcello,,"Marcello, Alessandro",it,Venèsia,1673,it,Venèsia,1747,
+a_marcello,Alessandro Ignazio,Marcello,Alessandro Marcello,"Marcello, Alessandro",it,Venèsia,1673,it,Venèsia,1747,
 b_marcello,Benedetto,Marcello,,"Marcello, Benedetto",it,Venèsia,1686,it,Brèsa,1739,"f_gasparini,a_lotti"
 b_galuppi,Baldassare,Galuppi,,"Galuppi, Baldassare",it,Burano,1706,it,Venèsia,1785,"b_marcello,a_lotti"
 gb_serini,Giovanni Battista,Serini,,"Serini, Giovanni Battista",it,Cremona,ca.1724,it,,,b_galuppi
@@ -362,49 +362,49 @@ f_koln,Franco,von Köln,Franco Teutonicus,"Köln, Franco von",de,,,,,,j_garlande
 j_garlande,Jean,de Garlande,Johannes Gallicus,"Garlande, Jean de",fr,,ca.1270,fr,,1320,perotin
 g_machaut,Guillaume,de Machaut,,"Machaut, Guillaume de",fr,Reims,ca.1300,fr,Reims,1377,p_vitry
 j_muris,Johannes,de Muris,,"Muris, Johannes de",fr,Paris,,fr,Paris,,p_vitry
-j_rodoreda,Josep,Rodoreda i Santigós,,"Rodoreda, Josep",es,Barcelona,1851,ar,Buenos Aires,1922,n_manent
+j_rodoreda,Josep,Rodoreda i Santigós,Josep Rodoreda,"Rodoreda, Josep",es,Barcelona,1851,ar,Buenos Aires,1922,n_manent
 m_gomez_carrillo,Manuel,Gómez Carrillo,,"Gómez Carrillo, Manuel",ar,Santiago del Estero,1888,ar,Santiago del Estero,1968,j_rodoreda
 i_gomez_carrillo,Inés,Gómez Carrillo,,"Gómez Carrillo, Inés",ar,Santiago del Estero,1918,ar,Buenos Aires,2014,"m_gomez_carrillo,a_palma,e_steuermann,j_fitelberg"
-ja_clave,Josep Anselm,Clavé i Camps,,"Cláve, Anselm",es,Barcelona,1824,es,Barcelona,1874,
-f_marshall,Frank,Marshall King,,"Marshall, Frank",es,Mataró,1883,es,Barcelona,1959,"e_granados,f_gavagnach"
-f_gavagnach,Francesc de Paula,Sánchez i Gavagnach,,"Sánchez i Gavagnach, Francesc",es,Barcelona,1845,es,Barcelona,1918,"g_balart,d_auber"
-l_casagemas,Lluïsa,Casagemas i Coll,,"Casagemas, Lluïsa",es,Barcelona,1873,es,Madrid,1942,"f_gavagnach,a_torello,g_bardelli"
-n_manent,Nicolau,Manent i Maurant,,"Manent, Nicolau",es,Maó,1827,es,Barcelona,1887,b_andreu
+ja_clave,Josep Anselm,Clavé i Camps,Anselm Clavé,"Clavé, Anselm",es,Barcelona,1824,es,Barcelona,1874,
+f_marshall,Frank,Marshall King,Frank Marshall,"Marshall, Frank",es,Mataró,1883,es,Barcelona,1959,"e_granados,f_gavagnach"
+f_gavagnach,Francesc de Paula,Sánchez i Gavagnach,Francesc Sánchez i Gavagnach,"Sánchez i Gavagnach, Francesc",es,Barcelona,1845,es,Barcelona,1918,"g_balart,d_auber"
+l_casagemas,Lluïsa,Casagemas i Coll,Lluïsa Casagemas,"Casagemas, Lluïsa",es,Barcelona,1873,es,Madrid,1942,"f_gavagnach,a_torello,g_bardelli"
+n_manent,Nicolau,Manent i Maurant,Nicolau Manent,"Manent, Nicolau",es,Maó,1827,es,Barcelona,1887,b_andreu
 a_mestres,Apel·les,Mestres i Oñós,Apeles Mestres,"Mestres, Apel·les",es,Barcelona,1854,es,Barcelona,1936,
-c_karr,Carme,Karr i Alfonsetti,,"Karr, Carme",es,Barcelona,1865,es,Barcelona,1943,j_rodoreda
+c_karr,Carme,Karr i Alfonsetti,Carme Karr,"Karr, Carme",es,Barcelona,1865,es,Barcelona,1943,j_rodoreda
 h_karr,Henri,Karr,,"Karr, Henri",de,Zweibrücken,1784,fr,Paris,1842,
 p_henrion,Paul,Henrion,,"Henrion, Paul",fr,Paris,1819,fr,Paris,1901,h_karr
-i_guell,Isabel,Güell i López,,"Güell, Isabel",es,Barcelona,1872,es,Barcelona,1956,"e_gigout,j_garcia_robles"
+i_guell,Isabel,Güell i López,Isabel Güell,"Güell, Isabel",es,Barcelona,1872,es,Barcelona,1956,"e_gigout,j_garcia_robles"
 j_garcia_robles,Josep,Garcia Robles,,"Garcia Robles, Josep",es,Olot,1835,es,Barcelona,1910,
 e_marti,Emília,Martí Vilaplana,,"Martí Vilaplana, Emília",es,Alcoi,1851,es,Alcoi,1915,
-a_marzal,Álvaro,Marzal García,,"Marzal, Álvaro",es,Oliva,1875,es,Pozoamargo,1960,
-a_montesinos,Antoni,Montesinos Millo,,"Montesinos, Antoni",es,Carlet,1754,es,València,1822,"f_morera,r_angles"
-j_morata,Juan José Joaquín,Morata García,,"Morata, José",es,Geldo,1769,es,València,1840,v_olmos
-j_moreno,Josep,Moreno i Gans,,"Moreno, Josep",es,Algemesí,1897,es,Muxía,1976,c_campo
-a_mus,Abelardo,Mus Sanahuja,Abel Mus Sanahuja,"Mus, Abel",es,Borriana,1907,es,Picanya,1983,"j_bilewski,a_brun,e_schwartz"
-s_noguera,Salvador,Noguera Grau,,"Noguera, Salvador",es,València,ca.1750,es,València,1768,p_rabassa
-d_nueda,Daniel,de Nueda i Llisiana,,"Nueda, Daniel de",es,Xàtiva,1904,es,Xàtiva,1971,"a_amoros,e_lopez-chavarri"
+a_marzal,Álvaro,Marzal García,Álvaro Marzal,"Marzal, Álvaro",es,Oliva,1875,es,Pozoamargo,1960,
+a_montesinos,Antoni,Montesinos Millo,Antoni Montesinos,"Montesinos, Antoni",es,Carlet,1754,es,València,1822,"f_morera,r_angles"
+j_morata,Juan José Joaquín,Morata García,José Morata,"Morata, José",es,Geldo,1769,es,València,1840,v_olmos
+j_moreno,Josep,Moreno i Gans,Josep Moreno,"Moreno, Josep",es,Algemesí,1897,es,Muxía,1976,c_campo
+a_mus,Abelardo,Mus Sanahuja,Abel Mus,"Mus, Abel",es,Borriana,1907,es,Picanya,1983,"j_bilewski,a_brun,e_schwartz"
+s_noguera,Salvador,Noguera Grau,Salvador Noguera,"Noguera, Salvador",es,València,ca.1750,es,València,1768,p_rabassa
+d_nueda,Daniel,de Nueda i Llisiana,Daniel de Nueva,"Nueda, Daniel de",es,Xàtiva,1904,es,Xàtiva,1971,"a_amoros,e_lopez-chavarri"
 p_rabassa,Pere,Rabassa,,"Rabassa, Pere",es,Barcelona,1683,es,Sevilla,1767,"f_valls,j_barter"
-f_valls,Francesc,Valls i Galan,,"Valls, Francesc",es,Barcelona,1671,es,Barcelona,1747,m_rosquelles
+f_valls,Francesc,Valls i Galan,Francesc Valls,"Valls, Francesc",es,Barcelona,1671,es,Barcelona,1747,m_rosquelles
 f_feo,Francesco,Feo,,"Feo, Francesco",it,Napule,1691,it,Napule,1761,n_fago
 l_vinci,Leonardo,Vinci,,"Vinci, Leonardo",it,Strongoli,1690,it,Napule,1730,g_greco
 gb_pergolesi,Giovanni Battista,Draghi,Giovanni Battista Pergolesi,"Pergolesi, Giovanni Battista",it,Jesi,1710,it,Pozzule,1736,"g_greco,l_vinci,f_feo,f_durante"
-j_nebra,José,de Nebra Blasco,,"Nebra, José de",es,Calatayud,1702,es,Madrid,1768,"j_martinez_diaz,ja_nebra"
+j_nebra,José Melchor Baltasar Gaspar,de Nebra Blasco,José de Nebra,"Nebra, José de",es,Calatayud,1702,es,Madrid,1768,"j_martinez_diaz,ja_nebra"
 m_casulana,Maddalena,Casulana,,"Casulana, Maddalena",it,Casole d'Elsa,ca.1544,it,,ca.1590,
 h_bingen,Hildegard,von Bingen,,"Bingen, Hildegard von",de,Bermersheim vor der Höhe,ca.1098,de,Rupertsberg,1179,
-v_olmos,Vicente,Olmos i Claver,,"Olmos, Vicente",es,Catarroja,ca.1744,es,Catarroja,1812,
-m_oltra,Manuel,Oltra i Ferrer,,"Oltra, Manuel",es,València,1922,es,Barcelona,2015,"j_font,j_zamacois,e_toldra,j_ricart,j_gibert"
-a_palanca,Antoni,Palanca i Massià,,"Palanca, Antoni",es,Sagunt,1870,es,Sagunt,1933,"s_giner,a_goni"
-j_palanca,Julià,Palanca i Massià,,"Palanca, Julià",es,Sagunt,1883,es,Barcelona,1964,"a_palanca,f_pedrell,e_vega"
-f_basil,Francesc,Basil i Oliveras,,"Basil, Francesc",es,Figueres,1905,es,Figueres,1975,"r_basil,l_bonaterra,j_passolas,j_palanca,j_zamacois"
-l_bonaterra,Lluís,Bonaterra i Gras,,"Bonaterra, Lluís",es,Figueres,1890,fr,,1952,"f_pedrell,e_granados,m_moszkowski,cg_vidiella"
-j_passolas,Josep,Passolas i Coderch,,"Passolas, Josep",es,Castelló d'Empúries,1881,es,Figueres,1955,"a_agramont,a_nicolau,j_pujol"
-r_basil,Ramon,Basil i Burjó,,"Basil, Ramon",es,Figueres,1873,es,Figueres,1938,
-a_agramont,Antoni,Agramont i Quintana,,"Agramont, Antoni",es,Castelló d'Empúries,1851,es,Figueres,1906,"j_anglada,b_frigola"
+v_olmos,Vicente,Olmos i Claver,Vicente Olmos,"Olmos, Vicente",es,Catarroja,ca.1744,es,Catarroja,1812,
+m_oltra,Manuel,Oltra i Ferrer,Manuel Oltra,"Oltra, Manuel",es,València,1922,es,Barcelona,2015,"j_font,j_zamacois,e_toldra,j_ricart,j_gibert"
+a_palanca,Antoni,Palanca i Massià,Antoni Palanca,"Palanca, Antoni",es,Sagunt,1870,es,Sagunt,1933,"s_giner,a_goni"
+j_palanca,Julià,Palanca i Massià,Julià Palanca,"Palanca, Julià",es,Sagunt,1883,es,Barcelona,1964,"a_palanca,f_pedrell,e_vega"
+f_basil,Francesc,Basil i Oliveras,Francesc Basil,"Basil, Francesc",es,Figueres,1905,es,Figueres,1975,"r_basil,l_bonaterra,j_passolas,j_palanca,j_zamacois"
+l_bonaterra,Lluís,Bonaterra i Gras,Lluís Bonaterra,"Bonaterra, Lluís",es,Figueres,1890,fr,,1952,"f_pedrell,e_granados,m_moszkowski,cg_vidiella"
+j_passolas,Josep,Passolas i Coderch,Josep Passolas,"Passolas, Josep",es,Castelló d'Empúries,1881,es,Figueres,1955,"a_agramont,a_nicolau,j_pujol"
+r_basil,Ramon,Basil i Burjó,Ramon Basil,"Basil, Ramon",es,Figueres,1873,es,Figueres,1938,
+a_agramont,Antoni,Agramont i Quintana,Antoni Agramont,"Agramont, Antoni",es,Castelló d'Empúries,1851,es,Figueres,1906,"j_anglada,b_frigola"
 g_pascual,Gustavo,Pascual Falcó,,"Pascual Falcó, Gustavo",es,Cocentaina,1909,es,Cocentaina,1946,e_perez_margarit
-jb_pastor,Juan Bautista,Pastor Pérez,,"Pastor, Juan Bautista",es,Bocairent,1859,es,València,1927,"s_giner,jm_ubeda"
-m_penella_moreno,Manuel,Penella Moreno,,"Penella Moreno, Manuel",es,València,1880,mx,Cuernavaca,1939,"m_penella_raga,s_giner"
-m_penella_raga,Manuel,Penella Raga,,"Penella Raga, Manuel",es,Massanassa,1847,es,València,1909,p_perez_gascon
+jb_pastor,Juan Bautista,Pastor Pérez,Juan Bautista Pastor,"Pastor, Juan Bautista",es,Bocairent,1859,es,València,1927,"s_giner,jm_ubeda"
+m_penella_moreno,Manuel,Penella Moreno,Manuel Penella,"Penella Moreno, Manuel",es,València,1880,mx,Cuernavaca,1939,"m_penella_raga,s_giner"
+m_penella_raga,Manuel,Penella Raga,Manuel Penella,"Penella Raga, Manuel",es,Massanassa,1847,es,València,1909,p_perez_gascon
 jg_peres,Joan Genís,Peres,,"Peres, Joan Genís",es,Oriola,1548,es,Alacant,1612,
 m_perez,Marc,Pérez,,"Pérez, Marc",es,Castellnou,ca.1600,es,València,1662,
 p_perez_chovi,Pasqual,Pérez Choví,,"Pérez Choví, Pasqual",es,Carlet,1889,es,Alginet,1953,
@@ -415,63 +415,78 @@ v_perez-jorge,Vicente,Pérez-Jorge,,"Pérez-Jorge, Vicente",es,Llíria,1906,es,O
 c_perez_laporta,Camilo,Pérez Laporta,Camilo el Roig,"Pérez Laporta, Camilo",es,Alcoi,1852,es,Alcoi,1917,f_canto
 e_perez_margarit,Enrique,Pérez Margarit,,"Pérez Margarit, Enrique",es,Cocentaina,1885,es,Cocentaina,ca.1952,
 j_perez_vilaplana,Josep,Pérez Vilaplana,,"Pérez Vilaplana, Josep",es,Cocentaina,1929,es,Cocentaina,1998,e_perez_margarit
-j_piedra,Joaquim,Piedra Miralles,,"Piedra, Joaquim",es,Bocairent,1912,es,València,1971,"v_ripolles,j_belda"
-m_pico,Miguel,Picó Biosca,,"Picó, Miguel",es,Alcoleja,1921,es,Cocentaina,1997,"g_pascual,e_perez_margarit"
-s_piquer,Salvador,Piquer y Gil,,"Piquer, Salvador",es,Sogorb,1803,es,València,1833,"f_andrevi,j_morata"
-j_piqueras,Josep,Piqueras i Cabanilles,,"Piqueras, Josep",es,Gandia,1819,es,València,1870,
-jb_plasencia_aznar,Joan Baptista,Plasencia i Aznar,,"Plasencia i Aznar, Joan Baptista",es,València,1863,es,Ulldecona,1897,
-jb_plasencia_valls,Joan Baptista,Plasencia i Valls,,"Plasencia i Valls, Joan Baptista",es,Benaguasil,1816,es,València,1855,j_morata
-l_plasencia_valls,Lambert,Plasencia i Valls,,"Plasencia i Valls, Lambert",es,Benaguasil,1809,es,València,1849,"j_morata,a_montesinos"
-m_plasencia_valls,Marià,Plasencia i Valls,,"Plasencia i Valls, Marià",es,Benaguasil,1809,es,València,1894,
-v_portoles,Vicente,Portolés Tomás,,"Portolés, Vicente",es,Les Useres,1918,es,L'Alcora,1982,
-m_quislant,Manuel,Quislant Botella,,"Quislant, Manuel",es,Santa Pola,1871,es,Madrid,1949,e_serrano
-s_reig,Santiago,Reig Pascual,,"Reig, Santiago",es,Cocentaina,1921,es,Cocentaina,2012,"e_perez_margarit,l_torregrosa"
-j_robledo,Josefina,Robledo Gallego,,"Robledo, Josefina",es,València,1897,es,Godella,1972,f_tarrega
+j_piedra,Joaquim,Piedra Miralles,Joaquim Piedra,"Piedra, Joaquim",es,Bocairent,1912,es,València,1971,"v_ripolles,j_belda"
+m_pico,Miguel,Picó Biosca,Miguel Picó,"Picó, Miguel",es,Alcoleja,1921,es,Cocentaina,1997,"g_pascual,e_perez_margarit"
+s_piquer,Salvador,Piquer y Gil,Salvador Piquer,"Piquer, Salvador",es,Sogorb,1803,es,València,1833,"f_andrevi,j_morata"
+j_piqueras,Josep,Piqueras i Cabanilles,Josep Piqueras,"Piqueras, Josep",es,Gandia,1819,es,València,1870,
+jb_plasencia_aznar,Joan Baptista,Plasencia i Aznar,Joan Baptista Plasencia,"Plasencia i Aznar, Joan Baptista",es,València,1863,es,Ulldecona,1897,
+jb_plasencia_valls,Joan Baptista,Plasencia i Valls,Joan Baptista Plasencia,"Plasencia i Valls, Joan Baptista",es,Benaguasil,1816,es,València,1855,j_morata
+l_plasencia_valls,Lambert,Plasencia i Valls,Lambert Plasencia,"Plasencia i Valls, Lambert",es,Benaguasil,1809,es,València,1849,"j_morata,a_montesinos"
+m_plasencia_valls,Marià,Plasencia i Valls,Marià Plasencia,"Plasencia i Valls, Marià",es,Benaguasil,1809,es,València,1894,
+v_portoles,Vicente,Portolés Tomás,Vicente Portolés,"Portolés, Vicente",es,Les Useres,1918,es,L'Alcora,1982,
+m_quislant,Manuel,Quislant Botella,Manuel Quislant,"Quislant, Manuel",es,Santa Pola,1871,es,Madrid,1949,e_serrano
+s_reig,Santiago,Reig Pascual,Santiago Reig,"Reig, Santiago",es,Cocentaina,1921,es,Cocentaina,2012,"e_perez_margarit,l_torregrosa"
+j_robledo,Josefina,Robledo Gallego,Josefina Robledo,"Robledo, Josefina",es,València,1897,es,Godella,1972,f_tarrega
 o_soares,Osvaldo,Soares,,"Soares, Osvaldo",br,São Paulo,1886,br,São Paulo,1966,j_robledo
-j_roca,Josep,Roca Coll,,"Roca, Josep",es,Xirivella,1915,es,València,1997,
-p_roca,Josefa,Roca Salvador,Pepita Roca Salvador,"Roca, Pepita",es,València,1897,es,Barcelona,1956,f_tarrega
-v_rodriguez,Vicent,Rodríguez Monllor,,"Rodríguez, Vicent",es,Ontinyent,ca.1685,es,València,1760,
+j_roca,Josep,Roca Coll,Josep Roca,"Roca, Josep",es,Xirivella,1915,es,València,1997,
+p_roca,Josefa,Roca Salvador,Pepita Roca,"Roca, Pepita",es,València,1897,es,Barcelona,1956,f_tarrega
+v_rodriguez,Vicent,Rodríguez Monllor,Vicent Rodríguez,"Rodríguez, Vicent",es,Ontinyent,ca.1685,es,València,1760,
 a_corelli,Arcangelo,Corelli,,"Corelli, Arcangelo",it,Fusgnàn,1653,it,Roma,1713,"l_brugnoli,g_benvenuti,gb_bassani"
-p_locatelli,Pietro,Locatelli,,"Locatelli, Pietro",it,Bèrghem,1695,nl,Amsterdam,1764,a_corelli
+p_locatelli,Pietro Antonio,Locatelli,Pietro Locatelli,"Locatelli, Pietro",it,Bèrghem,1695,nl,Amsterdam,1764,a_corelli
 jm_leclair,Jean-Marie,Leclair,,"Leclair, Jean-Marie",fr,Lyon,1697,fr,Paris,1764,"p_locatelli,a_corelli,jb_somis"
 gb_somis,Giovanni Battista,Somis,,"Somis, Giovanni Battista",it,Turin,1686,it,Turin,1763,"a_vivaldi,a_corelli"
 gl_somis,Giovanni Lorenzo,Somis,,"Somis, Giovanni Lorenzo",it,Turin,1688,it,Turin,1775,gn_laurenti
-t_carreno,María Teresa,Carreño García de Sena,,"Carreño, Teresa",ve,Caracas,1853,us,New York,1917,"a_rubinstein,lm_gottschalk,g_mathias"
-e_albert,Eugen,d'Albert,,"Albert, Eugen d'",gb,Glasgow,1864,lv,Riga,1932,"f_liszt,a_sullivan,h_richter"
+t_carreno,María Teresa,Carreño García de Sena,Teresa Carreño,"Carreño, Teresa",ve,Caracas,1853,us,New York,1917,"a_rubinstein,lm_gottschalk,g_mathias"
+e_albert,Eugen Francis Charles,d'Albert,Eugen d'Albert,"Albert, Eugen d'",gb,Glasgow,1864,lv,Riga,1932,"f_liszt,a_sullivan,h_richter"
 e_sauret,Émile,Sauret,,"Sauret, Émile",fr,Dun-sur-Auron,1852,gb,London,1920,ca_beirot
 o_chew_becker,Ottawa,Chew,Otie Chew Becker,"Chew Becker, Otie",gb,London,1880,us,Los Ángeles,1953,"e_sauret,j_joachim"
-j_goldsmith,Jerrald,Goldsmith,Jerry Goldsmith,"Goldsmith, Jerry",us,Carson,1929,us,Los Ángeles,2004,"m_castelnuovo,j_gimpel,m_rozsa"
+j_goldsmith,Jerrald King,Goldsmith,Jerry Goldsmith,"Goldsmith, Jerry",us,Carson,1929,us,Los Ángeles,2004,"m_castelnuovo,j_gimpel,m_rozsa"
 e_bernstein,Elmer,Bernstein,,"Bernstein, Elmer",us,New York,1922,us,Ojai,2004,"m_castelnuovo,i_citkowitz"
 l_bernstein,Louis,Bernstein,Leonard Bernstein,"Bernstein, Leonard",us,Lawrence,1918,us,New York,1990,"n_boulanger,r_stoehr,w_piston,f_reiner,i_vengerova,h_gebhard"
 i_citkowitz,Israel,Citkowitz,,"Citkowitz, Israel",pl,Skierniewice,1909,gb,Westminster,1974,"n_boulanger,a_copland,r_sessions"
 h_mancini,Enrico Nicola,Mancini,Henry Mancini,"Mancini, Henry",us,Cleveland,1924,us,Beverly Hills,1994,"m_castelnuovo,m_adkins,e_krenek"
 a_previn,Andreas Ludwig,Previn,André Previn,"Previn, André",de,Berlin,1929,us,New York,2019,m_castelnuovo
-n_riddle,Nelson,Riddle,,"Riddle, Nelson",us,Oradell,1921,us,Los Ángeles,1985,m_castelnuovo
+n_riddle,Nelson Smock,Riddle,Nelson Riddle,"Riddle, Nelson",us,Oradell,1921,us,Los Ángeles,1985,m_castelnuovo
 a_newman,Alfred,Newman,,"Newman, Alfred",uf,New Haven,1901,us,Los Ángeles,1970,"s_stojowsi,r_goldmark,a_schonberg"
-j_horner,James,Horner,,"Horner, James",us,Los Ángeles,1953,us,Los Padres National Forest,2015,"g_ligeti,p_chihara"
+j_horner,James Roy,Horner,James Horner,"Horner, James",us,Los Ángeles,1953,us,Los Padres National Forest,2015,"g_ligeti,p_chihara"
 e_morricone,Ennio,Morricone,,"Morricone, Ennio",it,Roma,1928,it,Roma,2020,"m_morricone,g_petrassi"
 f_ferrara,Franco,Ferrara,,"Ferrara, Franco",it,Palermu,1911,it,Firenze,1985,"a_belleti,f_ivaldi,a_consolini,c_nordio"
-s_salva,Salvador,Salvá Sapena,,"Salvá, Salvador",es,Xàbia,1927,es,Xàbia,2001,
-jm_cervera,José María,Cervera Lloret,,"Cervera, José María",es,Alboraig,1910,es,Picassent,2002,"p_sosa,jm_izquierdo,j_ruiz_manzanares"
-j_ruiz_manzanares,Jacinto,Ruiz de Manzanares,,"Manzanares, Jacinto",es,Corella,1872,es,València,1937,"j_canto,d_zabala,e_arrieta"
-a_company,Antonio,Company Barber,,"Company, Antonio",es,Tavernes de la Valldigna,1922,es,,,s_panxa_verda
-j_salvador,Josefina,Salvador Segarra,,"Salvador, Josefina",es,Castelló de la Plana,1920,es,València,2006,"a_mus,g_enescu,r_benedetti"
-m_salvador,Matilde,Salvador Segarra,,"Salvador, Matilde",es,Castelló de la Plana,1918,es,València,2007,v_asencio
+s_salva,Salvador,Salvá Sapena,Salvador Salvá,"Salvá, Salvador",es,Xàbia,1927,es,Xàbia,2001,
+jm_cervera,José María,Cervera Lloret,José María Cervera,"Cervera, José María",es,Alboraig,1910,es,Picassent,2002,"p_sosa,jm_izquierdo,j_ruiz_manzanares"
+j_ruiz_manzanares,Jacinto,Ruiz de Manzanares,Jacinto Manzanares,"Manzanares, Jacinto",es,Corella,1872,es,València,1937,"j_canto,d_zabala,e_arrieta"
+a_company,Antonio,Company Barber,Antonio Company,"Company, Antonio",es,Tavernes de la Valldigna,1922,es,,,s_panxa_verda
+j_salvador,Josefina,Salvador Segarra,Josefina Salvador,"Salvador, Josefina",es,Castelló de la Plana,1920,es,València,2006,"a_mus,g_enescu,r_benedetti"
+m_salvador,Matilde,Salvador Segarra,Matilde Salvador,"Salvador, Matilde",es,Castelló de la Plana,1918,es,València,2007,v_asencio
 l_sanchez_fernandez,Luis,Sánchez Fernández,,"Sánchez Fernández, Luis",es,València,1907,es,Málaga,1957,"m_palau,a_amoros,j_bellver"
-r_segura,Robert,Segura Villalba,,"Segura, Robert",es,València,1849,es,València,1902,"jb_plasencia_valls,e_compta"
-d_sendra,Dolores,Sendra Bordes,,"Sendra, Dolores",es,Pego,1927,es,Pego,2019,"m_palau,l_magenti"
-j_serrano,Josep,Serrano Simeón,,"Serrano, Josep",es,Sueca,1873,es,Madrid,1941,"s_giner,m_penella_raga,r_segura,a_goni"
+r_segura,Robert,Segura Villalba,Robert Segura,"Segura, Robert",es,València,1849,es,València,1902,"jb_plasencia_valls,e_compta"
+d_sendra,Dolores,Sendra Bordes,Dolores Sendra,"Sendra, Dolores",es,Pego,1927,es,Pego,2019,"m_palau,l_magenti"
+j_serrano,Josep,Serrano Simeón,Josep Serrano,"Serrano, Josep",es,Sueca,1873,es,Madrid,1941,"s_giner,m_penella_raga,r_segura,a_goni"
 m_settimio,Marcelo,Settimio,,"Settimio, Marcelo",es,València,ca.1600,es,Sogorb,1655,jb_comes
-e_soler,Eduard,Soler Pérez,,"Soler, Eduard",es,València,1895,es,València,1967,v_ripolles
-p_sosa,Pedro,Sosa López,,"Sosa, Pedro",es,Requena,1887,es,Requena,1953,"s_giner,a_amoros,f_penarroja"
-f_penarroja,Francisco,Peñarroja Martínez,,"Peñarroja, Francisco",es,La Vall d'Uixó,1868,es,La Vall d'Uixó,1920,s_giner
-f_tito,Francisco,Tito Pérez,,"Tito, Francisco",es,La Vila Joiosa,1874,es,La Vila Joiosa,1950,"jb_pastor,jm_ubeda"
-l_torregrosa,Luis,Torregrosa García,,"Torregrosa, Luis",es,Alacant,1871,es,Madrid,1960,
-f_tormo,Fernando,Tormo Ibáñez,,"Tormo, Fernando",es,Albaida,1882,es,Albaida,1964,
-v_tormo,Vicenta,Tormo Serrano,,"Tormo, Vicenta",es,València,1857,es,Madrid,1936,
-e_torro,Enrique,Torró Insa,,"Torró, Enrique",es,Cocentaina,1922,es,Cocentaina,2005,e_perez_margarit
-b_traver,Benet,Traver i Garcia,,"Traver, Benet",es,Vila-real,1866,es,Vila-real,1933,a_amoros
-jb_ubeda,José María,Úbeda Montés,,"Úbeda, José María",es,Gandia,1839,es,València,1909,"p_perez_gascon,f_bonastre"
-e_valdes,Emili,Valdés Perlasia,,"Valdés, Emili",es,Castalla,1912,es,Castalla,1998,m_palau
+e_soler,Eduard,Soler Pérez,Eduard Soler,"Soler, Eduard",es,València,1895,es,València,1967,v_ripolles
+p_sosa,Pedro,Sosa López,Pedro Sosa,"Sosa, Pedro",es,Requena,1887,es,Requena,1953,"s_giner,a_amoros,f_penarroja"
+f_penarroja,Francisco,Peñarroja Martínez,Francisco Peñarroja,"Peñarroja, Francisco",es,La Vall d'Uixó,1868,es,La Vall d'Uixó,1920,s_giner
+f_tito,Francisco,Tito Pérez,Francisco Tito,"Tito, Francisco",es,La Vila Joiosa,1874,es,La Vila Joiosa,1950,"jb_pastor,jm_ubeda"
+l_torregrosa,Luis,Torregrosa García,Luis Torregrosa,"Torregrosa, Luis",es,Alacant,1871,es,Madrid,1960,
+f_tormo,Fernando,Tormo Ibáñez,Fernando Tormo,"Tormo, Fernando",es,Albaida,1882,es,Albaida,1964,
+v_tormo,Vicenta,Tormo Serrano,Vicenta Tormo,"Tormo, Vicenta",es,València,1857,es,Madrid,1936,
+e_torro,Enrique,Torró Insa,Enrique Torró,"Torró, Enrique",es,Cocentaina,1922,es,Cocentaina,2005,e_perez_margarit
+b_traver,Benet,Traver i Garcia,Benet Traver,"Traver, Benet",es,Vila-real,1866,es,Vila-real,1933,a_amoros
+jb_ubeda,José María,Úbeda Montés,José María Úbeda,"Úbeda, José María",es,Gandia,1839,es,València,1909,"p_perez_gascon,f_bonastre"
+e_valdes,Emili,Valdés Perlasia,Emili Valdés,"Valdés, Emili",es,Castalla,1912,es,Castalla,1998,m_palau
 j_vasco,José,Vasco,,"Vasco, José",es,Alacant,1790,es,Murcia,1844,j_alexandre
-e_ximenez,Eduardo,Ximénez Cos,,"Ximénez, Eduardo",es,València,1820,es,València,1900,p_perez_gascon
+e_ximenez,Eduardo,Ximénez Cos,Eduardo Ximénez,"Ximénez, Eduardo",es,València,1820,es,València,1900,p_perez_gascon
+m_sirmen,Maddalena Laura,Lombardini,Maddalena Sirmen,"Sirmen, Maddalena",it,Venèsia,1745,it,Venèsia,1818,g_tartini
+m_scott,Marion Margaret,Scott,Marion Scott,"Scott, Marion",gb,London,1877,gb,London,1953,"e_fernandez_arbos,m_barton,cv_stanford,w_davies"
+m_wurm,Mary Josephine Agnes,Würm,Mary Wurm,"Wurm, Mary",gb,Southampton,1860,de,Minga,1938,"o_radecki,c_schumann,j_raff,e_caland,cv_stanford"
+l_lehmann,Elisabetha Nina Mary Frederica,Lehmann,Liza Lehmann,"Lehmann, Liza",gb,London,1862,gb,London,1918,"a_randegger,j_lind,h_maccunn,n_raunkilde,w_freudenberg"
+k_eggar,Katharine Emily,Eggar,Katharine Eggar,"Eggar, Katharine",gb,London,1874,gb,London,1961,"k_klindworth,f_corder"
+a_verne-bredt,Alice Barbara,Würm,Alice Verne-Bredt,"Verne-Bredt, Alice",gb,Southampton,1864,gb,London,1958,m_schumann
+m_schumann,Marie,Schumann,,"Schumann, Marie",de,Leipzig,1841,ch,Interlaken,1929,
+m_verne,Mathilde,Würm,Mathilde Verne,"Verne, Mathilde",gb,Southampton,1865,gb,London,1936,c_schumann
+a_verne,Adela,Würm,Adela Verne,"Verne, Adela",gb,Southampton,1877,gb,London,1952,"m_verne,a_verne,m_schumann"
+j_vallier,John,Vallier,,"Vallier, John",gb,London,1920,gb,London,1991,"m_verne,w_kerschbaumer"
+i_paderewski,Ignacy Jan,Paderewski,,"Paderewski, Ignacy Jan",ua,Kurylivka,1860,us,New York,1941,"f_kiel,h_urban,t_leschetizky"
+s_bedford,Steuard John Rudolf,Bedford,Steuart Bedford,"Bedfort, Steuart",gb,London,1939,gb,London,2021,
+d_bedford,David Vickerman,Bedford,David Bedford,"Bedfort, David",gb,London,1937,gb,London,2011,"l_berkeley,l_nono"
+o_radecki,Olga Mathilde Agnes,von Radecki,Olga Radecki,"Radecki, Olga",lv,Riga,1858,,,1933,"c_schumann,s_lebert,d_pruckner,j_raff,j_ruthardt,l_stark"
+e_caland,Elisabeth Johanna Amelia,Caland,Elisabeth Caland,"Caland, Elisabeth",nl,Rotterdam,1862,de,Berlin,1929,"m_jaell,l_deppe,j_rebicek"
