@@ -348,20 +348,20 @@ function draw(rootId) {
         hierarchical: { 
             direction: 'UD', 
             sortMethod: 'directed', 
-            levelSeparation: 250, // Donem una mica més d'espai vertical
-            nodeSpacing: 300,    // Donem més espai horitzontal entre alumnes
-            edgeMinimization: true, // Evita que les línies s'encreuin tant
+            levelSeparation: 250, 
+            nodeSpacing: 350, // Augmentem l'espai perquè les línies tinguen lloc per baixar
+            edgeMinimization: false, // Important: que no intente "estalviar" línia pels costats
             parentCentralization: true
         } 
     },
     edges: {
         smooth: {
-            type: 'cubicBezier', // Crea corbes més elegants que no travessen tant els nodes
+            type: 'cubicBezier', // Crea una corba que surt verticalment
             forceDirection: 'vertical',
-            roundness: 0.4
+            roundness: 0.5
         },
-        color: { inherit: false }, // Mantenim els teus colors taronja/verd
-        width: 1.5
+        color: { inherit: false },
+        width: 1.2
     },
     physics: false, 
     interaction: { dragNodes: false, selectable: true }
