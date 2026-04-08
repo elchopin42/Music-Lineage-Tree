@@ -292,16 +292,19 @@ function crearNode(id, level, nodesArray) {
         font: { 
             multi: 'html', 
             size: fontSize, 
+            color: '#2c3e50',
             align: 'center',
-            lineSpacing: 10, // Augmentem l'espai entre línies (interlineat)
+            lineSpacing: 12, // Forcem un interlineat generós (pujat de 10 a 12)
             bold: {
+                color: '#2c3e50',
                 size: fontSize,
                 mod: 'bold'
             },
             italics: { 
-                size: fontSize * 0.7, // Forcem la mida al 70%
                 color: '#555555',
-                mod: 'italic'
+                size: fontSize * 0.7, // Mida reduïda
+                mod: 'italic',
+                vadjust: 0 // Ajust vertical per si el text "vola"
             }
         },
         color: { background: bgColor, border: borderColor },
