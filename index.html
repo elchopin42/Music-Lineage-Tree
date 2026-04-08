@@ -278,7 +278,7 @@ function crearNode(id, level, nodesArray) {
     
     const fontSize = level === 0 ? 24 : 16;
 
-    const nodeLabel = `${indicadorDalt}<b>${title}</b>${sub}\n` +
+    const nodeLabel = `${indicadorDalt}<b>${title}</b>${sub}\n` + `\n` +
                       `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
                       `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`;
 
@@ -344,9 +344,28 @@ function draw(rootId) {
     const container = document.getElementById('mynetwork');
     if (network) network.destroy();
     network = new vis.Network(container, { nodes, edges }, {
-        layout: { hierarchical: { direction: 'UD', sortMethod: 'directed', levelSeparation: 220, nodeSpacing: 250 } },
-        physics: false, interaction: { dragNodes: false, selectable: true }
-    });
+    layout: { 
+        hierarchical: { 
+            direction: 'UD', 
+            sortMethod: 'directed', 
+            levelSeparation: 250, // Donem una mica més d'espai vertical
+            nodeSpacing: 300,    // Donem més espai horitzontal entre alumnes
+            edgeMinimization: true, // Evita que les línies s'encreuin tant
+            parentCentralization: true
+        } 
+    },
+    edges: {
+        smooth: {
+            type: 'cubicBezier', // Crea corbes més elegants que no travessen tant els nodes
+            forceDirection: 'vertical',
+            roundness: 0.4
+        },
+        color: { inherit: false }, // Mantenim els teus colors taronja/verd
+        width: 1.5
+    },
+    physics: false, 
+    interaction: { dragNodes: false, selectable: true }
+});
     network.on("click", function(params) {
         if (params.nodes.length > 0) {
             const selectedId = params.nodes[0];
