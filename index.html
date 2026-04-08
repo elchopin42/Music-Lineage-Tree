@@ -268,11 +268,9 @@ function crearNode(id, level, nodesArray) {
     
     const title = c.DISPLAY_NAME || (c.NAME + " " + c.SURNAME);
     
-    // Utilitzem <i> per a la cursiva i una mida de font fixa més petita (p.ex. 12 o 14)
-    // En Vis-network, per a canviar la mida dins d'una etiqueta multi-font,
-    // sovint és millor aplicar l'estil al bloc sencer o usar el format que ell reconeix.
+    // Tornem a <i> per seguretat, però la clau estarà en la configuració de la font
     const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
-                ? `\n<code>${c.NAME} ${c.SURNAME}</code>` 
+                ? `\n<i>${c.NAME} ${c.SURNAME}</i>` 
                 : "";
 
     let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
@@ -280,35 +278,34 @@ function crearNode(id, level, nodesArray) {
     
     const fontSize = level === 0 ? 24 : 16;
 
-    // Ara nodeLabel ja inclou el títol principal i el "sub" amb el nou format
     const nodeLabel = `${indicadorDalt}<b>${title}</b>${sub}\n` +
                       `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
                       `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`;
+
     nodesArray.push({
-    id: id,
-    label: nodeLabel,
-    shape: 'box',
-    level: level,
-    font: { 
-        multi: 'html', 
-        size: fontSize, 
-        align: 'center',
-        // Pugem el lineSpacing però també usarem el vadjust
-        lineSpacing: 10,
-        bold: { size: fontSize, mod: 'bold' },
-        italics: { 
-            size: fontSize * 0.7, 
-            color: '#555555', 
-            mod: 'italic',
-            // El vadjust negatiu separa el text de la línia superior
-            vadjust: 2 
-        }
-    },
-    color: { background: bgColor, border: borderColor },
-    borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 1.5 : 1),
-    margin: 15, // Més marge per a que el lineSpacing no talli el text
-    widthConstraint: { maximum: level === 0 ? 600 : 220 } // Hem pujat de 200 a 220 per donar aire
-});
+        id: id,
+        label: nodeLabel,
+        shape: 'box',
+        level: level,
+        font: { 
+            multi: 'html', 
+            size: fontSize, 
+            align: 'center',
+            lineSpacing: 15, // Forcem un espaiat gran per a l'interlineat
+            bold: { size: fontSize, mod: 'bold' },
+            italics: { 
+                size: fontSize * 0.65, // Reduïm al 65% perquè es noti més
+                color: '#666666',
+                mod: 'italic',
+                vadjust: 0
+            }
+        },
+        color: { background: bgColor, border: borderColor },
+        borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 1.5 : 1),
+        margin: 15, // Més marge intern al quadre
+        // Pugem l'amplada màxima dels nodes secundaris per evitar que es col·lapsin
+        widthConstraint: { maximum: level === 0 ? 600 : 250 } 
+    });
 }
 
 function draw(rootId) {
