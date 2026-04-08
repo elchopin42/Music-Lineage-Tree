@@ -272,7 +272,7 @@ function crearNode(id, level, nodesArray) {
     // En Vis-network, per a canviar la mida dins d'una etiqueta multi-font,
     // sovint és millor aplicar l'estil al bloc sencer o usar el format que ell reconeix.
     const sub = (c.DISPLAY_NAME && c.SURNAME && c.DISPLAY_NAME !== (c.NAME + " " + c.SURNAME)) 
-                ? `\n<code><i>${c.NAME} ${c.SURNAME}</i></code>` 
+                ? `\n<i>${c.NAME} ${c.SURNAME}</i>` 
                 : "";
 
     let indicadorDalt = (level < 0 && teMestres) ? "▲\n" : "";
@@ -285,36 +285,30 @@ function crearNode(id, level, nodesArray) {
                       `${codeToEmoji(c.BIRTH_FLAG)} ${c.BIRTH_PLACE || ''} (${c.BIRTH_YEAR || '?'})\n` +
                       `${codeToEmoji(c.DEATH_FLAG)} ${c.DEATH_PLACE || ''} (${c.DEATH_YEAR || '?'})${indicadorBaix}`;
     nodesArray.push({
-        id: id,
-        label: nodeLabel,
-        shape: 'box',
-        level: level,
-        font: { 
-            multi: 'html', 
-            size: fontSize, 
-            align: 'center',
-            lineSpacing: 15, // Pugem a 15 per veure clarament si canvia l'interlineat
-            bold: {
-                size: fontSize,
-                mod: 'bold'
-            },
-            italics: { 
-                size: fontSize * 0.7, 
-                mod: 'italic'
-            },
-            // AQUESTA ÉS LA NOVA REGLA:
-            code: {
-                size: fontSize * 0.7, // Forcem la mida aquí
-                color: '#555555',
-                face: 'sans-serif', // Perquè no sembli una font de programació
-                mod: 'italic'
-            }
-        },
-        color: { background: bgColor, border: borderColor },
-        borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 1.5 : 1),
-        margin: 12,
-        widthConstraint: { maximum: level === 0 ? 600 : 200 }
-    });
+    id: id,
+    label: nodeLabel,
+    shape: 'box',
+    level: level,
+    font: { 
+        multi: 'html', 
+        size: fontSize, 
+        align: 'center',
+        // Pugem el lineSpacing però també usarem el vadjust
+        lineSpacing: 10,
+        bold: { size: fontSize, mod: 'bold' },
+        italics: { 
+            size: fontSize * 0.7, 
+            color: '#555555', 
+            mod: 'italic',
+            // El vadjust negatiu separa el text de la línia superior
+            vadjust: 2 
+        }
+    },
+    color: { background: bgColor, border: borderColor },
+    borderWidth: level === 0 ? 2 : (((level < 0 && teMestres) || (level > 0 && teAlumnes)) ? 1.5 : 1),
+    margin: 15, // Més marge per a que el lineSpacing no talli el text
+    widthConstraint: { maximum: level === 0 ? 600 : 220 } // Hem pujat de 200 a 220 per donar aire
+});
 }
 
 function draw(rootId) {
