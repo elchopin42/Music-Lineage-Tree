@@ -326,7 +326,7 @@ d_bartolucci,Domenico,Bartolucci,,"Bartolucci, Domenico",it,Borgo San Lorenzo,19
 l_perosi,Lorenzo,Perosi,,"Perosi, Lorenzo",it,Tortona,1872,it,Roma,1956,fz_haberl
 l_ferre,Léo Albert Charles Antoine,Ferré,Léo Ferré,"Ferré, Léo",mc,Mu̍negu,1916,it,Castellina in Chianti,1993,
 fm_marini,Francesco Maria,Marini,,"Marini, Francesco Maria",it,Pés're,ca.1600,sm,Città di San Marino,,
-a_marcello,Alessandro Ignazio,Marcello,Alessandro Marcello,"Marcello, Alessandro",it,Venèsia,1673,it,Venèsia,1747,
+"f_gasparini,a_lotti",Alessandro Ignazio,Marcello,Alessandro Marcello,"Marcello, Alessandro",it,Venèsia,1673,it,Venèsia,1747,
 b_marcello,Benedetto,Marcello,,"Marcello, Benedetto",it,Venèsia,1686,it,Brèsa,1739,"f_gasparini,a_lotti"
 b_galuppi,Baldassare,Galuppi,,"Galuppi, Baldassare",it,Burano,1706,it,Venèsia,1785,"b_marcello,a_lotti"
 gb_serini,Giovanni Battista,Serini,,"Serini, Giovanni Battista",it,Cremona,ca.1724,it,,,b_galuppi
@@ -676,7 +676,7 @@ f_strauss,Franz Joseph,Strauss,Franz Strauss,"Strauss, Franz",de,Parkstoa,1822,d
 j_strauss_I,Johann Baptist,Strauss,Johann Strauss I,"Strauss I, Johann",at,Wien,1804,at,Wien,1849,"m_palmer,i_seyfried"
 j_strauss_II,Johann Baptist,Strauss,Johann Strauss II,"Strauss II, Johann",at,Wien,1825,at,Wien,1899,"f_amon,j_drechsler,j_hoffmann"
 jo_strauss,Josef,Strauss,,"Strauss, Josef",at,Wien,1827,at,Wien,1870,"f_dolleschal,fa_ries"
-e_strauss,Eduard,Strauss,,"Strauss, Eduard",at,Wien,1835,at,Wien,1916,
+e_strauss,Eduard,Strauss,,"Strauss I, Eduard",at,Wien,1835,at,Wien,1916,
 e_strauss_II,Eduard Leopold Maria,Strauss,Eduard Strauss II,"Strauss II, Eduard",at,Wien,1910,at,Wien,1969,f_schmidt
 j_strauss_III,Johann Maria Eduard,Strauss,Johann Strauss III,"Strauss III, Johann",at,Wien,1866,de,Berlin,1939,
 j_lanner,Joseph Franz Karl,Lanner,Joseph Lanner,"Lanner, Joseph",at,Wien,1801,at,Wien,1843,
@@ -709,3 +709,98 @@ j_coulthard,Jean,Coulthard,,"Coulthard, Jean",ca,Vancouver,1908,ca,Vancouver,200
 m_dring,Madeleine Winefride Isabelle,Dring,Madeleine Dring,"Dring, Madeleine",gb,London,1923,gb,London,1977,"r_vaughan_williams,h_howells"
 m_hyde,Miriam Beatrice,Hyde,Miriam Hyde,"Hyde, Miriam",au,Adelaide,1913,au,Sydney,2005,"a_benjamin,ro_morris,g_jacob"
 c_tautu,Cornelia,Tăutu,,"Tăutu, Cornelia",ro,Odorheiu Secuiesc,1938,de,,2019,"m_joora,a_stroe,e_comisel"
+s_nelson,Sheila Mary,Nelson,Sheila Nelson,"Nelson, Sheila",gb,Manchester,1936,gb,London,2020,p_rolland
+m_jaell,Marie,Trautmann,Marie Jaëll,"Jaëll, Marie",fr,Stanselz,1846,fr,Paris,1925,"c_saint-saens,g_faure,i_moscheles,h_herz"
+y_desportes,Yvonne,Desportes,,"Desportes, Yvonne",de,Coburg,1907,fr,Paris,1993,"p_dukas,m_emmanuel,j_gallon,n_gallon,y_lefebure,a_cortot,m_dupre"
+k_saariaho,Kaija Anneli,Saariaho,Kaija Saariaho,"Saariaho, Kaija",fi,Helsinki,1952,fr,Paris,2023,"p_heininen,b_ferneyhough,b_ferneyhough,k_huber"
+s_gubaidulina,Sofia Asgatovna,Gubaidulina,Sofia Gubaidulina,"Gubaidulina, Sofia",ru,Chistopol,1931,de,Appen,2025,"a_leman,s_saydas,n_cihanof,s_kazachkov,n_peiko,v_shebalin"
+hc_mennechet,Henriette-Caroline,Paillet,Henriette-Caroline Mennechet de Barival,"Mennechet de Barival, Henriette-Caroline",fr,Paris,1813,fr,Paris,1861,
+s_wurmbrand-stuppach,Stephanie,von Wurmbrand-Stuppach,,"Wurmbrand-Stuppach, Stephanie",sk,Bratislava,1849,at,Wien,1919,
+m_bonis,Mélanie Hélène,Bonis,Mel Bonis,"Bonis, Mel",fr,Paris,1858,fr,Sarcelles,1937,"g_faure,c_koechlin,c_franck,e_guiraud,a_bazille"
+al_hettich,Amédée-Louis,Hettich,,"Hettich, Amédée-Louis",fr,Naunnt,1856,fr,Paris,1937,jj_masset
+m_grey,Madeleine Nathalie,Grumberg,Madeleine Grey,"Grey, Madeleine",fr,Villaines-la-Juhel,1896,fr,Paris,1979,"al_hettich,a_cortot"
+c_panzera,Charles Auguste Louis,Panzéra,Charles Panzéra,"Panzéra, Charles",ch,Genève,1896,fr,Paris,1976,al_hettich
+a_endreze,Arthur Endres,Kraeckmann,Arthur Endrèze,"Endrèze, Arthur",us,Chicago,1893,us,Chicago,1975,"al_hettich,j_reszke"
+e_krogh,Erling,Krogh,,"Krogh, Erling",no,Oslo,1888,no,Oslo,1968,"al_hettich,j_reszke,p_cornelius"
+e_nazirova,Elmira Mirzərza qızı,Nəzirova,Elmira Nəzirova,"Nəzirova, Elmira",az,Bakı,1928,ps,Ḥayfā,2014,"d_shostakovich,i_zak,b_zeidman,g_saroyev"
+h_bosmans,Henriëtte Hilda,Bosmans,Henriëtte Bosmans,"Bosmans, Henriëtte",nl,Amsterdam,1895,nl,Amsterdam,1952,"s_bosmans-benedicts,w_pijper"
+f_belinfante,Frieda,Belinfante,,"Belinfante, Fiedra",nl,Amsterdam,1904,us,Santa Fe,1995,"g_hekking,h_scherchen"
+f_koene,Francis Dirk Jacobus,Koene,Francis Koene,"Koene, Francis",id,Jakarta,1899,nl,Amsterdam,1935,"l_zimmermann,l_angenot,fj_roeske"
+s_bosmans-benedicts,Sara,Benedicts,Sara Bosmans-Benedicts,"Bosmans-Benedicts, Sara",nl,Amsterdam,1861,nl,Amsterdam,1949,j_kwast
+j_spaanderman,Jacobus Hendrikus Bastiaan,Spaanderman,Jaap Spaanderman,"Spaanderman, Jaap",nl,Gouda,1896,nl,Laren,1985,"s_bosmans-benedicts,i_mossel"
+r_posselt,Ruth Pierce,Posselt,Ruth Posselt,"Posselt, Ruth",us,Medford,1911,us,Gulfport,2007,e_ondricek
+l_vosgerchian,Luise,Vosgerchian,,"Vosgerchian, Luise",us,Watertown,1922,us,Acton,2000,
+n_perugia,Noémie,Pérugia,,"Pérugia, Noémie",fr,Niça,1903,nl,Franeker,1992,
+g_williams,Grace Mary,Williams,Grace Williams,"Williams, Grace",gb,Y Barri,1906,gb,Y Barri,1977,"r_vaughan_williams,g_jacob,e_wellesz"
+i_holst,Imogen Clare,von Holst,Imogen Holst,"Holst, Imogen",gb,Richmond,1907,gb,Aldeburgh,1984,"j_joseph,e_shuttleworth,a_mangeot"
+j_joseph,Jane Marian,Joseph,Jane Joseph,"Joseph, Jane",gb,London,1894,gb,London,1929,"g_holst,a_boult"
+g_creith,Gladys Mary,Cohen,Guirne Creith,"Creith, Guirne",gb,London,1907,gb,London,1996,"b_dale,h_wood,e_fischer"
+c_lucas,Charles,Lucas,,"Lucas, Charles",gb,Salisbury,1808,gb,London,1869,"r_lindley,w_crotch"
+o_martorell,Oriol,Martorell i Codina,Oriol Martorell,"Martorell, Oriol",es,Barcelona,1927,es,Barcelona,1996,e_toldra
+t_montoliu,Vicenç,Montoliu i Massana,Tete Montoliu,"Montoliu, Tete",es,Barcelona,1933,es,Barcelona,1997,p_vallribera
+m_valls,Manuel,Valls i Gorina,Manuel Valls,"Valls, Manuel",es,Badalona,1920,es,Barcelona,1984,jg_zulaika
+jg_zulaika,Jose Gontzalo,Zulaika Arregi,Aita Donostia,"Zulaika, Jose Gontzalo",es,Donostia,1886,es,Donostia,1956,a_esquerra
+p_vallribera,Pere,Vallribera i Moliné,Pere Vallribera,"Vallribera, Pere",es,Sallent,1903,es,Barcelona,1990,"j_barbera,j_muset,g_garganta,i_philipp"
+e_vendrell,Emili,Vendrell i Ibars,Emili Vendrell,"Vendrell, Emili",es,Barcelona,1893,es,Barcelona,1962,l_millet
+r_martinez_valls,Rafael,Martínez Valls,,"Martínez Valls, Rafael",es,Ontinyent,1887,es,Barcelona,1946,
+k_haneda,Kentarō,Haneda,,"Haneda, Kentarō",jp,Tōkyō,1949,jp,Tōkyō,2007,k_ariga
+ga_baylon,Gerònim Anicet,Baylon,,"Baylon, Gerònim Anicet",es,València,ca.1600,es,València,1684,
+at_ortells,Antonio Teodoro,Ortells,,"Ortells, Antonio Teodoro",es,Rubielos de Mora,1647,es,València,1706,"m_perez,j_hinojosa"
+j_hinojosa,José,Hinojosa,,"Hinojosa, José",es,,ca.1600,es,València,1673,
+m_monjiu_panzano,Miguel,Monjiu Panzano,,"Monjiu Panzano, Miguel",es,Uesca,ca.1648,es,Sogorb,1684,g_baban
+g_baban,Gracián,Babán,,"Babán, Gracián",es,,ca.1620,es,València,1675,
+i_escorihuela,Isidre,Escorihuela,,"Escorihuela, Isidre",es,Alacant,ca.1650,es,Alacant,1723,
+j_escorihuela,Josep,Escorihuela,,"Escorihuela, Josep",es,Morella,1674,es,Tortosa,1743,i_escorihuela
+j_garcia_catala,Joan,García i Català,,"García i Català, Joan",es,,ca.1850,es,,1901,
+jc_ripolles,Joan Crisòstom,Ripollès,,"Ripollès, Joan Crisòstom",es,Torreblanca,1678,es,Tarragona,1746,j_escorihuela
+f_ordeig,Francesc,Ordeig,,"Ordeig, Francesc",es,,ca.1700,es,,ca.1750,j_escorihuela
+v_moreno_polo,Valero,Moreno y Polo,,"Moreno y Polo, Valero",es,La Hoz de la Vieja,1714,es,Tortosa,1780,j_lanuza
+ju_moreno_polo,Juan,Moreno y Polo,,"Moreno y Polo, Juan",es,La Hoz de la Vieja,1711,es,Tortosa,1776,
+jo_moreno_polo,José,Moreno y Polo,,"Moreno y Polo, José",es,La Hoz de la Vieja,1708,es,Madrid,1774,
+j_lanuza,José,Lanuza,,"Lanuza, José",es,,ca.1700,es,,1756,j_caseda
+fj_garcia_fajer,Francisco Javier,García Fajer,,"García Fajer, Francisco Javier",es,Nalda,1730,es,Zaragoza,1809,j_lanuza
+j_caseda,José,de Cáseda y Villamayor,José de Cáseda,"Cáseda, José de",es,Tudela,ca.1660,es,Sigüenza,1725,d_caseda
+d_caseda,Diego,de Cáseda y Zaldívar,Diego de Cáseda,"Cáseda, Diego de",es,Calahorra,1638,es,Zaragoza,1694,
+b_caseda,Blas,de Cáseda y Villamayor,Blas de Cáseda,"Cáseda, Blas de",es,Tudela,ca.1675,es,Santo Domingo de la Calzada,1748,d_caseda
+j_barter,Joan,Barter,,"Barter, Joan",es,Mequinensa,1648,es,Barcelona,1706,
+mj_veana,Matías Juan,de Veana,,"Veana, Matías Juan de",es,Xàtiva,ca.1656,es,Madrid,1705,
+p_vidal_mas,Pedro,Vidal Mas,,"Vidal Mas, Pedro",es,Villafermosa,ca.1690,es,Villafermosa,1744,
+pe_vidal,Pere,Vidal,,"Vidal, Pere",es,Guissona,ca.1670,it,Roma,1731,
+f_vidal,Francesc,Vidal,,"Vidal, Francesc",es,Lleida,ca.1650,es,Lleida,1730,
+p_fuentes_alcasser,Pasqual,Fuentes i Alcàsser,,"Fuentes i Alcàsser, Pasqual",es,Aldaia,1721,es,València,1768,j_prades
+cf_abel,Carl Friedrich,Abel,,"Abel, Carl Friedrich",de,Köthen,1723,gb,London,1787,
+la_abel,Leopold August,Abel,,"Abel, Leopold August",de,Köthen,1718,de,Ludwigslust,1794,ga_benda
+ga_benda,Jiří Antonín,Benda,Georg Anton Benda,"Benda, Georg Anton",cz,Benátky nad Jizerou,1722,de,Bad Köstritz,1795,
+f_benda,František,Benda,Franz Benda,,,,,,,,
+jj_benda,Jan Jíří,Benda,Jan Benda,,,,,,,,
+af_benda,Anna Franziska,Benda,Anna Franziska Hataš,,,,,,,,
+j_benda,Josef,Benda,Joseph,,,,,,,,
+v_agapkin,Vasily Ivanovich,Agapkin,Vasily Agapkin,"Agapkin, Vasily",ru,Shancherovo,1884,ru,Moskva,1964,
+a_alexandrov,Alexander Vasilyevich,Alexandrov,Alexander Alexandrov,"Alexandrov, Alexander",ru,Plakhino,1883,de,Berlin,1946,n_medtner
+g_allegri,Gregorio,Allegri,,"Allegri, Gregorio",it,Roma,1582,it,Roma,1652,"gb_nanino,gp_palestrina"
+d_allegri,Domenico,Allegri,,"Allegri, Domenico",it,Roma,1585,it,Roma,1629,gb_nanino
+gb_nanino,Giovanni Bernardino,Nanino,,"Nanino, Giovanni Bernardino",it,Vallerano,ca.1560,it,Vallerano,1618,
+gm_nanino,Giovanni Maria,Nanino,,"Nanino, Giovanni Maria",it,Tivoli,1544,it,Roma,1607,gp_palestrina
+a_cifra,Antonio,Cifra,,"Cifra, Antonio",it,Bassiano,1584,it,Loreto,1629,"gb_nanino,gm_nanino"
+v_ugolini,Vincenzo,Ugolini,,"Ugolini, Vincenzo",it,Perugia,1578,it,Roma,1638,gb_nanino
+p_agostini,Paolo,Agostini,,"Agostini, Paolo",it,Vallerano,1583,it,Roma,1629,gb_nanino
+d_massenzio,Domenico,Massenzio,,"Massenzio, Domenico",it,Ronciglione,1586,it,Roma,1657,"gb_nanino,f_anerio"
+gp_palestrina,Giovanni Pierluigi,da Palestrina,,"Palestrina, Giovanni Pierluigi da",it,Palestrina,1525,it,Roma,1594,"c_goudimel,r_mallapert,f_lebel,g_animuccia"
+a_brunelli,Antonio,Brunelli,,"Brunelli, Antonio",it,Santa Croce sull'Arno,1577,it,Pisa,1630,gm_nanino
+f_anerio,Felice,Anerio,,"Anerio, Felice",it,Roma,1560,it,Roma,1614,gm_nanino
+ma_pasqualini,Marc'Antonio,Pasqualini,,"Pasqualini, Marc'Antonio",it,Roma,1614,it,Roma,1691,v_ugolini
+tl_victoria,Tomás,Luis de Victoria,,"Victoria, Tomás Luis de",es,Ávila,1548,es,Madrid,1611,"gp_palestrina,jn_hispalensis,b_ribera"
+gf_anerio,Giovanni Francesco,Anerio,,"Anerio, Giovanni Francesco",it,Roma,1569,at,Graz,1620,gp_palestrina
+m_scacchi,Marco,Scacchi,,"Scacchi, Marco",it,Gallese,1602,it,Gallese,1662,f_anerio
+am_abbatini,Antonio Maria,Abbatini,,"Abbatini, Antonio Maria",it,Città di Castello,1597,it,Città di Castello,1679,"gm_nanino,gb_nanino"
+f_soriano,Francesco,Soriano,,"Soriano, Francesco",it,Soriano nel Cimino,1548,it,Roma,1621,gp_palestrina
+l_rossi,Luigi,Rossi,,"Rossi, Luigi",it,Torremaggiore,1597,it,Roma,1653,j_macque
+lf_rossi,Luigi Felice,Rossi,,"Rossi, Luigi Felice",it,Brandiss,1805,it,Turin,1863,"s_mattei,v_bellini,p_raimondi,n_zingarelli"
+v_bellini,Vincenzo Salvatore Carmelo Francesco,Bellini,Vincenzo Bellini,"Bellini, Vincenzo",it,Catania,1801,fr,Puteaux,1835,"n_zingarelli,g_furno,g_tritto"
+a_cesti,Pietro,Cesti,Antonio Cesti,"Cesti, Antonio",it,Arezzo,1623,it,Firenze,1669,"am_abbatini,g_carissimi"
+gp_colonna,Giovanni Paolo,Colonna,,"Colonna, Giovanni Paolo",it,Bulåggna,1637,it,Bulåggna,1695,"am_abbatini,o_benevoli,a_filippuzzi"
+b_pasquini,Bernardo,Pasquini,,"Pasquini, Bernardo",it,Massa,1637,it,Roma,1710,"a_cesti,l_vittori"
+d_zipoli,Domenico,Zipoli,,"Zipoli, Domenico",it,Prato,1688,ar,Córdoba,1726,"b_pasquini,gm_orlandini,a_scarlatti"
+f_gasparini,Francesco,Gasparini,,"Gasparini, Francesco",it,Camaiore,1661,it,Roma,1727,"b_pasquini,a_lotti,g_legrenzi,a_corelli"
+jj_quantz,Johann Joachim,Quantz,,"Quantz, Johann Joachim",de,Scheden,1697,de,Potsdam,1773,"f_gasparini,ja_fleischhack,jd_zelenka,jj_fux,pg_buffardin"
+jf_agricola,Johann Friedrich,Agricola,,"Agricola, Johann Friedrich",de,Dobitschen,1720,de,Berlin,1774,"js_bach,jj_quantz"
